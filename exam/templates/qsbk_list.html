@@ -1,0 +1,45 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+   <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:qsbk_info' %}">题库中心</a></li>
+        <li>题库列表</li>
+    </ol>
+    <p>当前显示的是您具有操作权限的题库，共【{{ querysets1.count }}】个</p>
+
+    <table class="table table" style="vertical-align: middle">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>题库名称</th>
+            <th>题目数量</th>
+            <th>添加时间</th>
+            <th>创建人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ques in querysets.object_list %}
+            <tr style="vertical-align: middle">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ ques.name }}</td>
+                <td>{{ ques.questionbank_set.count }}</td>
+                <td>{{ ques.add_time }}</td>
+                <td>{{ ques.create_person }}</td>
+                <td>
+                    <a href="{% url 'exam:questionbank_detail' ques.pk %}" class="btn btn-success">查看</a>
+                    <a href="{% url 'exam:qsbk_edit' ques.pk %}?page={{ querysets.number }}" style="margin: 0px 10px;"><span class="glyphicon glyphicon-pencil"></span> </a>
+                    <a href="{% url 'exam:qsbk_delete' ques.pk %}?page={{ querysets.number }}" onclick="if(confirm('确认删除吗？')==false)return false;"><span class="glyphicon glyphicon-trash"></span> </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# 分页 #}
+    {% render_paginator querysets %}
+
+{% endblock %}

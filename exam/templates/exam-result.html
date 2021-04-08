@@ -1,0 +1,71 @@
+{% extends 'indexbase.html' %}
+{% load static %}
+
+{% block title %}我的考试记录{% endblock %}
+
+{% block left_menu %}
+    <div class="left">
+        <ul>
+            <li class="{% if '/examinfo/' in request.path %}active2{% endif %}"><a href="{% url 'exam:examinfo' %}">试卷列表</a></li>
+            <li class="{% if '/examresult/' in request.path %}active2{% endif %}"><a href="{% url 'exam:examresult' %}">考试记录</a></li>
+            <li class="{% if '/wrongrecord/' in request.path %}active2{% endif %}"><a href="{% url 'exam:wrongrecord' %}">错题记录</a></li>
+
+        </ul>
+    </div>
+{% endblock %}
+
+{% block custom_right_content %}
+    <div class="right">
+        <div class="personal_des ">
+            <div class="head" style="border:1px solid #eaeaea;">
+                <h1>考试记录</h1>
+            </div>
+            <div class="inforcon">
+                <table class="table right1">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>科目</th>
+                        <th>成绩</th>
+                        <th>考试时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for grade1 in grade.object_list %}
+                        <tr class="table-primary">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ grade1.papername }}</td>
+                            <td>{{ grade1.grade }}</td>
+                            <td>{{ grade1.test_time }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--分页-->
+        <div class="pageturn">
+            <ul class="pagelist">
+                {% if grade.has_previous %}
+                    <li class="long"><a href="?{{ grade.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+
+                {% for page in grade.pages %}
+                    {% if page %}
+                        {% ifequal page grade.number %}
+                            <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if grade.has_next %}
+                    <li class="long"><a href="?{{ grade.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}

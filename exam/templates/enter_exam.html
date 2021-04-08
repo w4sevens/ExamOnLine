@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进入考场</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script>
+
+    </script>
+
+</head>
+<body onload="CountDown()">
+<div>
+    <style>
+        .inputborder {
+            BORDER-RIGHT: 1px solid;
+            BORDER-TOP: 1px solid;
+            BORDER-LEFT: 1px solid;
+            COLOR: #00ff00;
+            BORDER-BOTTOM: 1px solid;
+            BACKGROUND-COLOR: #333333;
+            TEXT-ALIGN: center
+        }
+
+        table {
+            FONT-FAMILY: Arial;
+            FONT-SIZE: 16px;
+            LINE-HEIGHT: 16pt;
+        }
+
+        td {
+            FONT-FAMILY: Arial;
+            FONT-SIZE: 16px;
+            LINE-HEIGHT: 16pt
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        window.onbeforeunload = function () {
+            if (document.getElementById("txtHideEnter").value == "3") {
+                document.getElementById("txtHideEnter").value = "4";
+            }
+            if (document.getElementById("txtHideEnter").value == "2") {
+                document.getElementById("txtHideEnter").value = "3";
+            }
+            if (document.getElementById("txtHideEnter").value == "1") {
+                document.getElementById("txtHideEnter").value = "2";
+            }
+            if (document.getElementById("txtHideEnter").value == "0") {
+                document.getElementById("txtHideEnter").value = "1";
+            }
+            intEnter = document.getElementById("txtHideEnter").value;
+            if (intEnter > 3) {
+                document.getElementById("txtHideEnter").value = "EndExamAuto";
+                top.mainExamFrame.document.getElementById("txtHideComm").value = "EndExamAuto";
+                Form1.submit();
+                top.mainExamFrame.document.getElementById("Form1").submit();
+            }
+            if (document.body.offsetWidth - 50 < event.clientX && event.clientY < 0)
+                return "警告：关闭本窗口将自动以【零分】计算。\n\n请单击【交卷】按钮离开！(请注意,提交咨询最多三次)";
+        }
+
+
+        document.oncontextmenu = function () {
+            event.returnValue = false;
+        };
+        document.onselectstart = function () {
+            event.returnValue = false;
+        };
+
+        document.onkeydown = function () {
+            if (event.keyCode == 8) {
+                if (event.srcElement.tagName.toLowerCase() != "input"
+                    && event.srcElement.tagName.toLowerCase() != "textarea")
+                    event.returnValue = false;
+            }
+            if ((window.event.altKey) &&
+                ((window.event.keyCode == 37) ||   //屏蔽 Alt+ 方向键 ←
+                    (window.event.keyCode == 39))) {  //屏蔽 Alt+ 方向键 →
+                alert("不准你使用ALT+方向键前进或后退网页！");
+                event.returnValue = false;
+            }
+            if ((event.keyCode == 116) ||                 //屏蔽 F5 刷新键
+                (event.keyCode == 112) ||                 //屏蔽 F1 刷新键
+                (event.keyCode == 27) ||
+                (event.ctrlKey && event.keyCode == 82)) { //Ctrl + R
+                event.keyCode = 0;
+                event.returnValue = false;
+            }
+            if ((event.ctrlKey) && (event.keyCode == 78))   //屏蔽 Ctrl+N
+                event.returnValue = false;
+            if ((event.shiftKey) && (event.keyCode == 121)) //屏蔽 shift+F10
+                event.returnValue = false;
+            if (window.event.srcElement.tagName == "A" && window.event.shiftKey)
+                window.event.returnValue = false;  //屏蔽 shift 加鼠标左键新开一网页
+            if ((window.event.altKey) && (window.event.keyCode == 115)) { //屏蔽Alt+F4
+                window.showModelessDialog("about:blank", "", "dialogWidth:1px;dialogheight:1px");
+                return false;
+            }
+            if (window.event.keyCode == 18 || window.event.keyCode == 91 || window.event.keyCode == 92)   //屏蔽非法键
+            {
+                window.event.keyCode = 0;
+                window.event.returnValue = false;
+            }
+        }
+    </script>
+    <form method="post" action="/online_exam_core/ " id="Form1">
+        <table id="table2" bordercolor="#cccccc" cellspacing="0" bordercolordark="#cccccc" cellpadding="0" height="95"
+               width="100%" align="center" border="0" class="tableStyle">
+            <tr height="95">
+                <td height="95" width="100%" background="../static/img/ExamTop.gif" align="center">
+                    <table id="table4" cellspacing="0" cellpadding="0" height="95" width="1020" align="center"
+                           border="0"
+                           class="TipTable">
+                        <tr>
+                            <td width="90" align="left" rowspan="0" valign="top"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;"><img
+                                    id="ImageUser"
+                                    src="../static/image/people/{{ request.session.username }}.jpg"
+                                    style="border-width:0px;height:85px;width:75px;">
+                            </td>
+                            <td width="260" align="left"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">准考证号:<span
+                                    id="labUserCode" name="staff_name" value="{{ sd_list.staff_id }}"
+                                    style="color:Blue;font-weight:bold;">{{ sd_list.staff_id }}</span>
+                            </td>
+                            <td align="left" style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">
+                                考试名称:<span id="labExamName" name="exam_name" value="{{ se_list.exam_information_id }}"
+                                           style="color:Blue;font-weight:bold;">{{ se_list.exam_name }}</span></td>
+
+                            <td width="170" align="left"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">开始时间：<input
+                                    class="inputborder" style="WIDTH: 85px; HEIGHT: 20px" readonly="" type="text"
+                                    size="10" value="{{ exam_begin }}"
+                                    name="mystarttime"></td>
+                            <td width="70" align="left" rowspan="3"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;"><input
+                                    class="but2R"  type="submit" style="POSITION:relative;TOP:-2px"
+                                    id="jiao" value="交  卷" name="B3"></td>
+                        </tr>
+                        <tr>
+
+                            <td width="260" align="left"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">考生姓名:<span
+                                    id="labUserName" name="staff_name" value="{{ sd_list.staff_name }}"
+                                    style="color:Blue;font-weight:bold;">{{ sd_list.staff_name }}</span></td>
+                            <td align="left" style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">
+                                试卷总分:<span id="labPaperFen" name="score_all" value="{{ se_list.score_all }}"
+                                           style="color:Blue;font-weight:bold;">{{ se_list.score_all }}</span></td>
+
+                            <td width="170" align="left" valign="top"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">结束时间：<input
+                                    class="inputborder" style="WIDTH: 85px; HEIGHT: 20px" readonly="" type="text"
+                                    size="10" value="{{ exam_over }}"
+                                    name="myendtime"></td>
+                        </tr>
+                        <tr>
+
+                            <td width="260" align="left"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">单位部门:<span
+                                    id="labDeptName" name="department_name"
+                                    style="color:Blue;font-weight:bold;">{{ sd_list.department_name }}</span></td>
+                            <td align="left" style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">
+                                考试时长:<span id="labExamTime" name="time" value="{{ se_list.time }}"
+                                           style="color:Blue; font-weight:bold;  ">{{ se_list.time }}</span><font
+                                    color="blue"><b>分钟</b></font></td>
+                            <td width="170" align="left" valign="top"
+                                style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">剩余时间：<input
+                                    class="inputborder" style="WIDTH: 85px; HEIGHT: 20px" readonly="" type="text"
+                                    size="10" value="{{ se_list.time }}"
+                                    id="timer"
+                                    name="lefttime">
+                                <script type="text/javascript">
+                                    var maxtime ={{ se_list.time }} *60; //一个小时，按秒计算，自己调整!
+                                    function CountDown() {
+                                        if (maxtime >= 0) {
+                                            minutes = Math.floor(maxtime / 60);
+                                            seconds = Math.floor(maxtime % 60);
+                                            msg = minutes + ':' + seconds;
+                                            document.getElementById('timer').value = msg;
+                                            if (maxtime == 5 * 60) alert("还剩5分钟");
+                                            --maxtime;
+                                        } else {
+                                            clearInterval(timer);
+                                            alert("时间到，结束!");
+                                            document.getElementById("jiao").click();
+
+                                        }
+                                    }
+
+                                    timer = setInterval("CountDown()", 1000);
+                                </script>
+
+
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+
+    <style>
+        .inputborder {
+            BORDER-RIGHT: 1px solid;
+            BORDER-TOP: 1px solid;
+            BORDER-LEFT: 1px solid;
+            COLOR: #00ff00;
+            BORDER-BOTTOM: 1px solid;
+            BACKGROUND-COLOR: #333333;
+            TEXT-ALIGN: center
+        }
+
+        table {
+            FONT-FAMILY: Arial;
+            FONT-SIZE: 16px;
+            LINE-HEIGHT: 16pt;
+        }
+
+        td {
+            FONT-FAMILY: Arial;
+            FONT-SIZE: 16px;
+            LINE-HEIGHT: 16pt
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        window.onbeforeunload = function () {
+            if (document.getElementById("txtHideComm").value != "EndExamAuto" && document.getElementById("txtHideComm").value != "EndExam" && document.getElementById("txtHideComm").value != "TipExam" && document.getElementById("txtHideComm").value != "CheckExam" && document.getElementById("txtHideComm").value != "SaveExam" && document.getElementById("txtHideComm").value != "AutoSaveExam") {
+                if (document.getElementById("txtHideEnter").value == "3") {
+                    document.getElementById("txtHideEnter").value = "4";
+                }
+                if (document.getElementById("txtHideEnter").value == "2") {
+                    document.getElementById("txtHideEnter").value = "3";
+                }
+                if (document.getElementById("txtHideEnter").value == "1") {
+                    document.getElementById("txtHideEnter").value = "2";
+                }
+                if (document.getElementById("txtHideEnter").value == "0") {
+                    document.getElementById("txtHideEnter").value = "1";
+                }
+                intEnter = document.getElementById("txtHideEnter").value;
+                if (intEnter > 3) {
+                    document.getElementById("txtHideComm").value = "EndExamAuto";
+                    Form1.submit();
+                }
+                if (document.body.offsetWidth - 50 < event.clientX && event.clientY < 0)
+                    return "警告：关闭本窗口将自动以【零分】计算。\n\n请单击【交卷】按钮离开！(请注意,提交咨询最多三次)";
+            }
+            else {
+                document.getElementById("txtHideComm").value = "";
+            }
+        }
+
+        document.oncontextmenu = function () {
+            event.returnValue = false;
+        };
+        document.onselectstart = function () {
+            event.returnValue = false;
+        };
+
+        document.onkeydown = function () {
+            if (event.keyCode == 8) {
+                if (event.srcElement.tagName.toLowerCase() != "input"
+                    && event.srcElement.tagName.toLowerCase() != "textarea")
+                    event.returnValue = false;
+            }
+            if ((window.event.altKey) &&
+                ((window.event.keyCode == 37) ||   //屏蔽 Alt+ 方向键 ←
+                    (window.event.keyCode == 39))) {  //屏蔽 Alt+ 方向键 →
+                alert("不准你使用ALT+方向键前进或后退网页！");
+                event.returnValue = false;
+            }
+            if ((event.keyCode == 116) ||                 //屏蔽 F5 刷新键
+                (event.keyCode == 112) ||                 //屏蔽 F1 刷新键
+                (event.keyCode == 27) ||
+                (event.ctrlKey && event.keyCode == 82)) { //Ctrl + R
+                event.keyCode = 0;
+                event.returnValue = false;
+            }
+            if ((event.ctrlKey) && (event.keyCode == 78))   //屏蔽 Ctrl+N
+                event.returnValue = false;
+            if ((event.shiftKey) && (event.keyCode == 121)) //屏蔽 shift+F10
+                event.returnValue = false;
+            if (window.event.srcElement.tagName == "A" && window.event.shiftKey)
+                window.event.returnValue = false;  //屏蔽 shift 加鼠标左键新开一网页
+            if ((window.event.altKey) && (window.event.keyCode == 115)) { //屏蔽Alt+F4
+                window.showModelessDialog("about:blank", "", "dialogWidth:1px;dialogheight:1px");
+                return false;
+            }
+            if (window.event.keyCode == 18 || window.event.keyCode == 91 || window.event.keyCode == 92)   //屏蔽非法键
+            {
+                window.event.keyCode = 0;
+                window.event.returnValue = false;
+            }
+        }
+
+        function auto_submit() {
+            if (document.getElementById("txtHideComm").value != "EndExamAuto" && document.getElementById("txtHideComm").value != "EndExam" && document.getElementById("txtHideComm").value != "TipExam" && document.getElementById("txtHideComm").value != "CheckExam" && document.getElementById("txtHideComm").value != "SaveExam" && document.getElementById("txtHideComm").value != "AutoSaveExam") {
+                if (document.getElementById("txtHideFocus").value == "4") {
+                    document.getElementById("txtHideFocus").value = "5";
+                }
+                if (document.getElementById("txtHideFocus").value == "3") {
+                    document.getElementById("txtHideFocus").value = "4";
+                }
+                if (document.getElementById("txtHideFocus").value == "2") {
+                    document.getElementById("txtHideFocus").value = "3";
+                }
+                if (document.getElementById("txtHideFocus").value == "1") {
+                    document.getElementById("txtHideFocus").value = "2";
+                }
+                if (document.getElementById("txtHideFocus").value == "0") {
+                    document.getElementById("txtHideFocus").value = "1";
+                }
+                intFocus = document.getElementById("txtHideFocus").value;
+                if (intFocus > 4) {
+                    document.getElementById("txtHideComm").value = "EndExamAuto";
+                    Form1.submit();
+                }
+                else {
+                    if (document.getElementById("txtHideFocus").value != "1") {
+                        document.getElementById("txtHideComm").value = "TipExam";
+                        alert("警告：你试图离开考试现场,系统将自动提交试卷！(只有三次机会)");
+                    }
+                }
+            }
+            else {
+                document.getElementById("txtHideComm").value = "";
+            }
+        }
+    </script>
+        <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['Form1'];
+            if (!theForm) {
+                theForm = document.Form1;
+            }
+
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+
+            //]]>
+        </script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+            //]]>
+        </script>
+
+        <div id="UPPart">
+
+            <table id="table2" bordercolor="#cccccc" cellspacing="0" bordercolordark="#cccccc" cellpadding="0"
+                   width="100%"
+                   align="center" border="1" class="tableStyle">
+
+                <tr>
+                    <style>
+                        .answer_id {
+                            position: fixed;
+                            right: 2px;
+                            top: 128px;
+                            background: white;
+                            opacity: 0.9;
+                        }
+                    </style>
+                    <td width="155" bgcolor="#FBFBFD" valign="top" class="answer_id"
+                        style="FONT-FAMILY: Arial; FONT-SIZE: 12px; LINE-HEIGHT: 12pt">
+                        <br>
+                        <br><font color="red"><b><span id="labCheckRubricInfo"></span></b></font><br>
+                        &nbsp;未答:<font color="blue">蓝色</font><br>
+                        <br>试题序号：<br>
+                        <span id="labRubricListID" style="font-weight:bold;">
+                        {% for book in book_list %}
+                            <table cellspacing="0" cellpadding="4"
+                                   align="left" border="1"
+                                   class="tableStyle" bordercolor="#cccccc"
+                                   style="FONT-FAMILY: Arial; FONT-SIZE: 13px; LINE-HEIGHT: 13pt">
+                            <tr>
+                                <td width="28" align="center">
+                                    <a href="#title_{{ book.h }}"><font color="blue">{{ book.h }}</font></a>
+                                </td>
+                            </tr>
+                        </table>
+                        {% endfor %}
+                        </span>
+
+                    </td>
+                    <td valign="top">
+                    <span id="labTitle" style="color:#0000CC;"><table bordercolor="#cccccc" cellspacing="0"
+                                                                      bordercolordark="#cccccc" cellpadding="0"
+                                                                      width="100%" align="center" border="1"
+                                                                      style="border-style:Solid;"><tr
+                            height="30"><td align="left" bgcolor="#5AA6E4"><font color="#ffffff"><a
+                            name="RubricTypeA"></a>&nbsp;&nbsp;<b>单选题</b>&nbsp;&nbsp;&nbsp;&nbsp;(每题<font
+                            color="#ff0000">3</font>分,说明:选择一项正确的答案)</font></td></tr></table><br></span>
+                        <div>
+                            {% for book in book_list %}
+                                <table cellspacing="0" id="DataGridInfo"
+                                       style="border-width:0px;width:100%;border-collapse:collapse;">
+                                    <tr>
+                                        <td>
+                                            <table cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+                                                <tr height="30">
+                                                    <td bgcolor="#FBFBFD" align="left"
+                                                        style="border-style:dashed; border-width:1px; border-color:#000000;">
+                                                        <span id="title_{{ book.h }}">{{ book.h }}{{ book.question }}<br></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left"
+                                                        style="border-bottom:0px solid #cccccc;border-right: 0px solid #cccccc;">
+                                                        <br>
+                                                        <span id="title_0" style="LINE-HEIGHT: 22pt">
+                                                        <input
+                                                                id=" " type="radio"
+                                                                name="answer_{{ book.h }}" value="A">
+                                                        <label
+                                                                for="title_0_0_0">A、{{ book.optionA }}</label><br>
+                                                        <input
+                                                                id="" type="radio"
+                                                                name="answer_{{ book.h }}" value="B">
+                                                        <label
+                                                                for="title_0_1_0">B、{{ book.optionB }}</label><br>
+                                                        <input
+                                                                id="" type="radio"
+                                                                name="answer_{{ book.h }}" value="C">
+                                                        <label
+                                                                for="title_0_2_0">C、{{ book.optionC }}</label><br>
+                                                        <input
+                                                                id="" type="radio"
+                                                                name="answer_{{ book.h }}" value="D">
+                                                        <label
+                                                                for="title_0_3_0">D、{{ book.optionD }}</label>
+                                                    </span>
+
+
+                                                        &nbsp;&nbsp;
+                                                        &nbsp;&nbsp;
+                                                        &nbsp;&nbsp;
+                                                        &nbsp;&nbsp;
+                                                        &nbsp;&nbsp;
+
+
+                                                        <br><br>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            {% endfor %}
+                        </div>
+                        <input type="hidden" name="flag"value="1">
+                        <input type="hidden" name="exam_information_id" value="{{ se_list.exam_information_id }}">
+                        <input type="hidden" name="title_num" value="{{ se_list.title_num }}">
+                    </td>
+                </tr>
+
+            </table>
+            <br><br><br><br>
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

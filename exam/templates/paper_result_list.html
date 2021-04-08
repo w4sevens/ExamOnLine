@@ -1,0 +1,38 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li><a href="{% url 'exam:list_paper' %}">试卷列表</a></li>
+        <li>我的成绩</li>
+    </ol>
+
+    <table class="table table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>试卷名称</th>
+            <th>考试时长</th>
+            <th>考试时间</th>
+            <th>成绩</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in rcds %}
+            <tr class="table-info">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.papername }}</td>
+                <td>{{ item.papername.test_time }}分钟</td>
+                <td>{{ item.test_time }}</td>
+                <td>{{ item.grade }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="javascript:history.go(-1)" class="btn btn-default pull-right" style="margin: 0 5px;">返回</a>
+    <a href="{% url 'exam:retest_paper' paper.pk %}" class="btn btn-primary pull-right">申请重考</a>
+
+{% endblock %}

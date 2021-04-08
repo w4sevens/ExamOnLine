@@ -1,0 +1,14 @@
+{% extends 'kingadmin/index.html' %}
+{% load kingadmin_tags %}
+
+
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'kingadmin:app_index' %}">HOME</a></li>
+        <li><a href="{% url 'kingadmin:app_model_index' app_name %}">{{ app_name|upper }}</a></li>
+        <li><a href="{% url 'kingadmin:table_obj_list' app_name model_name %}">{% get_model_verbose_name admin_class %}</a></li>
+        <li class="active">add{% get_model_verbose_name admin_class %}数据</li>
+    </ol>
+    <h4 class="page-header">添加{% get_model_verbose_name admin_class %}数据</h4>
+   {% include 'kingadmin/table_obj_change_component.html' %}
+{% endblock %}

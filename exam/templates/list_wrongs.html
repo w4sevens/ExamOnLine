@@ -1,0 +1,39 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <h2 class="page-header">错题记录</h2>
+
+    <table class="table table" style="vertical-align: middle">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>试卷名称</th>
+            <th>考试时长</th>
+            <th>错题数量</th>
+            <th>创建人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for paper in querysets.object_list %}
+            <tr class="table-info">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ paper.paper_name }}</td>
+                <td>{{ paper.test_time }}分钟</td>
+
+                <td>{% get_wrong_nums request paper.pk %}</td>
+                <td>{{ paper.create_person }}</td>
+                <td>
+                    <a href="{% url 'exam:list_wrongs'%}?pid={{ paper.pk }}">查看错题</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# 分页 #}
+    {% render_paginator querysets %}
+
+{% endblock %}

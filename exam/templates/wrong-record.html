@@ -1,0 +1,70 @@
+{% extends 'indexbase.html' %}
+{% load static %}
+
+{% block title %}我的考试记录{% endblock %}
+
+{% block left_menu %}
+    <div class="left">
+        <ul>
+            <li class="{% if '/examinfo/' in request.path %}active2{% endif %}"><a href="{% url 'exam:examinfo' %}">试卷列表</a></li>
+            <li class="{% if '/examresult/' in request.path %}active2{% endif %}"><a href="{% url 'exam:examresult' %}">考试记录</a></li>
+            <li class="{% if '/wrongrecord/' in request.path %}active2{% endif %}"><a href="{% url 'exam:wrongrecord' %}">错题记录</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block custom_right_content %}
+    <div class="right">
+        <div class="personal_des ">
+            <div class="head" style="border:1px solid #eaeaea;">
+                <h1>错题记录</h1>
+            </div>
+            <div class="inforcon">
+                <table class="table right1">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>试卷名</th>
+                        <th>错题数量</th>
+                        <th>查看</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for k,v in wr.items %}
+                        <tr class="table-primary">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ k.name }}</td>
+                            <td>{{ v }}</td>
+                            <td><a href="{% url 'exam:wrong_detail' k.pk %}" target="_blank">查看详细</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+             <!--分页-->
+        <div class="pageturn">
+            <ul class="pagelist">
+                {% if paper.has_previous %}
+                    <li class="long"><a href="?{{ paper.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+
+                {% for page in paper.pages %}
+                    {% if page %}
+                        {% ifequal page paper.number %}
+                            <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if paper.has_next %}
+                    <li class="long"><a href="?{{ paper.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}

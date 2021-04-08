@@ -1,0 +1,30 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <div>
+        <h2 class="page-header">错题集</h2>
+    </div>
+
+    <form action="/exam/list_wrongs/">
+    {% csrf_token %}
+        <div>
+            <ul class="list-group">
+                {% for subs in objs %}
+                    <li class="list-group-item">
+                        <span>{{ forloop.counter }}、{{ subs.question.get_question_type_display }}（{{ subs.question.score }}分） 难度：{{ subs.question.get_difficulty_display }}</span></sp>
+                        <pre>{{ subs.question.title }}</pre>
+                        <div>
+                            <div>你的答案：<span style="color: red">{{ subs.my_ans }}</span></div>
+                            <div>正确答案：<span style="color: green">{{ subs.question.answer }}</span></div>
+                        </div>
+                    </li>
+                {% endfor %}
+            <button type="submit" class="btn btn-primary pull-right" style="margin:20px;">返回</button>
+
+            </ul>
+        </div>
+    </form>
+
+{% endblock %}

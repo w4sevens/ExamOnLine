@@ -1,0 +1,56 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'user:userinfo' %}">用户管理</a></li>
+        <li>用户列表</li>
+    </ol>
+    <p>
+        系统当前共有注册用户【{{ users1.count|default:0 }}】人。
+        <a class="btn btn-success pull-right" href="{% url 'user:useradd' %}">添加</a>
+    </p>
+
+
+    <table class="table table-hover" style="vertical-align: center">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>出生日期</th>
+            <th>地址</th>
+            <th>手机号</th>
+            <th>单位</th>
+            <th style="text-align: center;">角色</th>
+            <th>操作</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users.object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user.nick_name }}</td>
+                <td>{{ user.get_gender_display }}</td>
+                <td>{{ user.birthday|date:'Y年m月d日' }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.mobile|default:'' }}</td>
+                <td>{{ user.unit }}</td>
+                <td style="text-align: center">{{ user.getUserRoleName }}<td>
+                    <a href="{% url 'user:useredit' user.pk %}?page={{ users.number }}" style="margin: 0px 10px;"><span
+                            class="glyphicon glyphicon-pencil"></span> </a>
+                    <a href="{% url 'user:userdelete' user.pk %}?page={{ users.number }}"
+                       onclick="if(confirm('确认删除吗？删除后将不可恢复！')==false)return false;"><span
+                            class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        {% render_paginator users %}
+
+{% endblock %}

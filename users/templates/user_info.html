@@ -1,0 +1,41 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+        table tr > th, table tr > td {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>账户中心</li>
+    </ol>
+    <p>
+    当前共有【{{ unit_name_count }}】个单位，注册人员【{{ users_all }}】人。
+    </p>
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <th class="col-md-1">#</th>
+                <th class="col-md-4">单位</th>
+                <th class="col-md-3">当前注册人数({{ users_all }})</th>
+                <th class="col-md-4">操作</th>
+            </tr>
+            {% for u, c in userdict.items %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ u }}</td>
+                    <td>{{ c }}</td>
+                    <td>
+                        <a href="{% url 'user:user_unit_detail' u %}" class="btn btn-success">查看</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

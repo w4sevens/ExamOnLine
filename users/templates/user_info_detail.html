@@ -1,0 +1,42 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+        table tr > th, table tr > td {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'user:userinfo' %}">账户中心</a></li>
+        <li>{{ ustr }}</li>
+    </ol>
+    <p style="margin: 10px 0;">
+    【{{ ustr }}】下辖【{{ unit2.count }}】个二级单位，共注册【{{ count_all }}】人。
+    <a class="btn btn-default pull-right" href="javascript:history.back()">返回</a>
+    </p>
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <tr>
+                <th class="col-md-2">#</th>
+                <th class="col-md-4">单位</th>
+                <th class="col-md-4">二级单位</th>
+                <th class="col-md-2">当前注册人数({{ count_all }})</th>
+
+            </tr>
+            {% for u in unit2 %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ u.unit_name }}</td>
+                    <td>{{ u.uname2 }}</td>
+                    <td>{{ u.userprofile_set.count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

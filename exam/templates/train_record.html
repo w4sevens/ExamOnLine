@@ -1,0 +1,46 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:train_info' %}">训练中心</a></li>
+        <li>训练记录</li>
+    </ol>
+    <p>当前系统共有您的训练记录【{{ rcds1.count }}】条。</p>
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>训练科目</th>
+            <th>训练内容</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>错误题数</th>
+            <th>操作</th>
+        </tr>
+        {% for r in rcds.object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ r.title }}</td>
+                <td>{{ r.train_type }}</td>
+                <td>{{ r.starttime }}</td>
+                <td>{{ r.time }}</td>
+                <td>{{ r.wrong.select_related.count }}</td>
+                <td>
+                    {% if r.wrong.select_related.count > 0 %}
+                        <a href="{% url 'exam:listwrong' r.pk %}" style="margin: 0px 10px;">查看错题</a>
+                    {% else %}
+                        <a style="margin: 0px 10px;">查看错题</a>
+                    {% endif %}
+                {% if '/exam/train/delete_record/(\d+)/' in request.session.permission_list %}
+                    <a href="{% url 'exam:delete_record' r.pk %}?page={{ rcds.number }}&all=no" onclick="if(confirm('确认删除吗？')==false)return false;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{# 分页 #}
+    {% render_paginator rcds %}
+
+{% endblock %}

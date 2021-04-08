@@ -1,0 +1,17 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>后台设置</li>
+    </ol>
+    <div class="jumbotron">
+  <h1>Hello，World!</h1>
+  <p>这里是后台设置，可以进行用户信息批量设置！</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">了解更多</a></p>
+</div>
+
+
+{% endblock %}

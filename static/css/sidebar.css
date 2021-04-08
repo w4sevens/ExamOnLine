@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*整体ul框设置*/
+ul.mysidebar{
+    list-style: none;
+    background-color: #262626;
+    width:100%;
+    line-height: 50px;
+    color: #fff;
+}
+
+/*一级标题a设置*/
+ul.mysidebar>li.mydropdown>div>a{
+    text-decoration: none;
+    color: #bbb;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+ul.mysidebar>li.mydropdown>div:hover{
+    background-color: #494949;
+}
+
+/*菜单中的图标*/
+li.mydropdown>div>a>span, li.mydropdown>ul>li>a>span{
+    margin-right: 10px;
+    display: inline-block;
+}
+
+/*一级标签li*/
+li.mydropdown{
+    list-style: none;
+    text-indent: 20px;
+    border-bottom: 1px solid #494949;
+}
+
+/*一级标签下ul标签*/
+li.mydropdown>ul{
+    background-color: #595959;
+}
+
+/*二级标签中a*/
+li.mydropdown>ul>li>a{
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+/*二级标签中的li*/
+li.mydropdown>ul>li{
+    background-color: #eee;
+}
+li.mydropdown>ul>li:hover{
+    background-color: #ddd;
+}
+
+/*li.mydropdown a{*/
+/*    color: #bbb;*/
+/*    text-decoration: none;*/
+/*}*/
+/*li.mydropdown a:hover{*/
+/*    color: #fff;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*li.mydropdown ul{*/
+/*    list-style: none;*/
+/*    position: relative;*/
+/*    margin:0;*/
+/*    padding: 0;*/
+/*    display: none;*/
+/*    width: 100%;*/
+/*    line-height: 100%;*/
+/*}*/
+/*ul.dropdown-menu1>li{*/
+/*    background-color: rgb(122, 122, 122);*/
+/*    height: 50px;*/
+/*    !*text-indent: 20px;*!*/
+/*}*/
+/*ul.dropdown-menu1>li>a{*/
+/*    height: 50px;*/
+/*    padding-top: 10px;;*/
+/*}*/

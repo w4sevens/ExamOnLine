@@ -1,0 +1,48 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:qsbk_info' %}">题库中心</a></li>
+        <li><a href="{% url 'exam:list_questionbank_info' %}">题库列表</a></li>
+        <li>题库【{{ qb_info.name }}】详情</li>
+    </ol>
+    <div>当前题库共有【{{ qb_info.questionbank_set.count }}】题。
+        <a class="btn btn-default pull-right" href="{% url 'exam:list_questionbank_info' %}">返回</a>
+    </div>
+    <table class="table table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th class="col-md-8">题干</th>
+            <th>类型</th>
+            <th>答案</th>
+            <th>难度</th>
+            <th>分值</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in querysets.object_list %}
+            <tr style="vertical-align: middle">
+                <td >{{ forloop.counter }}</td>
+                <td >{{ item.title|truncate_chars }}</td>
+                <td>{{ item.get_question_type_display }}</td>
+                <td>{{ item.answer|truncate_chars:4 }}</td>
+                <td>{{ item.get_difficulty_display }}</td>
+                <td>{{ item.score }}</td>
+                <td>
+                     <a href="?page={{ querysets.number }}&edit={{ item.pk }}" class="btn btn-success">编辑</a>
+                     <a href="?page={{ querysets.number }}&del={{ item.pk }}" class="btn btn-danger">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# 分页 #}
+    {% render_paginator querysets %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block body %}
+
+    <div class="container">
+        <h2 class="page-header">编辑</h2>
+        <div class="col-md-offset-1 col-md-10">
+             <form method="post" action="{% url 'exam:questionbank_detail' qid %}?page={{ page }}&qid={{ form_obj.instance.id }}">
+            {% csrf_token %}
+            {{ form_obj }}
+                 <a class="btn btn-default pull-right" href="javascript:history.go(-1);" style="margin: 10px;">返回</a>
+                 <input type="submit" value="保存" class="btn btn-success pull-right" style="margin:10px;">
+        </form>
+
+        </div>
+    </div>
+
+
+{% endblock %}

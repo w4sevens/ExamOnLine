@@ -1,0 +1,233 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+        table tr > td:first-child {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li>创建试卷</li>
+    </ol>
+
+    <div class="col-md-8 col-md-offset-2">
+        <form action="" method="post" class="form-horizontal" id="form1">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <tr>
+                    <td style="text-align: center">试卷名称</td>
+                    <td><input id="idname1" name="pname" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>适用人员</td>
+                    <td>
+                        <div class="col-md-6" style="padding: 0;text-align: center">
+                            <select class="form-control" multiple id="sel1" style="height: 100px;">
+                                {% for unit in units %}
+                                    <option value="{{ unit.pk }}"
+                                            ondblclick='MoveSelectedOption(this, "sel2")'>{{ unit.unit_name }}</option>
+                                {% endfor %}
+                            </select>
+                        <a onclick="MoveAllOptin('sel1', 'sel2')">选择全部</a>
+                        </div>
+                        <div class="col-md-6" style="padding: 0;text-align: center">
+                            <select tag="applyto" name="applyto" class="form-control" multiple id="sel2"
+                                    style="height: 100px;">
+
+                            </select>
+                            <a onclick="MoveAllOptin('sel2', 'sel1')">取消全部</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>选择题库</td>
+                    <td>
+                        <div class="col-md-6" style="padding: 0;text-align: center">
+                            <select class="form-control" multiple id="sel3" style="height: 100px;">
+                                {% for qb in qsbks %}
+                                    <option value="{{ qb.pk }}"
+                                            ondblclick='MoveSelectedOption(this, "sel4")'>{{ qb.name }}</option>
+                                {% endfor %}
+                            </select>
+                        <a onclick="MoveAllOptin('sel3', 'sel4')">选择全部</a>
+                        </div>
+                        <div class="col-md-6" style="padding: 0;text-align: center">
+                            <select tag="qb" name="qb" class="form-control" multiple id="sel4" style="height: 100px;">
+
+                            </select>
+                            <a onclick="MoveAllOptin('sel4', 'sel3')">取消全部</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>单选题</td>
+                    <td class="form-inline">
+                        <input type="number" name="single" class="form-control" value="0">
+                        共 <span id="sp1">X</span> 题。
+                    </td>
+                </tr>
+                <tr>
+                    <td>多选题</td>
+                    <td class="form-inline">
+                        <input type="number" name="multi" class="form-control" value="0">
+                        共 <span id="sp2">X</span> 题。
+                    </td>
+                </tr>
+                <tr>
+                    <td>判断题</td>
+                    <td class="form-inline">
+                        <input type="number" name="judge" class="form-control" value="0">
+                        共 <span id="sp3">X</span> 题。
+                    </td>
+                </tr>
+                <tr>
+                    <td>填空题</td>
+                    <td class="form-inline">
+                        <input type="number" name="fillin" class="form-control" value="0">
+                        共 <span id="sp4">X</span> 题。
+                    </td>
+                </tr>
+                <tr>
+                    <td>问答题</td>
+                    <td class="form-inline">
+                        <input type="number" name="ans" class="form-control" value="0">
+                        共 <span id="sp5">X</span> 题。
+                    </td>
+                </tr>
+                <tr>
+                    <td>考试时长</td>
+                    <td class="form-inline">
+                        <input id="test" type="number" name="testtime" value="0" class="form-control"> 分钟。<span style="color: red">(*必填)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>考试次数</td>
+                    <td class="form-inline">
+                        <input id="test_count" type="number" name="test_count" value="0" class="form-control">
+                        次，默认0次表示不限考试次数。
+                    </td>
+                </tr>
+                <tr>
+                    <td>是否随机</td>
+                    <td class="form-inline">
+                        <input id="test" type="checkbox" name="is_random">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button onclick="VerificationBeforeFormSubmit()" class="btn btn-success pull-right">
+                            试卷预览
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // 点击多选框，移动函数
+        function MoveSelectedOption(ele, target_id) {
+            var new_target_id = $(ele).parent().attr('id');
+            var option = "<option value='" + $(ele).val() + "' ondblclick=MoveSelectedOption(this,'" + new_target_id + "') >" + $(ele).text() + "</option>";
+            // console.log(option)
+            $("#" + target_id).append(option);
+            $(ele).remove();
+
+            // 如果select发生变化，这里ajax局部刷新各型题目数量
+            if (target_id == 'sel4' || target_id == 'sel3') {
+                var ls = [];
+                var i = 0;
+                $('#sel4').children().each(function () {
+                    ls[i] = $(this).val();
+                    i++;
+                });
+
+                $.ajax({
+                    url: '{% url "exam:refresh_qb_count" %}',
+                    method: 'get',
+                    data: {'paper_ids': JSON.stringify(ls)},
+                    success: function (result) {
+                        var res = JSON.parse(result);
+                        // console.log(res)
+                        $('#sp1').text(res[0]);
+                        $('#sp2').text(res[1]);
+                        $('#sp3').text(res[2]);
+                        $('#sp4').text(res[3]);
+                        $('#sp5').text(res[4]);
+                    }
+                });
+            }
+        }
+
+        // 移动所有元素
+        function MoveAllOptin(ele, target){
+            $('#'+ele).children('option').each(function (){
+                var option = "<option value='" + $(this).val() + "' ondblclick=MoveSelectedOption(this,'" + ele + "') >" + $(this).text() + "</option>";
+                $("#" + target).append(option);
+                $(this).remove()
+            })
+            // 如果select发生变化，这里ajax局部刷新各型题目数量
+            if (target == 'sel4' || target == 'sel3') {
+                var ls = [];
+                var i = 0;
+                $('#sel4').children().each(function () {
+                    ls[i] = $(this).val();
+                    i++;
+                });
+
+                $.ajax({
+                    url: '{% url "exam:refresh_qb_count" %}',
+                    method: 'get',
+                    data: {'paper_ids': JSON.stringify(ls)},
+                    success: function (result) {
+                        var res = JSON.parse(result);
+                        // console.log(res)
+                        $('#sp1').text(res[0]);
+                        $('#sp2').text(res[1]);
+                        $('#sp3').text(res[2]);
+                        $('#sp4').text(res[3]);
+                        $('#sp5').text(res[4]);
+                    }
+                });
+            }
+        }
+
+        // 表单提交之前，多选框选中操作
+        function VerificationBeforeFormSubmit() {
+            $("select[tag] option").prop('selected', true);
+        }
+
+        // 提交前判断用户是否输入
+        $('#form1').submit(function () {
+            if ($('#idname1').val() == '') {
+                alert('请输入试卷名！');
+                return false
+            }
+            if ($('select[tag="applyto"]').val() == '') {
+                alert('请选择适用人员！');
+                return false
+            }
+            if ($('select[tag="qb"]').val() == '') {
+                alert('请选择题库！');
+                return false
+            }
+            if ($('#test').val() == 0) {
+                alert('请输入考试时长!')
+                return false
+            }
+        })
+
+    </script>
+{% endblock %}

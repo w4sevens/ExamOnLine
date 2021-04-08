@@ -1,0 +1,116 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <link href="/static/css/mycss1.css" rel="stylesheet">
+    <style>
+    #table1, #table2{
+        margin: 6px 0;
+    }
+    #table1>table>thead, #table2>table>thead{
+        background-color: #eeeeee;
+        margin-top: 10px;
+    }
+
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>考试中心</li>
+    </ol>
+
+    <div class="main1">
+        <div class="examingList">
+            <div class="row">
+                <div class="examingTitle">正在进行的考试</div>
+                <div class="examingnumbersText">正在进行的考试 ：<div id="examingN" class="orange">{{ testing_count }}</div>份</div>
+            </div>
+            <div id="table1">
+                <table class="table table-hover">
+                        <thead><tr>
+                            <th>序号</th>
+                            <th>试卷名称</th>
+                            <th>未完成人数</th>
+                            <th>操作</th>
+                        </tr></thead>
+                        <tbody>
+                        {% for p, tested_counts in dict1.values %}
+                                  <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.paper_name }}</td>
+                                    <td>{{ tested_counts }}/{{ user_counts }}</td>
+                                    <td><a href="{% url 'exam:test_paper' p.id %}" class="btn btn-success pull-right">考试</a></td>
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+        </div>
+
+        <div class="examingList">
+            <div class="row">
+                <div class="examingTitle">已完成的考试</div>
+                <div class="examingnumbersText">已完成的考试 ：<div id="examingN" class="orange">{{ tested_count }}</div>份</div>
+            </div>
+            <div id="table2">
+                <table class="table table-hover">
+                        <thead><tr>
+                            <th>序号</th>
+                            <th>试卷名称</th>
+                            <th>参考率</th>
+                            <th>平均分</th>
+                            <th>我的成绩</th>
+                            <th style="text-align: center">操作</th>
+                        </tr></thead>
+                        <tbody>
+                        {% for p, p1, p2, p3 in dict2.values %}
+                                  <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.paper_name }}</td>
+                                    <td>{{ p1 }}%</td>
+                                    <td>{{ p2 }}</td>
+                                    <td>
+                                        {% if p3 >= 90 %}
+                                            <span style="color: red">{{ p3 }}</span>
+                                        {% elif p3 >= 80 %}
+                                            <span style="color: green">{{ p3 }}</span>
+                                        {% elif p3 >= 70 %}
+                                            <span style="color: #e3b94b">{{ p3 }}</span>
+                                        {% elif p3 >= 60 %}
+                                            <span style="color: greenyellow">{{ p3 }}</span>
+                                        {% else %}
+                                            <span style="color: darkgray">{{ p3 }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td style="align-items: center">
+                                        <a href="{% url 'exam:retest_paper' p.pk %}" class="btn btn-default pull-right">重考</a>
+                                    </td>
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(function (){
+            if ($('#table1 table tbody').find('tr').length == 0){
+                var row = '<tr><td></td><td>当前没有正在进行的考试！</td><td></td></tr>'
+                $('#table1 table tbody').append(row)
+            }
+            if ($('#table2 table tbody').find('tr').length == 0){
+                var row = '<tr><td></td><td></td><td>您近一个月没有参加任何考试！</td><td></td><td></td></tr>'
+                $('#table2 table tbody').append(row)
+            }
+        })
+    </script>
+{% endblock %}

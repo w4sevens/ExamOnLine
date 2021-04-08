@@ -1,0 +1,157 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+{% block extra-css %}
+<style>
+    form{
+        height: 750px;
+        overflow: scroll;
+    }
+    div#num_choice>button{
+        width: 40px;
+        height: 25px;
+    }
+
+</style>
+{% endblock %}
+
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li><a href="{% url 'exam:list_paper' %}">试卷列表</a></li>
+        <li id="typename1">{{ paper.paper_name }}({{ paper.test_time }}分钟)</li>
+    </ol>
+    <div style="font-size: 1.1em; color: #880000;">距离结束还有<span id="timer">{{ paper.test_time }}分0秒</span></div>
+    <div id="num_choice" style="background-color: white;margin: 10px;">
+        {% render_num_choice subjects %}
+    </div>
+
+    <form action="{% url 'exam:test_paper' paper.pk %}" method="post" id="form1">
+    <input type="hidden" name="qid" value="{{ paper.pk }}">
+    <input type="hidden" name="train_type" value="">
+    <input type="hidden" name="starttime" value="">
+
+    {% csrf_token %}
+        <div>
+            <ul class="list-group" id="ul1">
+                {% for subs in subjects %}
+                    <li class="list-group-item">
+                        <span>{{ forloop.counter }}、{{ subs.get_question_type_display }}（{{ subs.score }}分） 难度：{{ subs.get_difficulty_display }}</span></sp>
+                        <pre>{{ subs.title }}</pre>
+                        <div>
+                            <div>请选择你的答案：</div>
+                            <input type="hidden" name="{{ subs.pk }}" value=""> {# 如果没有选择，默认为空选项 #}
+                            {% if subs.get_question_type_display == '单选题' %}
+                                <input type="radio" name="{{ subs.pk }}" value="A">&nbsp;A&nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="{{ subs.pk }}" value="B">&nbsp;B&nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="{{ subs.pk }}" value="C">&nbsp;C&nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="{{ subs.pk }}" value="D">&nbsp;D&nbsp;&nbsp;
+                            {% elif subs.get_question_type_display == '多选题' %}
+                                <input type="checkbox" name="{{ subs.pk }}" value="A">&nbsp;A&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="{{ subs.pk }}" value="B">&nbsp;B&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="{{ subs.pk }}" value="C">&nbsp;C&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" name="{{ subs.pk }}" value="D">&nbsp;D&nbsp;&nbsp;
+                                <input type="checkbox" name="{{ subs.pk }}" value="D">&nbsp;E&nbsp;&nbsp;
+                                <input type="checkbox" name="{{ subs.pk }}" value="D">&nbsp;F&nbsp;&nbsp;
+                                <input type="checkbox" name="{{ subs.pk }}" value="D">&nbsp;G&nbsp;&nbsp;
+                            {% elif subs.get_question_type_display == '判断题' %}
+                                <input type="radio" name="{{ subs.pk }}" value="正确">&nbsp;正确&nbsp;&nbsp;
+                                <input type="radio" name="{{ subs.pk }}" value="错误">&nbsp;错误&nbsp;&nbsp;&nbsp;
+                            {% endif %}
+                        {# todo 这里选项设计，判断题容错，结果加密，后台计算成绩的问题 #}
+                        </div>
+                    </li>
+                {% endfor %}
+            <button type="submit" class="btn btn-primary pull-right tijiao" style="margin:20px;">交卷</button>
+
+            </ul>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // 点击按钮跳到指定位置
+    function moveto(num){
+        var height = 0;
+        for (var i=0; i<num-1; i++){
+            height += $('#ul1').children()[i].clientHeight + 1
+        }
+        // alert(height);
+        $('#form1')[0].scrollTo({
+        top: height,
+        behavior: "smooth"})
+    }
+
+    // 点击按钮跳到指定题目
+    $("#num_choice").children('button').each(function (){
+        $(this).click(function (){
+            moveto($(this).text())
+        })
+    })
+
+    // 选择答案，改变题号颜色
+    $('#ul1').find('input').each(function (){
+        $(this).click(function (){
+            var txt1 = $(this).parent().siblings('span')[0].innerText
+            var num1 = txt1.indexOf('、');
+            var num2 = txt1.substr(0, num1);
+            var btn = $('#num_choice').children('button')[num2-1]
+            $(btn).css('background-color', '#1ef74a99')
+        })
+    })
+
+    // 提交之前进行操作
+    $('#form1').submit(function (){
+        // 添加考试内容
+        $('input[name="train_type"]').val("参加【" + $('#typename1').text()+"】考试");
+
+        // 为选择题目赋值为空
+        $('#ul1').children('li').each(function (){
+            var is_checked = 0
+            $(this).children('input').each(function (){
+                if (this.checked){
+                    is_checked +=1
+                }
+            })
+            if (is_checked == 0){
+                $(this).children('input')[0].checked()
+            }
+        })
+    })
+
+    // 载入开始时间
+    $(document).ready(function (){
+        var t = new Date()
+        // alert(t)
+        $('input[name="starttime"]').val(t.toJSON());
+    })
+
+    // 考试倒计时
+    var maxtime = Math.floor({{ paper.test_time }})*60;
+    $(function () {
+        timer = setInterval('CountDown()',1000);  // 这里必须要是引号引起来
+    })
+
+    function CountDown() {
+        if (maxtime >= 0) {
+            minutes = Math.floor(maxtime / 60);
+            seconds = Math.floor(maxtime % 60);
+            msg = minutes + "分" + seconds + "秒";
+            document.getElementById('timer').innerHTML = msg;
+            if (maxtime === 300){
+                alert("还剩5分钟");
+            }
+            --maxtime;
+        } else {
+            clearInterval(timer);
+            alert("时间到，结束!");
+            document.getElementsByClassName('tijiao')[0].click();  //这里得到的是一个集合，需要取出来才能click
+        }
+    }
+</script>
+
+{% endblock %}

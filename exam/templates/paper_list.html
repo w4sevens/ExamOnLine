@@ -1,0 +1,76 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+    .mystars {
+        display: inline-block;
+        background: url("/static/images/star.png") 0 0 no-repeat;
+        height: 25px;
+        scale: 0.6;
+    }
+    tr>th,tr>td{
+        text-align: center;
+    }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li>试卷列表</li>
+    </ol>
+    <div>当前共有【{{ count0 }}】份试卷可供您选择。</div>
+
+    <table class="table table" style="vertical-align: center">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>试卷名称</th>
+            <th>热度</th>
+            <th>考试时长</th>
+            <th>题目数量</th>
+            <th>总分</th>
+            <th>是否随机</th>
+            <th>剩余考试次数</th>
+            <th>创建人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for paper in querysets.object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ paper.paper_name }} </td>
+                <td style="width: 250px;"><span class="mystars" style="width: {% if paper.hot_nums > 100 %}100{% else %}{{ paper.hot_nums }}{% endif %}%"></span></td>
+                <td>{{ paper.test_time }}分钟</td>
+            {% ifequal paper.is_random 0 %}
+                <td>{% get_nums paper.questionbank_set.all %}</td>
+            {% else %}
+                <td>{{ paper.get_counts }}</td>
+            {% endifequal %}
+                <td>100</td>
+                <td><input type="checkbox" {% if paper.is_random %}checked{% endif %} disabled></td>
+                <td>{% render_test_times request paper %}</td>
+                <td>{{ paper.create_person }}</td>
+                <td>
+                    <a href="{% url 'exam:test_paper' paper.id %}" class="btn btn-success pull-right">考试</a>
+                    {% ifequal request.user paper.create_person %}
+                    <a href="{% url 'exam:editpaper' paper.id %}?page={{ querysets.number }}" style="margin: 0px 10px;"><span class="glyphicon glyphicon-pencil" style="margin-top: 12px"></span> </a>
+                    <a href="{% url 'exam:deletepaper' paper.id %}?page={{ querysets.number }}" onclick="if(confirm('确认删除吗？删除后所有该试卷的考试成绩将丢失！')==false)return false;"><span style="margin-top: 12px" class="glyphicon glyphicon-trash"></span></a>
+                    {% endifequal %}
+                    {% if '/exam/papers/(\d+)/save/word/' in request.session.permission_list %}
+                    <a href="{% url 'exam:save_paper_word' paper.id %}" title="将试卷保存为word文档" style="margin: 0px 10px;"><i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 12px"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# 分页 #}
+    {% render_paginator querysets %}
+
+{% endblock %}

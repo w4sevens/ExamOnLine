@@ -1,0 +1,52 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li>成绩列表</li>
+    </ol>
+
+    <table class="table table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>试卷名称</th>
+            <th>考试时长</th>
+            <th>考试时间</th>
+            <th>成绩</th>
+            <th>是否有效</th>
+            <th>姓名</th>
+            {% if '/exam/results/(\d+)/delete/' in request.session.permission_list %}
+                <th>操作</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in grade.object_list %}
+            <tr class="table-info">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.papername }}</td>
+                <td>{{ item.papername.test_time }}分钟</td>
+                <td>{{ item.test_time }}</td>
+                <td>{{ item.grade }}</td>
+                <td>{% if item.is_valid %}<span style="color: green">有效</span>{% else %}
+                    <span style="color: #9d9d9d">无效</span>{% endif %}</td>
+                <td>{{ item.userid }}</td>
+                {% if '/exam/results/(\d+)/delete/' in request.session.permission_list %}
+                    <th><a href="{% url 'exam:delete_result' item.id %}?page={{ grade.number }}"
+                           onclick="if(confirm('确认删除成绩吗？')==false)return false;"><span
+                            class="glyphicon glyphicon-trash"></span></a>
+                    </th>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# 分页 #}
+    {% render_paginator grade %}
+
+{% endblock %}

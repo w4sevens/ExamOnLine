@@ -1,0 +1,37 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'user:config' %}">后台设置</a></li>
+        <li>单位信息</li>
+    </ol>
+    <a class="btn btn-success pull-right" href="{% url 'user:unitadd' %}" style="margin: 10px;">添加</a>
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>单位</th>
+            <th>简称</th>
+            <th>二级单位</th>
+            <th>人数</th>
+            <th>操作</th>
+        </tr>
+        {% for u in units %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ u.unit_full_name }}</td>
+                <td>{{ u.unit_name }}</td>
+                <td>{{ u.uname2 }}</td>
+                <td>{{ u.userprofile_set.count }}</td>
+                <td>
+                    <a href="{% url 'user:edit_unit' u.pk %}" style="margin-right: 10px;"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="{% url 'user:delete_unit' u.pk %}" onclick="if(confirm('确认删除吗？删除后将不可恢复！')==false)return false;"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

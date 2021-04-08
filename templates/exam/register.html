@@ -1,0 +1,111 @@
+{% extends 'exam/index.html' %}
+
+{% block extra-css %}
+    <link rel="stylesheet" href="/static/css/signin.css">
+    <style>
+    table tr>td:first-child{
+        text-align: center;
+        width: 120px;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 style="text-align: center">欢迎注册在线考试系统</h1>
+        <div class="col-md-6 col-lg-offset-3">
+            <form action="" method="post" id="form1">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td>用&nbsp;户&nbsp;名</td>
+                    <td><input type="text" class="form-control" name="username" placeholder="长度大于3，可以是数字、字母或汉字！" value="{{ username }}"></td>
+                </tr>
+                <tr>
+                    <td>真实姓名</td>
+                    <td><input type="text" class="form-control" name="nick_name" placeholder="请输入真实姓名，便于查看成绩！" value="{{ nick_name }}"></td>
+                </tr>
+                <tr>
+                    <td>身份证号</td>
+                    <td><input type="text" class="form-control" name="idcard" value="{{ idcard }}" placeholder="用于检测用户是否已经注册！"></td>
+                </tr>
+                <tr>
+                    <td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</td>
+                    <td class="form-inline">
+                        <input type="radio" class="form-control" name="gender" value="male" {% ifequal gender 'male' %}checked{% endifequal %}>&nbsp;&nbsp;男
+                        <input type="radio" class="form-control" name="gender" value="female" style="margin-left:30px;" {% ifequal gender 'female' %}checked{% endifequal %}>&nbsp;&nbsp;女
+                    </td>
+                </tr>
+                <tr>
+                    <td>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位</td>
+                    <td><select name="unit" class="form-control">
+                        {% for u in units %}
+                        <option value="{{ u.pk }}">{{ u }}</option>
+                        {% endfor %}
+                    </select> </td>
+                </tr>
+                <tr>
+                    <td>输入密码</td>
+                    <td><input type="password" class="form-control" name="password" value="{{ password }}" placeholder="数字、字母或下划线！"></td>
+                </tr>
+                <tr>
+                    <td>确认密码</td>
+                    <td><input type="password" class="form-control" name="password1" value="{{ password }}"></td>
+                </tr>
+                 <tr>
+                    <td></td>
+                    <td>
+                        <span id="info">{{ error }}</span>
+                        <a class="btn btn-default pull-right" href="javascript:history.back()" style="margin: 0 10px;">取消</a>
+                        <button type="submit" class="btn btn-success pull-right">注册</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    $(function (){
+        $('select[name="unit"]').children('option').each(function (){
+            if ($(this).val()=='{{ unit }}'){
+                $(this).attr("selected", true)
+                console.log($(this).val(), '{{ unit }}')
+            }
+            //alert('good')
+        })
+    })
+
+    $('#form1').submit(function (){
+        if ($('input[name="username"]').val()==''){
+            alert('用户名不能为空！')
+            return false
+        }
+        if ($('input[name="nick_name"]').val()==''){
+            alert('请输入真实姓名！')
+            return false
+        }
+        if ($('input[name="idcard"]').val()==''){
+            alert('请输入身份证号！')
+            return false
+        }
+        if ($('input[name="password"]').val()==''){
+            alert('密码不能为空！')
+            return false
+        }
+        if ($('input[name="password"]').val()!=$('input[name="password1"]').val()){
+            alert('两次密码输入不一致！')
+            $('input[name="password1"]').val('')
+            return false
+        }
+        // alert('提交')
+    })
+
+    </script>
+
+{% endblock %}

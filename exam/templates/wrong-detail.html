@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>在线答题考试系统</title>
+
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.js' %}"></script>
+    <!--时间js-->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css"/>
+
+    <link href="{% static 'css/test.css' %}" rel="stylesheet" type="text/css"/>
+    <style>
+        .hasBeenAnswer {
+            background: #5d9cec;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+{#<nav class="navbar navbar-expand-sm bg-light navbar-light ">#}
+{#    <ul class="navbar-nav">#}
+{#        <li class="nav-item active" style="text-align: center">#}
+{#            <a class="nav-link">#}
+{#                <h3>当前科目:{{ paper.name }}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</h3>#}
+{#            </a>#}
+{#        </li>#}
+{#        <li style="position: sticky;right: 70px; font-size: 30px;color: #000000">{{ title }}</li>#}
+{#        <li style="position: fixed;right: 70px; font-size: 30px;color: #9fcdff">{{ request.user.nick_name }}</li>#}
+{#        <p style="text-align: center;margin-top: 20px;font-size: 10px;color: #000000">#}
+{#            {{ student.sid }}&emsp;{{ student.name }}&emsp;{{ student.major }}</p>#}
+{#    </ul>#}
+{#</nav>#}
+
+<div class="main">
+    <!--nr start-->
+    <div class="test_main">
+        <div class="nr_left">
+            <div class="test">
+                <form action="{% url 'exam:calgrade' %}?paper={{ paper.pk }}" method="post">
+                {% csrf_token %}
+                    <div class="test_content_nr">
+                        <ul>
+                            {% for sub_j in wr %}
+                                <li id="{{ forloop.counter }}">
+                                    <div class="test_content_nr_tt">
+                                        <i>{{ forloop.counter }}</i><span>{{ sub_j.question.get_question_type_display }}({{ sub_j.score }}分)</span>
+                                        <span>{{ sub_j.question.title | safe }}</span>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <i>你的答案</i>
+                                        <input type="radio" name="{{ sub_j.pk }}" value="A">&nbsp;A&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="{{ sub_j.pk }}" value="B">&nbsp;B&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="{{ sub_j.pk }}" value="C">&nbsp;C&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="{{ sub_j.pk }}" value="D">&nbsp;D&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--nr end-->
+    <div class="foot"></div>
+</div>
+
+<div id="warring" style="color:red"></div>
+</body>
+</html>
+

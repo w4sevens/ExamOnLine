@@ -1,0 +1,79 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+    form>div>div{
+        margin-top: -1px;
+        border: 1px solid #979797;
+        height: 50px;
+        padding: 5px;
+        vertical-align: middle;
+    }
+    form>div>div>label{
+        margin: 0 30px;
+        width: 10%;
+    }
+     form>div>div>input[name="address"]{
+         width: 50%;
+     }
+    </style>
+{% endblock %}
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'user:userinfo' %}">用户管理</a></li>
+        <li><a href="{% url 'user:userlist' %}">用户列表</a></li>
+        <li>添加用户</li>
+    </ol>
+    <form action="" method="post" id="form1">
+        {% csrf_token %}
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.username.label }}</label>
+                {{ form_obj.username }}
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.password.label }}</label>
+                {{ form_obj.password }}
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.nick_name.label }}</label>
+                {{ form_obj.nick_name }}
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.gender.label }}</label>
+                {{ form_obj.gender }}
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.birthday.label }}</label>
+                <input type="date" class="form-control" name="birthday">
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.address.label }}</label>
+                {{ form_obj.address }}
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;">{{ form_obj.unit.label }}</label>
+                {{ form_obj.unit }}
+            </div>
+            <div>
+                <a class="btn btn-default pull-right" style="margin: 4px;width: 80px;" onClick="javascript:history.back(-1);">取消</a>
+                <input type="submit" class="btn btn-success pull-right" style="margin: 4px;width: 80px;" value="保存">
+            </div>
+
+        </div>
+    </form>
+
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    $(document).ready(function (){
+        $(' form>div>div>input[name="address"]').css('width','50%')
+        $(' form>div>div>select[name="unit"]').css('width','30%')
+    })
+    </script>
+{% endblock %}

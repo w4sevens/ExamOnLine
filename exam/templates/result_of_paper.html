@@ -1,0 +1,45 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li><a href="{% url 'exam:list_all_paper' %}">所有试卷</a></li>
+        <li>试卷【{{ paper.paper_name }}】成绩</li>
+    </ol>
+
+    <div >说明：导出的excel成绩，包含所有考试成绩，如考试成绩不理想申请重考后，原考试成绩自动作废，标识为无效。
+    <a class="btn btn-default pull-right" href="javascript:history.go(-1);">返回</a>
+    <a href="{% url 'exam:export_result' paper.pk %}" class="btn btn-primary pull-right" style="margin:0 10px;">导出成绩为excel</a>
+    <a href="{% url 'exam:export_result' paper.pk %}" class="btn btn-success pull-right">生成考试报告</a>
+    </div>
+    <table class="table table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>试卷名称</th>
+            <th>单位</th>
+            <th>姓名</th>
+            <th>成绩</th>
+            <th>是否有效</th>
+            <th>考试时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in rcds %}
+            <tr class="table-info">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.papername }}</td>
+                <td>{{ item.userid.unit.unit_name}}</td>
+                <td>{{ item.userid.nick_name}}</td>
+                <td>{{ item.grade }}</td>
+                <td>{% if item.is_valid %}是{% else %}否{% endif %}</td>
+                <td>{{ item.test_time }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

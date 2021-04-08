@@ -1,0 +1,67 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+   <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li><a href="{% url 'exam:create_paper' %}">创建试卷</a></li>
+        <li>试卷预览</li>
+    </ol>
+    <div style="box-sizing: content-box;margin: 20px;">
+        说明：这里显示的是当前生成的试卷,试卷名称【{{ pname }}】，{% ifequal is_random 0 %}固定题目{% else %}随机出题{% endifequal %}。
+        <button class="btn btn-success pull-right" id="btn-save">保存</button>
+    </div>
+    <div id="data-container" style="overflow: scroll;height: 750px;">
+        {% for q in ques_list1 %}
+            {% for q1 in q %}
+                <pre>{{ forloop.counter }}. ({{ q1.get_question_type_display }},{{ q1.score }}分){{ q1 }}</pre>
+                <input type="hidden" value="{{ q1.pk }}">
+            {% endfor %}
+        {% endfor %}
+    </div>
+    {% csrf_token %}
+    <input type="hidden" name="pname" value="{{ pname }}">
+    <input type="hidden" name="applyto" value="{{ applyto }}">
+    <input type="hidden" name="qbs" value="{{ qbs }}">
+    <input type="hidden" name="testtime" value="{{ testtime }}">
+    <input type="hidden" name="is_random" value="{{ is_random }}">
+    <input type="hidden" name="my_choice" value="{{ my_choice }}">
+    <input type="hidden" name="test_count" value="{{ test_count }}">
+
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    $('#btn-save').click(function (){
+        var datalist = new Array();
+        var i=0;
+        $("#data-container").children('input').each(function (){
+            datalist[i] = $(this).val();
+            i++;
+        });
+        // alert(datalist);
+
+        $.ajax({url:'{% url "exam:save_paper" %}',
+        method:'post',
+        data:{'data': JSON.stringify(datalist),
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            'pname': $('input[name="pname"]').val(),
+            'applyto': $('input[name="applyto"]').val(),
+            'qbs': $('input[name="qbs"]').val(),
+            'testtime': $('input[name="testtime"]').val(),
+            'is_random': $('input[name="is_random"]').val(),
+            'my_choice_per': $('input[name="my_choice_per"]').val(),
+            'my_choice': $('input[name="my_choice"]').val(),
+            'test_count': $('input[name="test_count"]').val(),
+        },
+        success:function (res){
+            location.href='{% url "exam:list_paper" %}';
+        },
+        })
+    })
+
+    </script>
+{% endblock %}

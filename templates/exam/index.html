@@ -1,0 +1,196 @@
+{% extends 'exam/base.html' %}
+{% load rbac_tags %}
+
+{% block extra-css %}
+    <link href="/static/css/myindex.css" rel="stylesheet">
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                {% block app_name %}
+                {% endblock %}
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                           role="button">{{ request.user.nick_name }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">个人信息</a></li>
+                            <li><a href="{% url 'logout' %}">退出登录</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top: -5px;">
+            <div class="col-sm-3 col-md-2 sidebar" style="margin: 0; padding: 0;margin-top: -1px">
+                <ul class="mysidebar">
+                    {% render_sidebar request %}
+                </ul>
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                {% block right-content-container %}
+                    <h2 class="page-header">XXX单位在线考试系统</h2>
+
+                    <div class="col-md-10">
+
+                        {# 排行榜 #}
+                        <div class="bdVCh" style="margin-top: 30px;">
+                            <p class="_2gpPm">训练成绩排行</p>
+                            <div class="_3yyVu">
+                                {# 综合成绩排行 #}
+                                <div class="_158JU">
+                                    <div class="f5bWh">综合排行<span class="_3iNZP">HOT</span></div>
+                                    <div class="_3t7S4">
+                                        <div class="_1442f" style="width: 392px;">
+                                            <div class="_18Zm3" style="width: 392px;">
+                                                <ul class="LPiF7" style="left: 0px; width: 1568px; height: 430px;">
+                                                    {% for user, score in ls_socres %}
+                                                        <div class="_2vopq _1KMCN">
+                                                            <span class="_1d651 Q6Feh">{{ forloop.counter }}</span><img
+                                                                src="{{ MEDIA_URL }}{{ user.image }}">
+                                                            <div class="_oR7n">
+                                                                <p class="_18oBr uNe2s">{{ user.unit.unit_name }}</p>
+                                                                <p>{{ user.nick_name }}</p>
+                                                                <p class="_1UG9x">
+                                                                <p>{{ score }}分</p></p>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {# 最近一次试卷成绩排行 #}
+                                <div class="_158JU">
+                                    <div class="f5bWh">最新考试<span class="_3iNZP">SCORE</span></div>
+                                    <div class="_3t7S4">
+                                        <div class="_1442f" style="width: 392px;">
+                                            <div class="_18Zm3" style="width: 392px;">
+                                                <ul class="LPiF7" style="left: 0px; width: 392px; height: 430px;">
+                                                    {% for score in scores %}
+                                                        <div class="_2vopq _1KMCN">
+                                                            <span class="_1d651 Q6Feh">{{ forloop.counter }}</span><img
+                                                                src="{{ MEDIA_URL }}{{ score.userid.image }}">
+                                                            <div class="_oR7n">
+                                                                <p class="_18oBr uNe2s">{{ score.papername }}</p>
+                                                                <p>{{ score.userid.unit.unit_name }}/{{ score.userid.nick_name }}</p>
+                                                                <p class="_1UG9x">
+                                                                <p>{{ score.grade }}分</p></p>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {# 训练时间 #}
+                                <div class="_158JU">
+                                    <div class="f5bWh">训练时间<span class="_3iNZP">TIME</span></div>
+                                    <div class="_3t7S4">
+                                        <div class="_1442f" style="width: 392px;">
+                                            <div class="_18Zm3" style="width: 392px;">
+                                                <ul class="LPiF7" style="left: 0px; width: 392px; height: 430px;">
+                                                    {% for user, times in trainList %}
+                                                        <div class="_2vopq _1KMCN">
+                                                            <span class="_1d651 Q6Feh">{{ forloop.counter }}</span><img
+                                                                src="{{ MEDIA_URL }}{{ user.image }}">
+                                                            <div class="_oR7n">
+                                                                <p class="_18oBr uNe2s">{{ user.unit.unit_name }}</p>
+                                                                <p>{{ user.unit.uname2 }}/{{ user }}</p>
+                                                                <p class="_1UG9x">
+                                                                <p>{% render_train_time times %}</p></p>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {# 考试之星 #}
+                        <div class="img-box">
+                            <p class="_2gpPm">先进单位</p>
+                            {% for unit, score in uscore_list %}
+                                <img src="{{ MEDIA_URL }}{% get_unit_from_name unit %}" class="img-circle my-img-circle1">
+                                {{ unit }}/{{ score }}
+                            {% endfor %}
+                        </div>
+
+
+                    </div>
+
+                    {# 右侧公示栏 #}
+                    <div class=" col-md-2 col-sm-2" style="margin-top: 25px;padding:0px 10px">
+                        <div class=" col-md-12 col-sm-12 annoucements">
+                            <div class="systenAnnoucement">系统公告</div>
+                            <div class="dashLine"></div>
+                            <div class=" col-md-12 col-sm-12 annoucemetsList">
+                                <a class=" col-md-12 col-sm-12" title="2021年2月与3月功能更新记录" href="javascript:"
+                                   data-value="53" time="2021-03-31" data-set="1" style="color: rgb(54, 170, 253);">
+                                    <div class="da-circle" style="background-color: rgb(54, 170, 253);"></div>
+                                    <span class="annouceTitle">2021年2月与3月功能更新记录</span><span
+                                        style="color:#ff5f5f;margin-left:5px">new!</span></a>
+                                <a class=" col-md-12 col-sm-12" title="2021年3月26日晚系统升级通知" href="javascript:"
+                                   data-value="52" time="2021-03-24" data-set="1">
+                                    <div class="da-circle"></div>
+                                    <span class="annouceTitle">2021年3月26日晚系统升级通知</span></a>
+                                <a class=" col-md-12 col-sm-12" title="优考试祝您牛年快乐！" href="javascript:"
+                                   data-value="51" time="2021-02-07" data-set="1">
+                                    <div class="da-circle"></div>
+                                    <span class="annouceTitle">优考试祝您牛年快乐！</span></a>
+                            </div>
+                        </div>
+
+                        {# 服务提示 #}
+                        <div class="col-md-12 col-sm-12 studentLogin annoucements">
+                            <div class="title-border">
+                                <div class="systenAnnoucement">
+                                    竭诚为您服务
+                                </div>
+                                <div class="row col-md-12 col-sm-12 qr-div">
+                                    <img class="qr-code" src="/static/images/wechat2.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+
+        {# 菜单响应函数 #}
+
+    </script>
+{% endblock %}

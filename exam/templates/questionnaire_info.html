@@ -1,0 +1,20 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+     <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>问卷中心</li>
+    </ol>
+
+    <div>
+
+    </div>
+<div class="jumbotron">
+  <h1>Hello，World!</h1>
+  <p>这里是问卷中心，主要展示问卷调查相关信息！</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">了解更多</a></p>
+</div>
+
+{% endblock %}

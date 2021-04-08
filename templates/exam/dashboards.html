@@ -1,0 +1,5560 @@
+<!doctype html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="renderer" content="webkit">
+
+        <link href="/templates/onlineexam_dashboard/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/datatables/plugins/bootstrap/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/css/components.css??t=201911201107" id="style_components" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/css/components.css?t=201911201107" id="style_components" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/css/plugins.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/layout/css/layout.css?t=201707271444" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/pages/css/pricing-table.css" rel="stylesheet" type="text/css"/>
+        <link href="/templates/onlineexam_dashboard/css/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+        <link href="/templates/onlineexam_dashboard/css/layout/css/custom.css?r=201909301439" rel="stylesheet" type="text/css"/>
+        <!--[if lt IE 9]>
+        <script src="https://admin.youkaoshi.cn/media/es5/es5-shim.min.js"></script>
+        <script src="https://admin.youkaoshi.cn/media/es5/es5-sham.min.js"></script>
+        <script src="/templates/onlineexam_dashboard/js/respond.min.js"></script>
+        <script src="/templates/onlineexam_dashboard/js/excanvas.min.js"></script>
+        <![endif]-->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="考试,在线考试,系统,考试系统,测试,训练,在线考试系统,微课,随堂测验,考试软件,微信考试,考试,在线考试,在线考试系统,测评,在线测评,测验,培训测验,题库,在线题库,题库系统,考试题库系统,电子作业,认证考试,移动考试,微信考试,组卷网,智能组卷,笔试,校招笔试,社招笔试,招聘笔试,校园招聘,在线编程,IQ测试,IT技术题,IT招聘" />
+	<meta name="description" content="优考试在线考试系统是一款更智能的在线考试系统，一键导入试题，快速创建试卷，强大智能考试数据分析、报表，让考试不仅是考试，更是学习， 优考试在线考试帮助你充分测试你的员工或学生，有针对性的，有目的的提高他们的工作技术或学习成绩。" />
+	<meta name="generator" content="优考试-更智能的在线考试系统" />
+	<title>控制中心 - 优考试-更智能的在线考试系统</title>
+	<link href="/templates/onlineexam_dashboard/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<link href="/components/com_exams/assets/common.css?t=202101141608" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.youkaoshi.cn/cdn/jBox/0.3.2/jBox.min.css" rel="stylesheet" type="text/css" />
+	<link href="/components/com_exams/assets/jstree/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+	<link href="/components/com_exams/assets/jstree/themes/default/customstyle.css?t=201708231015" rel="stylesheet" type="text/css" />
+	<link href="/components/com_exams/assets/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.youkaoshi.cn/cdn/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+	<link href="/components/com_exams/assets/bootstrapFileinput/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+	<link href="/components/com_exams/assets/layui/css/layui.css" rel="stylesheet" type="text/css" />
+	<link href="/components/com_exams/assets/layui/rewrite.css" rel="stylesheet" type="text/css" />
+	<script src="/media/jui/js/jquery.min.js?98c9061894523ef28a5f36b52525a2b5" type="text/javascript"></script>
+	<script src="/media/jui/js/jquery-noconflict.js?98c9061894523ef28a5f36b52525a2b5" type="text/javascript"></script>
+	<script src="/media/jui/js/jquery-migrate.min.js?98c9061894523ef28a5f36b52525a2b5" type="text/javascript"></script>
+	<script src="https://cdn.youkaoshi.cn/cdn/jBox/0.3.2/jBox.min.js" type="text/javascript"></script>
+	<script src="https://cdn.youkaoshi.cn/cdn/jstree/3.3.4/jstree.min.js" type="text/javascript"></script>
+	<script src="/components/com_exams/assets/datagrid/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="/components/com_exams/assets/datagrid/dataTables.bootstrap.js" type="text/javascript"></script>
+	<script src="/components/com_exams/assets/datagrid/datatable.js?t=201818" type="text/javascript"></script>
+	<script src="/components/com_exams/assets/select2/js/select2.full.js" type="text/javascript"></script>
+	<script src="https://cdn.youkaoshi.cn/cdn/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+	<script src="https://cdn.hcharts.cn/highcharts/highcharts.js" type="text/javascript"></script>
+	<script src="https://cdn.hcharts.cn/highcharts/highcharts-more.js" type="text/javascript"></script>
+	<script src="/components/com_exams/assets/bootstrapFileinput/js/bootstrap-fileinput.js" type="text/javascript"></script>
+	<script src="/components/com_exams/assets/layui/layui.js" type="text/javascript"></script>
+
+
+        <style type="text/css">
+
+                        .ie8 .page-sidebar.navbar-collapse.collapse {
+                width: 180px;
+            }
+            .ie8 .page-content {
+                margin-left: 180px !important;
+            }
+
+
+            
+            ._aihecong_chat_button_body{
+                bottom: 45px!important;
+            }
+
+        </style>
+
+</head>
+<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top pass-to-hzx">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner">
+            <!-- BEGIN LOGO -->
+            <div class="page-logo">
+                <a href="https://www.youkaoshi.cn" style="height: 46px">
+                                        <img src="https://admin.youkaoshi.cn/images/logo/onlineexammaker.png" alt="logo" class="logo-default logo-image"/>
+                                                        </a>
+                <div class="menu-toggler sidebar-toggler hide">
+                    <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                </div>
+            </div>
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".page-sidebar">
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                                        <li class="dropdown dropdown-user">
+                                                    <a href="/account.html" class="dropdown-toggle"
+                               data-toggle="dropdown" data-hover="dropdown" data-close-others="true" style="padding: 9px 16px 9px 8px;">
+                                <span class="btn btn-circle btn-danger btn-sm t-plan" style="width: auto">
+                                                                        <i class="pn">免费会员</i>,
+                                    <i class="et"> 到期时间 : 永久使用</i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="/upgrade.html">
+                                        <i class="fa fa-bolt"></i>
+                                        升级账户                                    </a>
+                                </li>
+                            </ul>
+                                            </li>
+                    
+                    
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                        <img alt="" class="img-circle" src="/components/com_exams/assets/img/default-avatar-2.png"/>
+                            <span class="username username-hide-on-mobile">
+                                敬之 </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                                                        <li class="start"><a href="/taskslist.html" ><i class="fa  fa-tasks "></i> <span class="title">导出任务</span></a></li><li><a href="/account.html" ><i class=" icon-user"></i> 账户管理</a>
+    </li><li><a href="/upgrade.html" ><i class="fa fa-bolt"></i> <span class="title">升级账户</span></a></li><li><a href="/signout.html" ><i class="icon-key"></i> <span class="title">退出登陆</span></a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown dropdown-user">
+                        <a title="退出" href="/signout.html" class="dropdown-toggle">
+                            <i class="fa-power-off fa"></i>
+                            <span class="username">
+                                退出                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="page-container ">
+        <div class="page-sidebar-wrapper pass-to-hzx">
+            <div class="page-sidebar navbar-collapse collapse">
+                <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                    <li class="sidebar-toggler-wrapper">
+                        <div class="sidebar-toggler">
+                        </div>
+                    </li>
+                    <li class="start active active open"><a href="/dashboards.html" ><i class="icon-home"></i> <span class="title">控制中心</span><span class="selected"></span></a></li><li class="deeper parent"><a href="####" ><i class="icon-check"></i> <span class="title">试卷管理</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/examman/listexams.html" ><i class="icon-check"></i> <span class="title">试卷列表</span></a></li><li><a href="/examman/advancelist.html" ><i class="fa fa-random"></i> <span class="title">闯关列表</span></a></li></ul></li><li class="deeper parent"><a href="####" ><i class="icon-question"></i> <span class="title">题库管理</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/qman/questions.html" ><i class="icon-question"></i> <span class="title">题目列表</span></a></li><li><a href="/qman/batch-import.html" ><i class="fa fa-cloud-upload"></i> <span class="title">批量导入</span></a></li><li><a href="/qman/import-history.html" ><i class="fa fa-history"></i> <span class="title">导入记录</span></a></li></ul></li><li class="deeper parent"><a href="####" ><i class="fa fa-user"></i> <span class="title">考生管理</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/studentsman/students.html" ><i class="icon-users"></i> <span class="title">考生列表</span></a></li><li><a href="/studentsman/regman.html" ><i class="fa fa-user-plus"></i> <span class="title">报名管理</span></a></li><li><a href="/studentsman/signupsettings.html" ><i class="fa fa-wrench"></i> <span class="title">注册设置</span></a></li><li><a href="/studentsman/stusetting.html" ><i class="fa fa-cog"></i> <span class="title">考生设置</span></a></li><li><a href="/studentsman/integralrank.html" ><i class="fa fa-list-ol"></i> <span class="title">积分排行</span></a></li></ul></li><li><a href="/questionnaire.html" ><i class="fa fa-check-square"></i> <span class="title">问卷管理</span></a></li><li class="deeper parent"><a href="####" ><i class="fa fa-graduation-cap"></i> <span class="title">学习模块</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/study-module/study.html" ><i class="fa fa-graduation-cap"></i> <span class="title">课程管理</span></a></li><li><a href="/study-module/course-upload.html" ><i class="fa fa-cloud-upload"></i> <span class="title"> 课件管理</span></a></li></ul></li><li class="deeper parent"><a href="####" ><i class="fa fa-money"></i> <span class="title">收益管理</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/profitman/profit.html" ><i class="fa fa-credit-card"></i> <span class="title">收益总览</span></a></li><li><a href="/profitman/recharge-card.html" ><i class="fa fa-credit-card"></i> <span class="title">充值卡</span></a></li></ul></li><li><a href="/statistic.html" ><i class="fa fa-bar-chart-o"></i> <span class="title">统计分析</span></a></li><li><a href="/miniprogram.html" ><i class="fa fa-weixin"></i> <span class="title">小程序</span></a></li><li class="deeper parent"><a href="####" ><i class="fa fa-certificate"></i> <span class="title">证书管理</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/certs/certtemplate.html" ><i class="fa fa-certificate"></i> <span class="title">证书模板</span></a></li><li><a href="/certs/certslist.html" ><i class="fa fa-graduation-cap"></i> <span class="title">颁发列表</span></a></li></ul></li><li class="deeper parent"><a href="####" ><i class="fa fa-pagelines"></i> <span class="title">我的主页</span><span class="arrow"></span></a><ul class="sub-menu"><li><a href="/homeman/pageinfo.html" ><i class="fa fa-info"></i> <span class="title">主页链接</span></a></li><li><a href="/homeman/userpage.html" ><i class="fa fa-pagelines"></i> <span class="title">主页设置</span></a></li><li><a href="/homeman/articles.html" ><i class="fa fa-file-text"></i> <span class="title">文章管理</span></a></li><li><a href="/homeman/announceman.html" ><i class="fa fa-bullhorn"></i> <span class="title">公告管理</span></a></li></ul></li><li><a href="/admins-manager.html" ><i class="fa  fa-user-secret"></i> <span class="title">子管理员</span></a></li><li><a href="/account.html" ><i class="fa fa-dollar"></i> <span class="title">账户管理</span></a></li><li><a href="/setting.html" ><i class="fa fa-cog"></i> <span class="title">系统设置</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <div class="page-content ">
+                <!-- BEGIN PAGE HEADER-->
+                <!--<h3 class="page-title">
+                                                                                                <small></small>
+                                                            </h3>-->
+                <div class="page-bar">
+                </div>
+                
+<div id="system-message-container"><div class="Metronic-alerts alert fade in alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+<h4 class="alert-heading">消息</h4>
+		<p>您当前未创建过试卷，点击右边，马上在线组卷 <a href='/dashboards.html?task=exam.add' class='btn green'>新建试卷</a></p>
+</div>
+</div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN DASHBOARD STATS -->
+                
+<style>
+    @keyframes fade {
+        from {
+            background-color: orange;
+        }
+        50% {
+            background-color: rebeccapurple;
+        }
+
+        to {
+            background-color: orange;
+        }
+    }
+
+    @-webkit-keyframes fade{
+        from {
+            background-color: orange;
+        }
+        50% {
+            background-color: rebeccapurple;
+        }
+
+        to {
+            background-color: orange;
+        }
+    }
+
+    @media screen and (max-width: 3200px){
+        #setting_boxId{
+            z-index: 10001!important;
+        }
+        .overTip{
+            font-size: 16px;
+            text-align: center;
+        }
+        #group-tree-1 .fa-search{
+            right: 31px;
+            top: -3px;
+            float: right;
+        }
+        #group-tree-1 .group-search{
+            margin-top: 15px;
+        }
+        .jBox-Modal .jBox-content{
+            padding: 0px 0px;
+            overflow: inherit;
+        }
+        #announce .jBox-container{
+            background: #fff !important;
+        }
+        .annouceTitle {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 78%;
+            display: inline-block;
+            position: relative;
+            top: 4px;
+        }
+        .toGradeText{
+            position: absolute;
+            width: 43px;
+            height: 17px;
+            z-index: 100;
+        }
+        .examInfoTodayText{
+            position: absolute;
+            width: 84px;
+            height: 19px;
+            z-index: 100;
+        }
+        .toGradeTextEn{
+            position: absolute;
+            width: 72px;
+            height: 17px;
+            z-index: 100;
+        }
+        .examInfoTodayTextEn{
+            position: absolute;
+            /*width: 101px;*/
+            height: 16px;
+            z-index: 100;
+        }
+        .topBox > .needGrade .toGrade:before, .topBox > .needGrade .toGrade:after, .oprate .showExamInfoToday:before, .oprate .showExamInfoToday:after,
+        .topBox > .needGrade .toGradeEn:before, .topBox > .needGrade.toGradeEn:after, .oprate .showExamInfoTodayEn:before, .oprate .showExamInfoTodayEn:after{
+            width: 0;
+            height: 100%;
+            z-index: 3;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all linear 0.3s;
+            border-radius: 20px;
+        }
+
+        .oprate .showExamInfoToday:before, .oprate .showExamInfoTodayEn:before{
+            background-color: #36aafd;
+        }
+
+        .topBox > .needGrade .toGrade:before, .topBox > .needGrade .toGradeEn:before{
+            background-color: #1caf9a;
+        }
+
+        .topBox > .needGrade .toGrade:hover, .oprate .showExamInfoToday:hover,
+        .topBox > .needGrade .toGradeEn:hover, .oprate .showExamInfoTodayEn:hover{
+            color: #fff;
+            border: 1px solid rgba(0,160,80,0);
+        }
+        .topBox > .needGrade .toGrade:hover:before, .topBox > .needGrade .toGrade:hover:after, .oprate .showExamInfoToday:hover:before, .oprate .showExamInfoToday:hover:after,
+        .topBox > .needGrade .toGradeEn:hover:before, .topBox > .needGrade .toGradeEn:hover:after, .oprate .showExamInfoTodayEn:hover:before, .oprate .showExamInfoTodayEn:hover:after
+        {
+            transform: scaleX(1);
+            width: 100%;
+        }
+
+        #newstudent:hover{
+            border: 1px solid rgba(0,160,80,0);
+        }
+        #newstudent:hover::after, #newstudent:hover::before {
+            transform: scale(1);
+        }
+        #examingList tr th:first-child, #examingList tr td:first-child{
+            padding-left: 24px;
+        }
+
+        #courseingList tr th:first-child, #courseingList tr td:first-child{
+            padding-left: 24px;
+        }
+        .examNumbers{
+            display: inline-block;
+            width: 47px;
+        }
+        .monthleftnumberEn .number {
+            font-size: 40px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 13px 0 0 0;
+        }
+
+        .monthleftnumberEn .thNumber {
+            font-size: 40px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 13px 0 0 0;
+        }
+
+        .monthleftnumberEn .text {
+            font-size: 14px;
+            color: #999999;
+        }
+        .monthleftnumberEn{
+            margin: 27px 0px 0 0px;
+            float: left;
+            margin-left: 33px;
+        }
+        .monthtakednumberEn .text {
+            font-size: 14px;
+            color: #999999;
+        }
+        .monthtakednumberEn .number {
+            font-size: 40px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+        .monthtakednumberEn{
+            float: left;
+            font-size: 16px;
+            margin: 27px 14% 0px 17px;
+        }
+        .quickContainer{
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: auto;
+            height: 40px;
+            float: left;
+        }
+        .contactInfo .contactOneEn{
+            display: block;
+            margin:0 auto;
+            font-size: 14px;
+            font-weight: normal;
+            color: #999999;
+        }
+        .contactInfo .contactOneEn > div{
+            float: left;
+        }
+        .contactInfo .contactOneEn .info{
+            margin: 0px 0 0 14px;
+            font-size: 14px;
+        }
+        .contactInfo .contactOneEn .numbersEn{
+            display: block;
+            margin: 5px 0 0 0px;
+            font-size: 16px;
+            color: #1caf9a;
+            cursor: pointer;
+            text-decoration: none;
+            word-break: keep-all;
+        }
+        #jBox-overlay .jBox-closeButton {
+            top: 40px;
+            right: 17px;
+        }
+        .contactInfo .contactOne .numbersEn{
+            display: block;
+            margin: 5px 0 0 0px;
+            font-size: 16px;
+            color: #1caf9a;
+            cursor: pointer;
+            text-decoration: none;
+            word-break: keep-all;
+        }
+        .infoEn{
+            margin:0px!important;
+            padding-left: 3px;
+            width: 75%;
+            word-wrap:break-word;
+            word-break:break-all;
+            overflow: hidden;
+        }
+        .fa-envelope-o{
+            float: left;
+            margin-top: 23px;
+            width: 48px;
+            height: 48px;
+            position: relative;
+            left: 10px;
+        }
+        .fa-telegram{
+            float: left;
+            margin-top: 13px;
+            width: 48px;
+            height: 48px;
+            position: relative;
+            left: 10px;
+            font-size: 30px;
+        }
+        #newStudentBox .jBox-container {
+            background: #fff !important;
+        }
+        #stuExamList tr th:first-child,#stuExamList tr td:first-child{
+            padding-left: 24px;
+            padding-right: 46px;
+        }
+        #examExamList tr th:first-child,#examExamList tr td:first-child{
+            padding-left: 24px;
+            padding-right: 46px;
+        }
+        .goTitle{
+            text-decoration: none!important;
+        }
+        #eTTN{
+            color: #36aafd;
+            font-size: 13px;
+            position: relative;
+            top: 1px;
+        }
+        #sTTN{
+            color: #36aafd;
+            font-size: 13px;
+            position: relative;
+            top:1px;
+        }
+        .latest-news-fade {
+            border-radius: 4px !important;
+            background-color: orange;
+            margin: 0 10px;
+            padding: 0 4px 1px 4px;
+            display: inline-block;
+            color: white;
+            line-height: 13px;
+            font-size: x-small;
+            animation: fade 600ms infinite;
+            -webkit-animation: fade 600ms infinite;
+            -moz-animation: fade 600ms infinite;
+            -ms-animation: fade 600ms infinite;
+
+        }
+
+        .expired-notice {
+            display: block;
+            background-color: #FFE4E1;
+            margin: 0px -20px 0px -20px;
+            text-align: center;
+            color: orangered;
+            height: 42px;
+            line-height: 38px;
+        }
+
+        #alertExpiredBoxId .jBox-container {
+            border-radius: 10px !important;
+            background-color: transparent;
+        }
+
+        #alertExpiredContent {
+            display: none;
+            width: 496px;
+            height: 500px;
+            background-color: #e44d43;
+            border-radius: 10px !important;
+            margin: 0px 0px;
+        }
+
+        .alertExpiredContent-logo {
+            height: 224px
+        }
+
+        .alertExpiredContent-logo > img:first-child {
+            margin: 40px 200px;
+            position: relative
+        }
+
+        .alertExpiredContent-info {
+            margin: 52px
+        }
+
+        .renewal-btn {
+            display: block;
+            width: 209px;
+            height: 48px;
+            margin: 0 auto;
+            border: 1px solid #ffeebb;
+            background-color: #ffeebb;
+            border-radius: 24px !important;
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            line-height: 42px;
+        }
+
+        .renewal-btn-a:hover {
+            text-decoration: none;
+        }
+
+        .renewal-btn-a:link {
+            text-decoration: none;
+        }
+
+        #lanTipsBox .jBox-container {
+            border-radius: 4px !important;
+        }
+
+        .courtesy {
+            margin-top: 4px !important;
+            margin-left: 20px !important;
+            font-size: 23px !important;
+        }
+
+        .userInfo {
+            height: 30px;
+            background-color: #ff962a;
+            border-radius: 4px !important;
+            margin-left: 20px !important;
+            margin-top: 6px !important;
+        }
+
+        .important-statistics {
+            height: auto !important;
+        }
+
+        .firstBox {
+            height: 285px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .secondBox .topBox {
+            padding: 0 0;
+            height: 143px;
+        }
+
+        .secondBox {
+            padding-right: 0;
+            float: left;
+            padding-left: 22px;
+        }
+
+        .topBox > .needGrade {
+            float: left;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            background: url("/components/com_exams/assets/img/dashboard/needGrade.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .rightBox {
+            float: left;
+            width: 57%;
+            height: 104px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+
+            margin-left: 22px;
+        }
+
+        .footerBox {
+            margin-top: 22px;
+            height: 120px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding-right: 0px!important;
+        }
+
+        .firstBox .topBox {
+            padding: 0 0;
+        }
+
+        .examingNumber {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 0px 0 15px;
+        }
+
+        .examingNumberEn {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 0px 0 15px;
+        }
+
+        .examingExams {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 152px 0 153px;
+        }
+
+        .examingExamsEn {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 152px 0 153px;
+        }
+
+        .oprate {
+            float: left;
+            margin-top: 27px;
+            cursor: pointer;
+        }
+
+        .oprate .showExaming {
+            width: 100px;
+            background-color: #36aafd;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #ffffff;
+            text-align: center;
+            padding: 4px 4px;
+            border: solid 1px #36aafd;
+        }
+
+        .oprate .showExaming:hover {
+            background-color: #fff;
+            color: #36aafd;
+        }
+
+        .oprate .showExamInfoToday {
+            position: relative;
+            height: 28px;
+            width: 99px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #36aafd;
+            padding: 4px 6px;
+            border: solid 1px #36aafd;
+        }
+
+        .oprate .showExamInfoTodayEn {
+            transition: all linear 0.3s;
+            position: relative;
+            height: 26px;
+            width: 114px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #36aafd;
+            padding: 4px 6px;
+            border: solid 1px #36aafd;
+        }
+
+        .oprate .showExamInfoToday:hover {
+            color: #fff;
+        }
+
+        .oprate .showExamInfoTodayEn:hover {
+            color: #fff;
+        }
+
+        .examingNumber .info {
+            font-size: 40px;
+            color: #36aafd;
+            font-weight: normal;
+            margin: 8px 0 0 0;
+        }
+
+        .examingNumberEn .info {
+            font-size: 40px;
+            color: #36aafd;
+            font-weight: normal;
+            margin: 8px 0 0 0;
+        }
+
+        .examingExams .info {
+             font-size: 40px;
+             color: #36aafd;
+             font-weight: normal;
+             margin: 8px 0 0 0;
+         }
+        .examingExamsEn .info {
+            font-size: 40px;
+            color: #36aafd;
+            font-weight: normal;
+            margin: 8px 0 0 0;
+        }
+
+        #stuTodaySearch:focus {
+            border: solid 1px #36aafd;
+        }
+
+        .topBox > .needGrade .leftBox {
+            margin: 27px 12px 0px 17px;
+            font-size: 14px;
+            color: #999999;
+            float: left;
+        }
+
+        .topBox > .needGrade .leftBox .text {
+
+            font-weight: normal;
+        }
+
+        .topBox > .needGrade .leftBox .correctInfo {
+            font-size: 40px;
+            margin: 8px 0 0 0;
+            color: #1caf9a;
+        }
+
+        .topBox > .needGrade .toGrade {
+            width: 78px;
+            height: 28px;
+            position: relative;
+            float: right;
+            border-radius: 20px !important;
+            border: solid 1px #1caf9a;
+            margin: 27px 14px 0 0;
+            color: #1caf9a;
+            font-size: 14px;
+            padding: 4px 17px;
+            cursor: pointer;
+            transition: all linear 0.3s;
+            text-decoration: none;
+        }
+
+        .topBox > .needGrade .toGradeEn {
+            width: 102px;
+            height: 24px;
+            position: relative;
+            float: right;
+            border-radius: 20px !important;
+            border: solid 1px #1caf9a;
+            margin: 27px 14px 0 0;
+            color: #1caf9a;
+            font-size: 14px;
+            padding: 4px 13px;
+            cursor: pointer;
+            transition: all linear 0.3s;
+            text-decoration: none;
+        }
+
+        .topBox .month {
+            float: left;
+
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            background: url("/components/com_exams/assets/img/dashboard/monthExamed.jpg") no-repeat;
+            background-size: 100% 100%;
+            /*margin-left:22px;*/
+        }
+
+        .monthtakednumber {
+            float: left;
+            font-size: 16px;
+            margin: 27px 14% 0px 17px;
+        }
+
+        .monthtakednumber .text {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .monthleftnumber {
+            margin: 27px 0px 0 0px;
+            float: left;
+            margin-left: 103px;
+        }
+
+        .monthleftnumber .text {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .monthleftnumber .number {
+            font-size: 40px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+
+        .monthleftnumber .thNumber {
+            font-size: 36px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 3px 0 0 0;
+        }
+
+        .monthtakednumber .number {
+            font-size: 38px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+
+        .footerBox > div {
+            float: left;
+            height: 57px;
+            position: relative;
+            top: 50%;
+            transform: translate(0px, -50%);
+                            width: 19.52%;
+                    }
+
+        .footerBox > div .text {
+            font-size: 14px;
+            font-weight: normal;
+            color: #999;
+        }
+
+        .footerBox > div .number {
+            font-size: 30px;
+            font-weight: normal;
+            color: #36aafd;
+            margin-top: 10px;
+        }
+
+        .footerBox > div .number > div {
+            display: inline-block;
+        }
+
+        .courseActive {
+            display: inline-block;
+            background-color: #ffffff;
+            border-radius: 14px !important;
+            border: solid 1px #ff962a;
+            font-size: 14px;
+            font-weight: normal;
+            color: #ff962a;
+            cursor: pointer;
+            margin: 0 0 0 1px;
+            padding: 2px 8px;
+            position: relative;
+            top: -2px;
+            text-decoration: none!important;
+        }
+
+        .courseActive:hover {
+            background-color: #ff962a;
+            color: #fff;
+        }
+
+        .dashboard-mainl-new {
+            height: 286px;
+            padding: 0 0;
+        }
+
+        .annoucements {
+            height: 286px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin-bottom: 25px;
+            padding: 0 0;
+        }
+
+        .contactInfo {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 0 0;
+
+        }
+
+        .examTotal {
+            margin: 0px 0 0 17px;
+        }
+
+        .quickOperate {
+            height: 165px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 0 0;
+        }
+
+        div.dataTables_length select{
+            position: relative;
+            top:4px;
+            margin-right:4px;
+            margin-left: 4px;
+        }
+
+        .btn.next{
+            margin-right: 6px;
+        }
+
+        .pagination-panel-total{
+            margin-right: 4px;
+            margin-left: 1px;
+        }
+
+        div.dataTables_info{
+            position: relative!important;
+            top: 1px;
+        }
+
+        .dataTables_extended_wrapper div.dataTables_info{
+            position: relative!important;
+        }
+
+        .dataTables_extended_wrapper .seperator{
+            padding: 0 6px;
+            position: relative;
+            top: -1px;
+        }
+
+        .dataTables_wrapper > .row{
+            color: #999999!important;
+            margin-bottom:18px;
+            margin-top:19px;
+        }
+
+        .dataTables_wrapper > .row > div{
+            margin-left: 0px!important;
+            padding: 0px!important;
+        }
+
+
+        .oprateBox {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .oprateBox > a {
+            position: relative;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 4px !important;
+            border: solid 1px #eeeeee;
+            padding: 0 0;
+            margin: 20px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 15%;
+        }
+
+        .enBox > a{
+            width: 18% !important;
+        }
+
+        .oprateBox > a:before, .oprateBox > a:after {
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            -webkit-transform: scale(0);
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        .createExam:before{
+            border-bottom: 1px solid #36aafd;
+            border-left: 1px solid #36aafd;
+            transform-origin: 0 100%;
+        }
+
+        .createExam:after{
+            border-top: 1px solid #36aafd;
+            border-right: 1px solid #36aafd;
+            transform-origin: 100% 0%;
+        }
+        .createquestions:before, .uploadCourse:before{
+            border-bottom: 1px solid #ff962a;
+            border-left: 1px solid #ff962a;
+            transform-origin: 0 100%;
+        }
+        .createquestions:after, .uploadCourse:after{
+            border-top: 1px solid #ff962a;
+            border-right: 1px solid #ff962a;
+            transform-origin: 100% 0%;
+
+        }
+
+        .createCourse:before, .statication:before{
+            border-bottom: 1px solid #d52b2a;
+            border-left: 1px solid #d52b2a;
+            transform-origin: 0 100%;
+        }
+        .createCourse:after, .statication:after{
+            border-top: 1px solid #d52b2a;
+            border-right: 1px solid #d52b2a;
+            transform-origin: 100% 0%;
+
+        }
+
+        .oprateBox > a:hover{
+            border: 1px solid rgba(0,160,80,0);
+        }
+
+        .oprateBox > a:hover::after, .oprateBox > a:hover::before {
+            transform: scale(1);
+        }
+
+        #newstudent{
+            float: left;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 4px !important;
+            border: solid 1px #eeeeee;
+            padding: 0 0;
+            margin: 20px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 15%;
+        }
+
+        .oprateTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+            margin: 20px 0 0 15px;
+        }
+
+        .oprateBox > a > div {
+            position: relative;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 40px;
+            float: left;
+        }
+
+        #newstudent:before, #newstudent:after{
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            -webkit-transform: scale(0);
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        #newstudent:before{
+            border-bottom: 1px solid #36aafd;
+            border-left: 1px solid #36aafd;
+            transform-origin: 0 100%;
+        }
+
+        #newstudent:after{
+            border-top: 1px solid #36aafd;
+            border-right: 1px solid #36aafd;
+            transform-origin: 100% 0%;
+        }
+
+        #newstudent > .cn{
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            width: 132px;
+        }
+
+        .oprateText {
+            position: relative;
+            transform: translate(0%, -50%);
+            top: 50%;
+            width: auto;
+            float: left;
+            font-size: 15px;
+            font-weight: normal;
+            color: #000000;
+            margin-left: 12px;
+
+        }
+
+        .oprateTextEn{
+            position: relative;
+            transform: translate(0%, -50%);
+            top: 50%;
+            width: auto;
+            float: left;
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            margin-left: 7px;
+            word-break: keep-all;
+        }
+
+        .examingList {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 0 0;
+        }
+
+        .courseingList {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 0 0;
+        }
+
+        .examingNumberHarchart {
+            height: auto;
+            padding-bottom: 50px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 45px 0;
+        }
+
+        .examingList .row > div {
+            float: left;
+            padding: 0px !important;
+        }
+
+        .stuExamInfo .row > div {
+            float: left;
+            padding: 0px !important;
+        }
+
+        .fa{
+            position: relative;
+            top:2px;
+        }
+
+        .dashLine {
+            width: 84%;
+            border: 1px dashed #f5f5f5;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .orderId{
+            width: 50px;
+        }
+
+        .systenAnnoucement {
+            margin: 20px 0 0 22px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .snumber {
+            font-size: 30px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+
+        div.annoucemetsList > a {
+            padding: 13px 20px 0px 5px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #333333;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        div.annoucemetsList > a:hover {
+           color: #FF962A;
+        }
+
+        div.annoucemetsList > a .da-circle {
+            color: #e6e6e6;
+            margin-right: 7px;
+            width: 7px;
+            height: 7px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 50%;
+            margin-bottom: 1px;
+        }
+
+        .provideHelp {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+            margin:20px 0 20px 5px;
+        }
+
+        .contactInfo .contactOne > div {
+            float: left;
+        }
+
+        .imgContainer > img {
+            max-height: 48px;
+        }
+
+        .contactInfo .contactOne {
+            padding: 10px 0px 13px 30px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #999999;
+        }
+
+        .contactInfo .contactOne .info {
+            margin: 0px 0 0 14px;
+            font-size: 14px;
+        }
+
+        .contactInfo .contactOne .numbers {
+            display: block;
+            margin: 5px 0 0 0px;
+            font-size: 18px;
+            color: #1caf9a;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .contactInfo .qrcode {
+            padding: 10px 24px 30px 24px;
+            font-size: 15px;
+            font-weight: normal;
+            color: #333333;
+            text-align: center;
+        }
+
+        .contactInfo .qrcode img {
+            margin: 16px 0 0 0;
+            max-width: 210px;
+            max-height: 210px;
+            width: 90%;
+        }
+
+        .page-content{
+            padding: 0!important;
+        }
+
+        .page-content-wrapper .page-content {
+            background-color: #eee !important;
+        }
+
+        .courseTotal{
+            display: none;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .courseTotalN{
+            display: none;
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .courseTotal > .number {
+            font-size: 27px !important;
+            color: #1caf9a !important;
+        }
+
+        .courseTotalN > .number {
+            font-size: 27px !important;
+            color: #1caf9a !important;
+        }
+
+        .table.table-bordered thead > tr > th{
+            border-right: 0px!important;
+        }
+
+        .table thead > tr{
+            background-color: #eeeeee;
+        }
+
+        .table-bordered{
+            border:none!important;
+        }
+        .table-bordered>tbody>tr>td{
+            border-right:none!important;
+            border-top:none!important;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 13px 8px 13px 8px;
+        }
+
+        .qrcodeDescription {
+            width: 100%;
+            margin: 0 auto;
+            line-height: 28px;
+        }
+
+        .monthtakednumber .number{
+            font-size: 36px;
+        }
+
+        .examingTitle {
+            font-size: 20px;
+            font-weight: normal;
+            color: #333333;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left:15px;
+        }
+
+        .examingnumbersText {
+            margin-top: 23px;
+            float: right !important;
+        }
+
+        .onlineNumbers {
+            float: right !important;
+            margin: 23px 14px 0 17px !important;
+        }
+
+        .orange {
+            color: #ff962a;
+            width: auto;
+            display: inline-block;
+            text-align: right;
+        }
+
+        .courseingList .row > div {
+            float: left;
+            margin-left: 15px;
+        }
+
+        .courseingTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 20px;
+        }
+
+        .courseingstudy {
+            float: right !important;
+            margin-top: 23px;
+        }
+
+        .examingNumberHarchart .row > div {
+            float: left;
+            margin: 20px 0 0 15px;
+        }
+
+        .page-bar {
+            margin-bottom: 0;
+        }
+
+        .examingHarchartTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .chart-statistics {
+            margin: 60px 0 0 0;
+        }
+
+        .layui-inline {
+            float: left;
+            margin-right: 0 !important;
+        }
+
+        .compared {
+            float: left;
+            padding-top: 9px;
+        }
+
+        .comparedContainer {
+            float: right !important;
+        }
+
+        .comTime {
+            float: right !important;
+            padding-top: 8px;
+        }
+
+        .comparedContainer {
+            margin: 20px 0 0 10px !important;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(even){
+            background-color: #fcfcfc;
+        }
+        .table-hover>tbody>tr:hover{
+            background-color: #f5f5f5!important;
+        }
+
+        .table-hover>tbody>tr:hover .eti{
+            background-image: url("/components/com_exams/assets/img/dashboard/examTodayH.png");
+        }
+
+        .table-hover>tbody>tr:hover .examToday{
+            color: #ff962a;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(odd){
+            background-color: #fff;
+        }
+
+        .infoDetail {
+            font-size: 14px !important;
+            color: #fff !important;
+            text-align: center;
+            padding: 0 11px;
+            margin-top: 5px !important;
+        }
+
+        #showExamInfoToday {
+            display: none;
+            padding: 20px 30px 40px 30px;
+
+        }
+
+        .navContainer {
+            font-size: 16px;
+        }
+
+        .blueVertical {
+            float: left;
+            width: 4px;
+            height: 10px;
+            background-color: #36aafd;
+            margin: 5px 6px 0 0;
+        }
+
+        .layui-breadcrumb a.daShowE {
+            color: #000000 !important;
+            font-weight: bold;
+        }
+
+        .stuExamTab {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 10px 10px;
+            margin: 20px 0 0 0;
+            padding: 0 0;
+        }
+
+        .layui-tab-content {
+            padding: 0 0;
+
+        }
+
+        .layui-tab-title {
+            border-bottom-style: none;
+            height: 58px;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .layui-tab-title > li {
+            margin: 10px 72px 0 0;
+            color: #999999;
+        }
+
+        .stuExamInfo {
+            background-color: #ffffff;
+            box-shadow: 0px 11px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 0px 0px 10px 10px;
+            padding: 0px 30px 6px 30px;
+
+        }
+
+        .examNumbersHachartToday {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px !important;
+            margin: 30px 0 0 0;
+            padding: 0 0;
+        }
+
+        .numCharTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000000;
+            margin: 26px 0 0 37px;
+        }
+
+        .unit {
+            font-size: 14px;
+            font-weight: normal;
+            color: #aaaaaa;
+        }
+
+        /*.createExam:hover {*/
+            /*border: solid 1px #36aafd;*/
+        /*}*/
+
+        /*.createquestions:hover {*/
+            /*border: solid 1px #ff962a;*/
+        /*}*/
+
+        .createCourse:hover {
+            border: solid 1px #d52b2a;
+        }
+
+        .uploadCourse:hover {
+            border: solid 1px #ff962a;
+        }
+
+        .statication:hover {
+            border: solid 1px #d52b2a;
+        }
+
+        .examingListContainer {
+            margin: 0px 0 4px 0;
+        }
+
+        .courseingListContainer {
+            margin: 0px 0 4px 0;
+        }
+
+        .showExamTakens {
+            font-size: 14px;
+            font-weight: normal;
+            color: #36aafd;
+            text-decoration: none !important;
+        }
+
+        .showExamTakens:focus {
+            color: #36aafd;
+        }
+
+        .layui-table-page > div {
+            width: 32%;
+            margin: 0 auto;
+        }
+
+        .layui-table[lay-even] tr:nth-child(even) {
+            background-color: #fcfcfc !important;
+        }
+
+        .layui-table tbody tr:hover {
+            background-color: #f5f5f5 !important;
+            cursor: pointer;
+        }
+
+        .hightChar {
+            max-width: 605px;
+            max-height: 160px;
+            padding: 0 0;
+            margin-top: 20px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        #stuNumbers_statistics {
+            width: 100%;
+            height: 100%;
+            padding: 0 0;
+        }
+
+        #examToday_statistics {
+            margin: 30px 0 0px 0;
+            padding: 0 0 28px 0;
+            border-radius: 10px;
+        }
+
+        #site_statistics {
+            margin: 35px 0 0 0;
+        }
+
+        .dashboard-info {
+            height: 37px;
+            padding: 0 8px;
+        }
+
+        .layui-tab-brief > .layui-tab-title .layui-this {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .layui-tab-brief > .layui-tab-title .layui-this:after {
+            border-bottom: 3px solid #36aafd;
+            height: 48px;
+        }
+
+        .examToday {
+            font-size: 14px;
+            font-weight: normal;
+            color: #ffecd9;
+            margin-left: 5px;
+            text-decoration: none !important;
+        }
+
+        .examToday:focus {
+            color: #ffecd9;
+        }
+
+        .examTodayInfo {
+            float: right;
+            right: 15px;
+            padding: 18px 30px;
+            margin-top: 1px;
+            margin-right: 0px!important;
+        }
+
+        .staticDescption{
+            width: 100px;
+            height: 50px;
+            display: none;
+        }
+
+        .verticalT {
+            float: left;
+            width: 1px;
+            height: 20px;
+            background-color: #999;
+            margin: 0 10px;
+            margin-top: 11px;
+        }
+
+        .examTodayInfo > div {
+            float: left;
+        }
+
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            box-shadow: 0 0 0 30px white inset !important;
+        }
+
+        .sTText {
+            float: left;
+            font-size: 13px;
+            color: #333;
+            margin-top: 1px;
+        }
+
+        .main {
+            width: 100%;
+            padding: 0 20px 10px 20px;
+        }
+
+        #showExamInfoToday {
+            width: 100%;
+        }
+
+        .eti {
+            background-image: url("/components/com_exams/assets/img/dashboard/examToday.png");
+            margin-left: 10px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            position: relative;
+            top: 4px;
+        }
+
+        .studentCountOver {
+            background-color: #fffbd8;
+            height: 36px;
+            border-bottom: solid 2px #ffedd8
+        }
+
+        .studentCountOver > div {
+            position: relative;
+            top: 5px;
+            left: 30px;
+            width: 96.5%;
+        }
+
+        .upgrade {
+            background-color: #ff962a;
+            border-radius: 4px !important;
+            height: 26px;
+            color: #fff !important;
+            font-size: 14px;
+            padding: 3px 12px !important;
+            margin: 0 0 0 10px;
+        }
+
+        .upgrade:hover {
+            background-color: #fda54a;
+        }
+
+        .searchContainer {
+            height: 34px;
+            float: right;
+            margin-top: -1px;
+        }
+
+        .search {
+            width: 240px;
+            height: 34px;
+            border-radius: 5px;
+            border: solid 1px #d6d6d6;
+            padding: 5px 10px;
+            color: #707070;
+
+        }
+
+
+        .eTText {
+            font-size: 13px;
+            color: #333;
+            position: relative;
+            top:1px;
+        }
+
+        #courseingN {
+            color: #36aafd;
+        }
+
+        #onCoN {
+            color: #36aafd;
+        }
+
+
+        .datatableLoading{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,0);
+            top: 134px;
+            color: #9a9a9a;
+        }
+
+        .TodatatableLoading{
+            position: absolute;
+            left: 55%;
+            transform: translate(-50%,0);
+            top: 244px;
+            color: #9a9a9a;
+        }
+
+        .showExamTakens:hover {
+            color: #777 !important;
+        }
+
+
+        .orther {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .pageD {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .or {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .ar {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .layui-table-view {
+            border: none !important;
+        }
+
+        .layui-laypage .layui-laypage-count {
+            font-size: 14px;
+            font-weight: normal;
+            color: #999999;
+            margin-bottom: 0 !important;
+        }
+
+        .layui-laypage .layui-laypage-limits {
+            margin-right: 2px;
+            margin-bottom: 0 !important;
+        }
+
+        .layui-laypage .layui-laypage-limits select {
+            width: 60px;
+            height: 21px;
+            margin-left: 10px;
+        }
+
+        .rightDash {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .verticalS {
+            float: left;
+            width: 0px;
+            height: 55px;
+            border: solid 1px #e6e6e6;
+            margin-top: 33px;
+        }
+
+        .closeInput {
+            position: relative;
+            left: 234px;
+            top: -2px;
+            display: none;
+        }
+
+        #examToday_statistics {
+            width: 98%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        .closeHeader {
+            float: right;
+            margin-top: 7px;
+        }
+
+        #activeSearch {
+
+        }
+
+        .fa-search {
+            font-size: 20px;
+            color: #d6d6d6;
+            cursor: pointer;
+            position: absolute;
+            right: 67px;
+            top: 143px;
+        }
+
+        .fa-times {
+            font-size: 20px;
+            color: #d6d6d6;
+            cursor: pointer;
+            position: absolute;
+            right: 67px;
+            top: 143px;
+            display: none;
+        }
+
+        .oprateImg{
+            max-width: 47px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .oprateImgEn {
+            max-width: 40px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .upgradeVersion{
+            border-radius: 4px!important;
+            margin: 7px 0 0 15px;
+            background-color: #F3565D;
+            color: white!important;
+            height: 30px;
+            padding: 6px 10px 6px 10px;
+        }
+        .upgradeVersion:hover{
+            background-color: #f1353d;
+        }
+        .gradedInfoLoading{
+            color: #9a9a9a;
+        }
+        .courseLoading{
+            color:#36aafd;
+        }
+
+        .phone-img{
+            margin-left: 10px;
+        }
+
+    }
+
+    @media screen and (max-width: 2200px){
+
+        .latest-news-fade {
+            border-radius: 4px !important;
+            background-color: orange;
+            margin: 0 10px;
+            padding: 0 4px 1px 4px;
+            display: inline-block;
+            color: white;
+            line-height: 13px;
+            font-size: x-small;
+            animation: fade 600ms infinite;
+            -webkit-animation: fade 600ms infinite;
+            -moz-animation: fade 600ms infinite;
+            -ms-animation: fade 600ms infinite;
+
+        }
+
+        .expired-notice {
+            display: block;
+            background-color: #FFE4E1;
+            margin: 0px -20px 0px -20px;
+            text-align: center;
+            color: orangered;
+            height: 42px;
+            line-height: 38px;
+        }
+
+        #alertExpiredBoxId .jBox-container {
+            border-radius: 10px !important;
+            background-color: transparent;
+        }
+
+        #alertExpiredContent {
+            display: none;
+            width: 496px;
+            height: 500px;
+            background-color: #e44d43;
+            border-radius: 10px !important;
+            margin: 0 auto;
+        }
+
+        .alertExpiredContent-logo {
+            height: 200px
+        }
+
+        .alertExpiredContent-logo > img:first-child {
+            margin: 40px 200px;
+            position: relative
+        }
+
+        .alertExpiredContent-info {
+            margin: 52px
+        }
+
+        .renewal-btn {
+            display: block;
+            width: 209px;
+            height: 48px;
+            margin: 0 auto;
+            border: 1px solid #ffeebb;
+            background-color: #ffeebb;
+            border-radius: 24px !important;
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            line-height: 42px;
+        }
+
+        .renewal-btn-a:hover {
+            text-decoration: none;
+        }
+
+        .renewal-btn-a:link {
+            text-decoration: none;
+        }
+
+        #lanTipsBox .jBox-container {
+            border-radius: 4px !important;
+        }
+
+        .courtesy {
+            margin-top: 4px !important;
+            margin-left: 20px !important;
+            font-size: 23px !important;
+        }
+
+        .userInfo {
+            height: 30px;
+            background-color: #ff962a;
+            border-radius: 4px !important;
+            margin-left: 20px !important;
+            margin-top: 6px !important;
+        }
+
+        .important-statistics {
+            height: auto !important;
+        }
+
+        .firstBox {
+            height: 285px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .secondBox .topBox {
+            padding: 0 0;
+            height: 143px;
+        }
+
+        .secondBox {
+            padding-right: 0;
+            float: left;
+            padding-left: 22px;
+        }
+
+        .topBox > .needGrade {
+            float: left;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            background: url("/components/com_exams/assets/img/dashboard/needGrade.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .rightBox {
+            float: left;
+            width: 57%;
+            height: 104px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+
+            margin-left: 22px;
+        }
+
+        .footerBox {
+            margin-top: 22px;
+            height: 120px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding-right: 0px!important;
+        }
+
+        .firstBox .topBox {
+            padding: 0 0;
+        }
+
+        .examingNumber {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 0px 0 15px;
+        }
+
+        .examingExams {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 15% 0 17%;
+        }
+
+        .examingExamsEn {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 4% 0 7%;
+        }
+
+        .oprate {
+            float: left;
+            margin-top: 27px;
+            cursor: pointer;
+        }
+
+        .oprate .showExaming {
+            width: 100px;
+            background-color: #36aafd;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #ffffff;
+            text-align: center;
+            padding: 4px 4px;
+            border: solid 1px #36aafd;
+        }
+
+        .oprate .showExaming:hover {
+            background-color: #fff;
+            color: #36aafd;
+        }
+
+        .oprate .showExamInfoToday {
+            position: relative;
+            width: 99px;
+            height: 29px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #36aafd;
+            padding: 4px 6px;
+            border: solid 1px #36aafd;
+            transition: all linear 0.3s;
+        }
+
+        .examingNumber .info {
+            font-size: 40px;
+            color: #36aafd;
+            font-weight: normal;
+            margin: 8px 0 0 0;
+        }
+
+        .examingExams .info {
+            font-size: 40px;
+            color: #36aafd;
+            font-weight: normal;
+            margin: 8px 0 0 0;
+        }
+
+        #stuTodaySearch:focus {
+            border: solid 1px #36aafd;
+        }
+
+        .topBox > .needGrade .leftBox {
+            margin: 27px 12px 0px 17px;
+            font-size: 14px;
+            color: #999999;
+            float: left;
+        }
+
+        .topBox > .needGrade .leftBox .text {
+
+            font-weight: normal;
+        }
+
+        .topBox > .needGrade .leftBox .correctInfo {
+            font-size: 40px;
+            margin: 8px 0 0 0;
+            color: #1caf9a;
+        }
+
+        .topBox > .needGrade .toGrade {
+            position: relative;
+            float: right;
+            border-radius: 20px !important;
+            border: solid 1px #1caf9a;
+            margin: 27px 14px 0 0;
+            color: #1caf9a;
+            font-size: 14px;
+            padding: 4px 17px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .topBox .month {
+            float: left;
+
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            background: url("/components/com_exams/assets/img/dashboard/monthExamed.jpg") no-repeat;
+            background-size: 100% 100%;
+            /*margin-left:22px;*/
+        }
+
+        .monthtakednumber {
+            float: left;
+            font-size: 16px;
+            margin: 27px 14% 0px 17px;
+        }
+
+        .monthtakednumber .text {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .monthleftnumber {
+            margin: 27px 0px 0 0px;
+            float: left;
+            margin-left: 33px;
+        }
+
+        .monthleftnumber .text {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .monthleftnumber .number {
+            font-size: 40px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+
+        .monthleftnumber .thNumber {
+            font-size: 36px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 3px 0 0 0;
+        }
+
+        .monthleftnumber .thNumber {
+            font-size: 36px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 3px 0 0 0;
+        }
+
+        .monthtakednumber .number {
+            font-size: 40px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+
+        .footerBox > div {
+            float: left;
+            width: 19.4%;
+            height: 57px;
+            position: relative;
+            top: 50%;
+            transform: translate(0px, -50%);
+                            width: 19.52%;
+                    }
+
+        .footerBox > div .text {
+            font-size: 14px;
+            font-weight: normal;
+            color: #999;
+        }
+
+        .footerBox > div .number {
+            font-size: 30px;
+            font-weight: normal;
+            color: #36aafd;
+            margin-top: 10px;
+        }
+
+        .footerBox > div .number > div {
+            display: inline-block;
+        }
+
+        .courseActive {
+            display: inline-block;
+            background-color: #ffffff;
+            border-radius: 14px !important;
+            border: solid 1px #ff962a;
+            font-size: 14px;
+            font-weight: normal;
+            color: #ff962a;
+            cursor: pointer;
+            margin: 0 0 0 1px;
+            padding: 2px 8px;
+            position: relative;
+            top: -2px;
+            text-decoration: none!important;
+        }
+
+        .courseActive:hover {
+            background-color: #ff962a;
+            color: #fff;
+        }
+
+        .dashboard-mainl-new {
+            height: 286px;
+            padding: 0 0;
+        }
+
+        .annoucements {
+
+            height: 286px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin-bottom: 25px;
+            padding: 0 0;
+        }
+
+        .contactInfo {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 0 0;
+
+        }
+
+        .examTotal {
+            margin: 0px 0 0 17px;
+        }
+
+        .quickOperate {
+            height: 165px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 0 0;
+        }
+
+        div.dataTables_length select{
+            position: relative;
+            top:4px;
+            margin-right:4px;
+            margin-left: 4px;
+        }
+
+        .btn.next{
+            margin-right: 6px;
+        }
+
+        .pagination-panel-total{
+            margin-right: 4px;
+            margin-left: 1px;
+        }
+
+        div.dataTables_info{
+            position: relative!important;
+            top: 1px;
+        }
+
+        .dataTables_extended_wrapper div.dataTables_info{
+            position: relative!important;
+        }
+
+        .dataTables_extended_wrapper .seperator{
+            padding: 0 6px;
+            position: relative;
+            top: -1px;
+        }
+
+        .dataTables_wrapper > .row{
+            color: #999999!important;
+            margin-bottom:18px;
+            margin-top:19px;
+        }
+
+        .dataTables_wrapper > .row > div{
+            margin-left: 0px!important;
+            padding: 0px!important;
+        }
+
+
+        .oprateBox {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .oprateBox > a {
+            position: relative;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 4px !important;
+            border: solid 1px #eeeeee;
+            padding: 0 0;
+            margin: 20px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 15%;
+        }
+
+        .newstudentEn{
+            width: 18% !important;
+        }
+
+        #newstudent{
+            position: relative;
+            float: left;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 4px !important;
+            border: solid 1px #eeeeee;
+            padding: 0 0;
+            margin: 20px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 15%;
+        }
+
+        .oprateTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+            margin: 20px 0 0 15px;
+        }
+
+        .oprateBox > a > div {
+            position: relative;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            width: auto;
+            height: 40px;
+        }
+
+        #newstudent > .cn{
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            width: 132px;
+        }
+
+        .oprateText {
+            position: relative;
+            transform: translate(0%, -50%);
+            top: 50%;
+            width: auto;
+            float: left;
+            font-size: 15px;
+            font-weight: normal;
+            color: #000000;
+            margin-left: 12px;
+        }
+
+        .oprateTextEn{
+            position: relative;
+            transform: translate(0%, -50%);
+            top: 50%;
+            width: auto;
+            float: left;
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            margin-left: 7px;
+            word-break: keep-all;
+        }
+
+        .examingList {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 0 0;
+        }
+
+        .courseingList {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 0 0;
+        }
+
+        .examingNumberHarchart {
+            height: auto;
+            padding-bottom: 50px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 22px 0 45px 0;
+        }
+
+        .examingList .row > div {
+            float: left;
+            padding: 0px !important;
+        }
+
+        .stuExamInfo .row > div {
+            float: left;
+            padding: 0px !important;
+        }
+
+        .fa{
+            position: relative;
+            top:2px;
+        }
+
+        .dashLine {
+            width: 84%;
+            border: 1px dashed #f5f5f5;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .orderId{
+            width: 50px;
+        }
+
+        .systenAnnoucement {
+            margin: 20px 0 0 22px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .snumber {
+            font-size: 30px;
+            font-weight: normal;
+            color: #ff962a;
+            margin: 8px 0 0 0;
+        }
+
+        div.annoucemetsList > a {
+            padding: 15px 20px 0px 5px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #333333;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        div.annoucemetsList > a:hover {
+            color: #FF962A;
+        }
+        div.annoucemetsList > a:hover >.da-circle {
+            color: #FF962A;
+            background-color: #FF962A;
+        }
+
+        div.annoucemetsList > a .da-circle {
+            color: #e6e6e6;
+            margin-right: 7px;
+            width: 7px;
+            height: 7px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 50%;
+            margin-bottom: 1px;
+        }
+
+        .provideHelp {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+            margin:20px 0 20px 5px;
+        }
+
+        .contactInfo .contactOne > div {
+            float: left;
+        }
+
+        .imgContainer > img {
+            max-height: 48px;
+        }
+
+        .contactInfo .contactOne {
+            padding: 10px 0px 13px 30px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #999999;
+        }
+
+        .contactInfo .contactOne .info {
+            margin: 0px 0 0 14px;
+            font-size: 14px;
+        }
+
+        .contactInfo .contactOne .numbers {
+            display: block;
+            margin: 5px 0 0 0px;
+            font-size: 18px;
+            color: #1caf9a;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .contactInfo .qrcode {
+            padding: 10px 24px 30px 24px;
+            font-size: 15px;
+            font-weight: normal;
+            color: #333333;
+            text-align: center;
+        }
+
+        .contactInfo .qrcode img {
+            margin: 16px 0 0 0;
+            max-width: 210px;
+            max-height: 210px;
+            width: 90%;
+        }
+
+        .page-content{
+            padding: 0!important;
+        }
+
+        .page-content-wrapper .page-content {
+            background-color: #eee !important;
+        }
+
+        .courseTotal > .number {
+            font-size: 27px !important;
+            color: #1caf9a !important;
+        }
+
+        .courseTotalN > .number {
+            font-size: 25px !important;
+            color: #1caf9a !important;
+        }
+
+        .table.table-bordered thead > tr > th{
+            border-right: 0px!important;
+        }
+
+        .table thead > tr{
+            background-color: #eeeeee;
+        }
+
+        .table-bordered{
+            border:none!important;
+        }
+        .table-bordered>tbody>tr>td{
+            border-right:none!important;
+            padding: 13px 8px 13px 8px;
+        }
+
+        .qrcodeDescription {
+            width: 100%;
+            margin: 0 auto;
+            line-height: 28px;
+        }
+
+        .monthtakednumber .number{
+            font-size: 40px;
+        }
+
+        .examingTitle {
+            font-size: 20px;
+            font-weight: normal;
+            color: #333333;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left:15px;
+        }
+
+        .examingnumbersText {
+            margin-top: 23px;
+            float: right !important;
+        }
+
+        .onlineNumbers {
+            float: right !important;
+            margin: 23px 14px 0 17px !important;
+        }
+
+        .orange {
+            color: #ff962a;
+            width: auto;
+            display: inline-block;
+            text-align: right;
+        }
+
+        .courseingList .row > div {
+            float: left;
+            margin-left: 15px;
+        }
+
+        .courseingTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 20px;
+        }
+
+        .courseingstudy {
+            float: right !important;
+            margin-top: 23px;
+        }
+
+        .examingNumberHarchart .row > div {
+            float: left;
+            margin: 20px 0 0 15px;
+        }
+
+        .page-bar {
+            margin-bottom: 0;
+        }
+
+        .examingHarchartTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .chart-statistics {
+            margin: 60px 0 0 0;
+        }
+
+        .layui-inline {
+            float: left;
+            margin-right: 0 !important;
+        }
+
+        .compared {
+            float: left;
+            padding-top: 9px;
+        }
+
+        .comparedContainer {
+            float: right !important;
+        }
+
+        .comTime {
+            float: right !important;
+            padding-top: 8px;
+        }
+
+        .comparedContainer {
+            margin: 20px 0 0 10px !important;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(even){
+            background-color: #fcfcfc;
+        }
+        .table-hover>tbody>tr:hover{
+            background-color: #f5f5f5!important;
+        }
+
+        .table-hover>tbody>tr:hover .eti{
+            background-image: url("/components/com_exams/assets/img/dashboard/examTodayH.png");
+        }
+
+        .table-hover>tbody>tr:hover .examToday{
+            color: #ff962a;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(odd){
+            background-color: #fff;
+        }
+
+        .infoDetail {
+            font-size: 14px !important;
+            color: #fff !important;
+            text-align: center;
+            padding: 0 11px;
+            margin-top: 5px !important;
+        }
+
+        #showExamInfoToday {
+            display: none;
+            padding: 20px 30px 40px 30px;
+
+        }
+
+        .navContainer {
+            font-size: 16px;
+        }
+
+        .blueVertical {
+            float: left;
+            width: 4px;
+            height: 10px;
+            background-color: #36aafd;
+            margin: 5px 6px 0 0;
+        }
+
+        .layui-breadcrumb a.daShowE {
+            color: #000000 !important;
+            font-weight: bold;
+        }
+
+        .stuExamTab {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 10px 10px;
+            margin: 20px 0 0 0;
+            padding: 0 0;
+        }
+
+        .layui-tab-content {
+            padding: 0 0;
+
+        }
+
+        .layui-tab-title {
+            border-bottom-style: none;
+            height: 58px;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .layui-tab-title > li {
+            margin: 10px 72px 0 0;
+            color: #999999;
+        }
+
+        .stuExamInfo {
+            background-color: #ffffff;
+            box-shadow: 0px 11px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 0px 0px 10px 10px;
+            padding: 0px 30px 6px 30px;
+
+        }
+
+        .examNumbersHachartToday {
+            background-color: #ffffff;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 10px !important;
+            margin: 30px 0 0 0;
+            padding: 0 0;
+        }
+
+        .numCharTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000000;
+            margin: 26px 0 0 37px;
+        }
+
+        .unit {
+            font-size: 14px;
+            font-weight: normal;
+            color: #aaaaaa;
+        }
+
+        /*.createExam:hover {*/
+            /*border: solid 1px #36aafd;*/
+        /*}*/
+
+
+        /*.createquestions:hover {*/
+            /*border: solid 1px #ff962a;*/
+        /*}*/
+
+        .createCourse:hover {
+            border: solid 1px #d52b2a;
+        }
+
+        .uploadCourse:hover {
+            border: solid 1px #ff962a;
+        }
+
+        .statication:hover {
+            border: solid 1px #d52b2a;
+        }
+
+        .examingListContainer {
+            margin: 0px 0 4px 0;
+        }
+
+        .courseingListContainer {
+            margin: 0px 0 4px 0;
+        }
+
+        .showExamTakens {
+            font-size: 14px;
+            font-weight: normal;
+            color: #36aafd;
+            text-decoration: none !important;
+        }
+
+        .showExamTakens:focus {
+            color: #36aafd;
+        }
+
+        .layui-table-page > div {
+            width: 32%;
+            margin: 0 auto;
+        }
+
+        .layui-table[lay-even] tr:nth-child(even) {
+            background-color: #fcfcfc !important;
+        }
+
+        .layui-table tbody tr:hover {
+            background-color: #f5f5f5 !important;
+            cursor: pointer;
+        }
+
+        .hightChar {
+            max-width: 470px;
+            max-height: 160px;
+            padding: 0 0;
+            margin-top: 20px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        #stuNumbers_statistics {
+            width: 100%;
+            height: 100%;
+            padding: 0 0;
+        }
+
+        #examToday_statistics {
+            margin: 30px 0 0px 0;
+            padding: 0 0 28px 0;
+            border-radius: 10px;
+        }
+
+        #site_statistics {
+            margin: 35px 0 0 0;
+        }
+
+        .dashboard-info {
+            height: 37px;
+            padding: 0 8px;
+        }
+
+        .layui-tab-brief > .layui-tab-title .layui-this {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .layui-tab-brief > .layui-tab-title .layui-this:after {
+            border-bottom: 3px solid #36aafd;
+            height: 48px;
+        }
+
+        .examToday {
+            font-size: 14px;
+            font-weight: normal;
+            color: #ffecd9;
+            margin-left: 5px;
+            text-decoration: none !important;
+        }
+
+        .examToday:focus {
+            color: #ffecd9;
+        }
+
+        .examTodayInfo {
+            float: right;
+            right: 15px;
+            padding: 18px 30px;
+            margin-top: 1px;
+        }
+
+        .verticalT {
+            float: left;
+            width: 1px;
+            height: 20px;
+            background-color: #999;
+            margin: 0 10px;
+            margin-top: 11px;
+        }
+
+        .examTodayInfo > div {
+            float: left;
+        }
+
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            box-shadow: 0 0 0 30px white inset !important;
+        }
+
+        .sTText {
+            float: left;
+            font-size: 13px;
+            color: #333;
+            margin-top: 1px;
+        }
+
+        .main {
+            width: 100%;
+            padding: 0 20px 10px 20px;
+        }
+
+        #showExamInfoToday {
+            width: 100%;
+        }
+
+        .eti {
+            background-image: url("/components/com_exams/assets/img/dashboard/examToday.png");
+            margin-left: 10px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            position: relative;
+            top: 4px;
+        }
+
+        .studentCountOver {
+            background-color: #fffbd8;
+            height: 36px;
+            border-bottom: solid 2px #ffedd8
+        }
+
+        .studentCountOver > div {
+            position: relative;
+            top: 5px;
+            left: 30px;
+            width: 96.5%;
+        }
+
+        .upgrade {
+            background-color: #ff962a;
+            border-radius: 4px !important;
+            height: 26px;
+            color: #fff !important;
+            font-size: 14px;
+            padding: 3px 12px !important;
+            margin: 0 0 0 10px;
+        }
+
+        .upgrade:hover {
+            background-color: #fda54a;
+        }
+
+        .searchContainer {
+            height: 34px;
+            float: right;
+            margin-top: -1px;
+        }
+
+        .search {
+            width: 240px;
+            height: 34px;
+            border-radius: 5px;
+            border: solid 1px #d6d6d6;
+            padding: 5px 10px;
+            color: #707070;
+
+        }
+
+
+        .eTText {
+            font-size: 13px;
+            color: #333;
+            margin-top: 1px;
+        }
+
+        #courseingN {
+            color: #36aafd;
+        }
+
+        #onCoN {
+            color: #36aafd;
+        }
+
+
+        .datatableLoading{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,0);
+            top: 134px;
+            color: #9a9a9a;
+        }
+
+        .TodatatableLoading{
+            position: absolute;
+            left: 55%;
+            transform: translate(-50%,0);
+            top: 244px;
+            color: #9a9a9a;
+        }
+
+        .showExamTakens:hover {
+            color: #777 !important;
+        }
+
+
+        .orther {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .pageD {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .or {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .ar {
+            border: none !important;
+            padding: 0 0 !important;
+            font-size: 14px !important;
+            color: #999999 !important;
+            margin-bottom: 0 !important;
+            margin-top: -5px !important;
+        }
+
+        .layui-table-view {
+            border: none !important;
+        }
+
+        .layui-laypage .layui-laypage-count {
+            font-size: 14px;
+            font-weight: normal;
+            color: #999999;
+            margin-bottom: 0 !important;
+        }
+
+        .layui-laypage .layui-laypage-limits {
+            margin-right: 2px;
+            margin-bottom: 0 !important;
+        }
+
+        .layui-laypage .layui-laypage-limits select {
+            width: 60px;
+            height: 21px;
+            margin-left: 10px;
+        }
+
+        .rightDash {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .verticalS {
+            float: left;
+            width: 0px;
+            height: 55px;
+            border: solid 1px #e6e6e6;
+            margin-top: 33px;
+        }
+
+        .closeInput {
+            position: relative;
+            left: 234px;
+            top: -2px;
+            display: none;
+        }
+
+        #examToday_statistics {
+            width: 98%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        .closeHeader {
+            float: right;
+            margin-top: 7px;
+        }
+
+        #activeSearch {
+
+        }
+
+        .fa-search {
+            font-size: 20px;
+            color: #d6d6d6;
+            cursor: pointer;
+            position: absolute;
+            right: 67px;
+            top: 143px;
+        }
+
+        .fa-times {
+            font-size: 20px;
+            color: #d6d6d6;
+            cursor: pointer;
+            position: absolute;
+            right: 67px;
+            top: 143px;
+            display: none;
+        }
+
+        .oprateImg{
+            max-width: 47px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .oprateImgEn {
+            max-width: 40px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .upgradeVersion{
+            border-radius: 4px!important;
+            margin: 7px 0 0 15px;
+            background-color: #F3565D;
+            color: white!important;
+            height: 30px;
+            padding: 6px 10px 6px 10px;
+        }
+        .upgradeVersion:hover{
+            background-color: #f1353d;
+        }
+        #newstudent:hover {
+            border: 1px solid rgba(0,160,80,0);
+        }
+
+        .phone-img{
+            margin-left: 10px;
+        }
+    }
+
+    @media (max-width: 1800px){
+        .examingExams {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 8% 0 10%;
+        }
+
+        .phone-img{
+            margin-left: 10px;
+        }
+    }
+
+    @media (max-width: 1700px){
+        .oprateImgEn{
+            max-width: 30px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .oprateTextEn{
+            font-size: 13px;
+        }
+
+        .phone-img{
+            margin-left: 10px;
+        }
+    }
+
+    @media (max-width: 1592px){
+        .examInfoTodayText{
+            position: absolute;
+            width: 72px;
+            height: 16px;
+            z-index: 100;
+        }
+        .monthleftnumberEn .number {
+            font-size: 36px;
+        }
+        .footerBox > div{
+            width: 18.52%;
+        }
+        .monthleftnumberEn .thNumber {
+            font-size: 36px;
+        }
+
+        .monthleftnumberEn{
+            margin-left: 10px;
+        }
+        .monthtakednumberEn{
+            margin: 27px 11px 0px 12px;
+        }
+        .monthtakednumberEn .number{
+            font-size:36px;
+        }
+        .contactInfo .contactOneEn .info{
+            margin: 0px 0 0 2px;
+        }
+        .fa-envelope-o{
+            left: 5px;
+            width: 40px;
+            height: 40px;
+        }
+        .fa-telegram{
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            margin-top: 21px;
+        }
+        .infoEn{
+            margin: 0px!important;
+            padding-left: 2px;
+            width: 75%;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+        .examingExamsEn {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 2px 0 3px;
+        }
+        .examingNumberEn {
+            float: left;
+            font-size: 14px;
+            color: #999999;
+            margin: 27px 0px 0 2px;
+        }
+        .contactInfo .contactOneEn{
+            padding: 0px;
+        }
+        .topBox > .needGrade .leftBox{
+            margin: 27px 0px 0px 14px;
+            font-size: 14px;
+        }
+        .examTotal{
+            margin: 0px 0 0 14px;
+        }
+        .courseTotalN > .number{
+            font-size: 20px !important;
+        }
+        .courseActive{
+            display: inline-block;
+            background-color: #ffffff;
+            border-radius: 14px !important;
+            border: solid 1px #ff962a;
+            font-size: 12px;
+            font-weight: normal;
+            color: #ff962a;
+            cursor: pointer;
+            margin: 0 0 0 1px;
+            padding: 2px 8px;
+            position: relative;
+            top: -2px;
+            text-decoration: none!important;
+        }
+        .oprateImg{
+            max-width: 40px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .oprateTextEn{
+            position: relative;
+            transform: translate(0%, -50%);
+            top: 50%;
+            width: auto;
+            float: left;
+            font-size: 11px;
+            font-weight: normal;
+            color: #000000;
+            margin-left: 2px;
+            word-break: keep-all;
+        }
+
+        .oprateImgEn {
+            max-width: 30px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        .oprateText{
+            margin-left: 3px;
+            font-size: 14px;
+            float: left;
+            position: relative;
+            top: 50%;
+            transform: translate(0px,-50%);
+            word-break: keep-all;
+        }
+
+        #newstudent > .cn{
+            width: 107px;
+        }
+
+        .oprateBox > a > div{
+            width: auto;
+            height: 40px;
+        }
+        .page-content-wrapper .page-content {
+            padding: 0px 0px 10px 0px;
+        }
+
+        .oprateBox > a{
+            margin: 20px 1px;
+        }
+
+        #newstudent{
+            margin: 20px 1px;
+        }
+
+        .provideHelp{
+            font-size: 16px;
+            margin:20px 0 20px 5px;
+        }
+        .imgContainer > img{
+            max-height: 41px;
+        }
+
+
+        .contactInfo .contactOne{
+            padding: 10px 0px 13px 15px;
+        }
+
+        .contactInfo .contactOne .info{
+            margin: 0px 0 0 10px;
+        }
+
+        #alertExpiredContent{
+            display: none;
+            width: 496px;
+            height: 500px;
+            background-color: #e44d43;
+            border-radius: 10px!important;
+            margin: 0 auto;
+        }
+
+        .alertExpiredContent-logo>img:first-child{
+            margin: 40px 0px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        .examingNumber{
+            float: left;
+            font-size: 12px;
+            color: #999999;
+            margin:25px 0px 0 10px;
+        }
+        .examingExams{
+            float: left;
+            font-size: 12px;
+            color: #999999;
+            margin:25px 30px 0 43px;
+        }
+
+        .examingList .row > div.col-md-6{
+            width: 100%;
+        }
+        .text{
+            font-size: 13px!important;
+        }
+
+        .monthtakednumber{
+            margin: 27px 38px 0px 11px;
+        }
+
+        .examingExams .info{
+            font-size: 37px;
+        }
+        .topBox > .needGrade .leftBox .correctInfo{
+            font-size: 36px;
+        }
+        .snumber{
+            font-size: 29px;
+            margin: 13px 0 0 0;
+        }
+
+        .monthleftnumber{
+            margin-left: 27px;
+        }
+
+        .oprate .showExamInfoToday{
+            font-size: 12px;
+            width: 87px;
+            height: 25px;
+        }
+
+        .oprate .showExamInfoTodayEn{
+            font-size: 12px;
+            width: 99px;
+            height: 24px;
+        }
+
+        .examInfoTodayTextEn {
+            position: absolute;
+            /*width: 87px;*/
+            height: 13px;
+            z-index: 100;
+        }
+
+        .topBox > .needGrade .toGrade{
+            font-size: 12px;
+            height: 26px;
+            width: 73px;
+        }
+
+        .topBox > .needGrade .toGradeEn{
+            font-size: 12px;
+            height: 22px;
+            width: 81px;
+            padding: 4px 9px;
+            margin: 27px 0px 0 0;
+        }
+
+        .toGradeTextEn {
+            position: absolute;
+            width: 62px;
+            height: 13px;
+            z-index: 100;
+        }
+
+        .toGradeText {
+            position: absolute;
+            width: 38px;
+            height: 16px;
+            z-index: 100;
+        }
+
+        .contactInfo .contactOne >div>img{
+            max-width: 41px;
+        }
+
+        .contactInfo .contactOne .numbers{
+            font-size: 16px;
+        }
+
+        .phone-img{
+            margin-left: 5px;
+        }
+    }
+
+    @media (max-width: 1370px){
+        .monthtakednumber .number {
+            font-size: 32px;
+        }
+        .footerBox > div .number{
+            font-size: 25px;
+        }
+        .examingExams .info{
+            font-size: 32px;
+        }
+        .examingNumber .info{
+            font-size: 32px;
+        }
+        .col-md-10 {
+            width: 84.53333333%;
+        }
+        .examingExams {
+            margin: 25px 13px 0 15px;
+        }
+        .monthleftnumberEn {
+            margin-left: 5px;
+        }
+        .oprateText{
+            font-size: 12px;
+        }
+        .contactInfo .contactOne .numbers{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100px;
+        }
+        .contactInfo .contactOne .info{
+            margin: 0px 0 0 0px;
+        }
+        .contactInfo .contactOne{
+            padding: 10px 0px 13px 0px;
+        }
+        .contactInfo .contactOneEn .numbersEn{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: keep-all;
+            width: 107px;
+        }
+        .infoEn{
+            width: 72%;
+        }
+        .fa-envelope-o{
+            margin-top: 10px;
+        }
+        .fa-telegram{
+            margin-top: 9px;
+        }
+        .text{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .examingNumberEn .text{
+            width: 70px;
+        }
+        .monthleftnumberEn .text{
+            width: 105px;
+        }
+        .systenAnnoucement{
+            margin: 20px 0 0 10px;
+        }
+        .col-md-2 {
+            width: 15.46666667%;
+            padding: 0px 0px!important;
+        }
+
+        .col-md-4 {
+            width: 35.53333333%;
+        }
+
+        .col-md-8 {
+            width: 64.466667%;
+        }
+    }
+
+    @media screen and (max-width: 1281px) {
+        .oprateImgEn {
+            max-width: 16px;
+        }
+    }
+
+    .studentLogin{
+        background-color: #ffffff;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        margin-bottom: 25px;
+        padding: 20px;
+    }
+
+    .studentLogin .title{
+        height: 25px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 28px;
+        color: #333333;
+        opacity: 1;
+    }
+
+    .studentLogin .title-border {
+        padding-bottom: 10px;
+        margin-bottom: 22px;
+    }
+
+    .studentLogin .url-div{
+        border-bottom: 1px dashed #E6E6E6;
+        padding-bottom: 15px;
+    }
+
+    .studentLogin pre {
+        border-radius: 6px !important;
+        height: 32px;
+        width: 96%;
+        background: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 30px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .studentLogin .qr-code{
+        max-width: 210px;
+        width: 90%;
+
+    }
+
+    .copytoclipbard:hover{
+        opacity: 0.7;
+    }
+
+    .qr-div{
+        margin-top:10px;
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .shade {
+        width: 90%;
+        height: 99%;
+        position: absolute;
+        right: 9px;
+        top: 2px;
+        background: rgba(50,50,50,.9);
+        z-index: 10;
+        text-align: center;
+        display: none;
+    }
+
+    .choose-img {
+        margin-top: 40%;
+        border-radius: 5px !important;
+    }
+
+    .share-text{
+        height: 26px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #333333;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 1625px) {
+        .share-text{
+            height: 33px;
+        }
+    }
+
+    
+    .page-content-wrapper>.page-content{
+        position: relative;
+    }
+
+    .newyear-pic{
+        width:100%;
+        height: 120px;
+        line-height: 120px;
+        background-image: url('/components/com_exams/assets/img/dashboard/back.jpg');
+        background-repeat: repeat;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+    }
+
+    .margin-left-2{
+        margin-left: 3%;
+        float: left;
+    }
+
+    @media screen and (max-width: 1400px) {
+        .margin-left-2{
+            margin-left: 1% !important;
+            float: left;
+        }
+    }
+
+<!--    -->        /*#system-message-container{*/
+        /*    margin-top: 121px;*/
+        /*}*/
+<!--    -->
+</style>
+<!--    <div style="position: absolute;top: 0px;width:100%;display:none;">-->
+<!--        <div class="newyear-pic">-->
+<!--            <div style="float:left;">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/leftPic.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/2020.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/shu.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/nin.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/yu.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/you.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/kao.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/kshi.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/de.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/gu.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/shi.png" alt="">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="margin-left-2">-->
+<!--                <img src="/components/com_exams/assets/img/dashboard/rgtbao.png" alt="">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--只有人数超过同时没过期没即将过期才弹出来-->
+<!--人数超过同时过期才弹出来-->
+<!--人数超过同时即将到期-->
+<div class="main">
+    <!--  检查当前账户是否到期，到期就显示提示信息-->
+    
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12" style="margin-top:25px;padding: 0 0;">
+            <div class="dashboard-info">
+                <img src="/" alt="">
+                <span class="courtesy"></span>
+                                    <span class="userInfo">
+                                                                                    <span class="infoDetail">免费会员，到期时间 ：永久使用</span>
+                                                                    </span>
+                                            <a class="btn btn-sm upgradeVersion" href="/upgrade.html" target="_blank" >现在升级</a>
+                                                </div>
+        </div>
+
+    </div>
+
+    <!-- END DASHBOARD STATS -->
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-10 col-sm-10" style="margin-top: 25px;padding:0px 10px">
+            <div class=" col-md-12 col-sm-12 dashboard-mainl-new">
+                <div class=" col-md-4 col-sm-4 firstBox">
+                    <div class=" col-md-12 col-sm-12 topBox">
+                        <div class="examingNumber">
+                            <div title="正在考试人数" class="text">正在考试人数</div>
+                            <div class="info" data-num="0">0</div>
+                        </div>
+                        <div class="examingExams">
+                            <div class="text">正在考试试卷</div>
+                            <div class="info">0</div>
+                        </div>
+                        <div class="oprate">
+                            <!--                                <div class="showExaming">--><!--</div>-->
+                            <div href="#showExamInfoToday" class="showExamInfoToday">
+                                <span class="examInfoTodayText" >今日考试情况</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-12 col-sm-12 hightChar">
+                        <div id="stuNumbers_statistics" class=" col-md-12 col-sm-12 ">
+
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-8 col-sm-8 secondBox">
+                    <div class=" col-md-12 col-sm-12 topBox">
+                        <div class=" col-md-5 col-sm-5 needGrade">
+                            <div class="leftBox">
+                                <div class="text">待批改试卷</div>
+                                                                <div id="gradedNum" class="correctInfo"><i class="gradedInfoLoading fa fa-spinner fa-spin fa-x fa-fw loading"></i></div>
+                                                            </div>
+                            <a class="toGrade" target="_blank" href="/dashboards.html?view=dashboardgrade">
+                                <span class="toGradeText">去批卷</span>
+                            </a>
+                        </div>
+                        <div class=" col-md-7 col-sm-7" style="height: 100%;padding-right: 0;padding-left: 22px;">
+                            <div class=" col-md-12 col-sm-12 month">
+                                <div class="monthtakednumber">
+                                    <div class="text">本月已考次数</div>
+                                    <div class="number">
+                                        0                                    </div>
+                                </div>
+                                <div class="verticalS"></div>
+                                <div class="monthleftnumber">
+                                    <div title="本月剩余次数" class="text">本月剩余次数</div>
+                                                                                                                                                            <div class="number">
+                                                150                                            </div>
+                                                                                                            </div>
+                            </div>
+                        </div>
+                    </div>
+                                            <div class=" col-md-12 col-sm-12 footerBox">
+                            <div class="examTotal">
+                                <div class="text">总试卷数</div>
+                                <div class="number">0</div>
+                            </div>
+                            <div class="questionsTotal">
+                                <div class="text">总试题数</div>
+                                <div class="number">0</div>
+                            </div>
+                            <div class="studentsTotal">
+                                <div class="text">总考生数</div>
+                                <div class="number">0</div>
+                            </div>
+                            <div class="questionnairesTotal">
+                                <div class="text">总问卷数</div>
+                                <div class="number">0</div>
+                            </div>
+                            <div id="courseLoading" style="display: "><i class="courseLoading fa fa-spinner fa-spin fa-x fa-fw loading"></i></div>
+                            <div class="courseTotalN">
+                                <div class="text">总课程数</div>
+                                <div class="number">
+                                    <div>未开通</div>
+                                    <a target="_blank" href="/study-module/study.html" class="courseActive">去开通</a>
+                                </div>
+                            </div>
+                            <div class="courseTotal">
+                                <div class="text">总课程数</div>
+                                <div class="number">
+                                    <div id="courseNumbers" style="color: #36aafd;"></div>
+                                </div>
+                            </div>
+                    </div>
+                                    </div>
+
+            </div>
+            <div class=" col-md-12 col-sm-12 quickOperate">
+                <div class="row oprateTitle">快捷操作</div>
+                <div class=" col-md-12 col-sm-12 oprateBox Box">
+                    <a class="createExam" style="margin-left:0px;" href="/dashboards.html?task=exam.add">
+
+                        <div class="quickContainer">
+                            <img class="oprateImg" src="/components/com_exams/assets/img/dashboard/1.png">
+                            <div class="oprateText">创建考试</div>
+                        </div>
+                    </a>
+
+                    <a class=" createquestions" href="/qman/batch-import.html">
+                        <div class="quickContainer">
+                            <img class="oprateImg" src="/components/com_exams/assets/img/dashboard/2.png">
+                            <div class="oprateText">导入试题</div>
+                        </div>
+                    </a>
+                                            <a class="createCourse" href="/study-module/study.html">
+                            <div class="quickContainer">
+                                <img class="oprateImg" src="/components/com_exams/assets/img/dashboard/3.png">
+                                <div class="oprateText">创建课程</div>
+                            </div>
+                        </a>
+                                                                <a class="uploadCourse" href="/study-module/study.html?layout=upload">
+                            <div class="quickContainer">
+                                <img class="oprateImg" src="/components/com_exams/assets/img/dashboard/4.png">
+                                <div class="oprateText">上传课件</div>
+                            </div>
+                        </a>
+                                        <!-- 判断是否有权限 -->
+                                                                    <div id="newstudent" class="  createStudents newstudent" href="#newstudent" data-url="/dashboards.html?task=student.add&gid=0&tmpl=clean">
+                            <div class="quickContainer">
+                                <img class="oprateImg" src="/components/com_exams/assets/img/dashboard/5.png">
+                                <div class="oprateText">添加考生</div>
+                            </div>
+                        </div>
+                                        <a class="statication" style="margin-right: 0px;" href="/dashboards.html?view=takenlist&action=recent">
+                        <div class="quickContainer">
+                            <img class="oprateImg" src="/components/com_exams/assets/img/dashboard/6.png">
+                            <div class="oprateText">一周考试详情</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class=" col-md-12 col-sm-12 examingList">
+                <div class="row">
+                    <div class="examingTitle">正在进行的考试 </div>
+                    <div class="onlineNumbers">
+                        <span>
+                            未完成人数                        </span>：
+                        <div id="onExN" class="orange">
+                            <i class="fa fa-spinner fa-spin fa-x fa-fw loading"></i>
+                        </div>
+                        人                    </div>
+                    <div class="examingnumbersText">正在进行的考试 ：<div id="examingN" class="orange"><i class="fa fa-spinner fa-spin fa-x fa-fw loading"></i></div> 份</div>
+
+                </div>
+                <div class=" col-md-12 col-sm-12 examingListContainer">
+
+                    <table class="table table-hover table-bordered table-striped" id="examingList" width="100%">
+                        <thead>
+                        <tr>
+                            <th width="32%">考试名称</th>
+                            <th width="38%">考试时间</th>
+                            <th width="16%">未完成人数</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div id="examListLoading" class="datatableLoading">
+                            <i class="fa fa-spinner fa-spin fa-2x fa-fw loading"></i>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+                            <div class=" col-md-12 col-sm-12 courseingList">
+                    <div class="row">
+                        <div class="courseingTitle">正在进行的课程</div>
+                        <div class="onlineNumbers">
+                            <span>
+                            正在学习人数                            </span>
+                            ：
+                            <div id="onCoN" class="orange">
+                                <i class="fa fa-spinner fa-spin fa-x fa-fw loading"></i>
+                            </div>
+                            人                        </div>
+                        <div class="courseingstudy">
+                            正在进行的学习                            ：
+                            <div id="courseingN" class="orange">
+                                <i class="fa fa-spinner fa-spin fa-x fa-fw loading"></i>
+                            </div>
+                            份                        </div>
+                    </div>
+                    <div class=" col-md-12 col-sm-12 courseingListContainer">
+                        <table class="table table-hover table-bordered table-striped" id="courseingList" width="100%">
+                            <thead>
+                            <tr>
+                                <th width="32%">课程名称</th>
+                                <th width="38%">课程开启时间</th>
+                                <th width="16%">正在学习人数</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <div id="courseListLoading" class="datatableLoading">
+                                <i class="fa fa-spinner fa-spin fa-2x fa-fw loading"></i>
+                            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                        <div class=" col-md-12 col-sm-12 examingNumberHarchart">
+                <div class="row">
+                    <div class="examingHarchartTitle">考试次数变化</div>
+                </div>
+                <div id="site_statistics" class=" col-md-12 col-sm-12">
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-2 col-sm-2" style="margin-top: 25px;padding:0px 10px">
+                            <div class=" col-md-12 col-sm-12 annoucements">
+                    <div class="systenAnnoucement">系统公告</div>
+                    <div class="dashLine"></div>
+                    <div class=" col-md-12 col-sm-12 annoucemetsList">
+                                                                                    <a class=" col-md-12 col-sm-12" title="优考试祝您牛年快乐！" href="javascript:;" data-value="51" time="2021-02-07" data-set="1"><div class="da-circle"></div> <span class="annouceTitle">优考试祝您牛年快乐！</span></a>
+                                                            <a class=" col-md-12 col-sm-12" title="2021年1月份更新记录" href="javascript:;" data-value="50" time="2021-02-06" data-set="1"><div class="da-circle"></div> <span class="annouceTitle">2021年1月份更新记录</span></a>
+                                                            <a class=" col-md-12 col-sm-12" title=" 2021年2月6日晚系统升级通知" href="javascript:;" data-value="49" time="2021-02-02" data-set="1"><div class="da-circle"></div> <span class="annouceTitle"> 2021年2月6日晚系统升级通知</span></a>
+                                                                        </div>
+                </div>
+
+                <!--考生登录链接-->
+                <div class="col-md-12 col-sm-12 studentLogin">
+                    <div class="title-border">
+                        <div class="title">
+                            分享考生登录地址                        </div>
+                    </div>
+
+                    <div class="row url-div">
+                        <div class="col-md-10 col-sm-10" style="padding:0;">
+                            <pre>https://home.youkaoshi.cn/login/u/70A98B7ZyJ</pre>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2 copy-tooltip" data-jbox-content="点击复制" style="padding:0;">
+                            <a href="#copyUrl" class="copytoclipbard" data-clipboard-text="https://home.youkaoshi.cn/login/u/70A98B7ZyJ">
+                                <img style="width:32px;" class="" src="/components/com_exams/assets/img/copy-link.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row col-md-12 col-sm-12 share-text">
+                        保存即可分享二维码                    </div>
+
+                    <div class="row col-md-12 col-sm-12 qr-div">
+                        <img class="qr-code" src="/dashboards.raw?view=genqrcode&url=https://home.youkaoshi.cn/login/u/70A98B7ZyJ" alt="">
+
+                        <div class="shade">
+                            <a class="choose-img btn blue" download="二维码" href="/dashboards.raw?view=genqrcode&url=https://home.youkaoshi.cn/login/u/70A98B7ZyJ">保存图片</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--公司联系方式等-->
+                <div class="col-md-12 col-sm-12 contactInfo">
+                    <div class=" col-md-12 col-sm-12 provideHelp">竭诚为您服务</div>
+                                            <div class=" col-md-12 col-sm-12 contactOne">
+                            <div>
+                                <img class="img" src="/components/com_exams/assets/img/dashboard/advisory.png">
+                            </div>
+                            <div class="info">
+                                <div class="text">咨询电话</div>
+                                <a target="_blank" href="tel:020-28165026" class="numbers" title="020-28165026">020-28165026</a>
+                            </div>
+                        </div>
+                                        <div class=" col-md-12 col-sm-12 dashLine rightDash"></div>
+                                            <div class=" col-md-12 col-sm-12 contactOne">
+                            <div class="imgContainer">
+                                <img class="img" src="/components/com_exams/assets/img/dashboard/contactqq.png">
+                            </div>
+                            <div class="info">
+                                <div class="text">售后服务</div>
+                                <a title="3322628959" class="numbers" style="color: #ff7f2a;" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3322628959&site=qq&menu=yes" class="btn btn-orange-o5" >3322628959</a>
+                            </div>
+                        </div>
+                    
+                    <div class=" col-md-12 col-sm-12 dashLine rightDash"></div>
+                                            <div class=" col-md-12 col-sm-12 qrcode">
+                            <div class="qrcodeDescription">关注优考试公众号掌握最新动态</div>
+                            <img class="img" src="/components/com_exams/assets/img/youkaoshi-weixi-qrcode.png">
+                        </div>
+                                    </div>
+
+                    </div>
+    </div>
+</div>
+<div id="showExamInfoToday" class="">
+    <div class="navContainer">
+        <div class="blueVertical"></div>
+        <span class="layui-breadcrumb">
+          <a href="#dashboard">控制中心</a>
+          <a class="daShowE">今日考试情况</a>
+        </span>
+    </div>
+
+    <div class="layui-tab layui-tab-brief stuExamTab" lay-filter="stuExamTab">
+        <ul class="layui-tab-title">
+            <li style="margin-left:30px;" class="layui-this">考生情况</li>
+            <li>试卷情况</li>
+            <li class="examTodayInfo">
+                <div >
+                    <div style="float: left;margin:0px 7px 0 0"><img src="/components/com_exams/assets/img/dashboard/examTodayNumber.png"></div>
+                    <div class="sTText">
+                        今日总考试次数                    </div>：
+                    <span id="sTTN" title="考试次数： 账户所有试卷的今天考试次数之和"><i class="fa fa-spinner fa-spin fa-x fa-fw loading"></i></span>
+                </div>
+                <div class="verticalT"></div>
+                <div>
+                    <span style="float: left;margin:0px 7px 0 0"><img src="/components/com_exams/assets/img/dashboard/examTodayPN.png"></span>
+                    <span class="eTText">
+                今日总考试人数                </span>：
+                    <span id="eTTN" title="考试人数：账户所有用账号登录考试的人数" ><i class="fa fa-spinner fa-spin fa-x fa-fw loading"></i></span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="layui-tab-content stuExamInfo">
+            <div class="layui-tab-item layui-show">
+
+                <div id="stuSC" class="searchContainer">
+                    <i id="activeSearch" class="fa fa-search" aria-hidden="true"></i>
+                    <i id="stuClose" class="fa fa-times" aria-hidden="true"></i>
+                    <input id="stuTodaySearch" type="text" class="search" value="" placeholder="请输入搜索试卷标题">
+                </div>
+
+                <table class="table table-hover table-bordered table-striped" id="stuExamList" width="100%">
+                    <thead>
+                    <tr>
+                        <th width="15%" class="orderId">序号</th>
+                        <th width="15%">考生姓名</th>
+                        <th width="53%">试卷标题</th>
+                        <th width="10%">分数</th>
+                        <th>开始考试时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <div id="examStuLoading" class="TodatatableLoading">
+                        <i class="fa fa-spinner fa-spin fa-2x fa-fw loading"></i>
+                    </div>
+                    </tbody>
+                </table>
+            </div>
+            <div class="layui-tab-item">
+                <table class="table table-hover table-bordered table-striped" id="examExamList" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="orderId">序号</th>
+                        <th width="54%">试卷标题</th>
+                        <th>考试次数</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <div id="examExamLoading" class="TodatatableLoading">
+                        <i class="fa fa-spinner fa-spin fa-2x fa-fw loading"></i>
+                    </div>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="examNumbersHachartToday">
+        <div class="row">
+            <div class="numCharTitle">今日考试次数时间分布曲线图<span class=unit>（单位：次数）</span></div>
+        </div>
+        <div class="">
+            <div id="examToday_statistics" class="">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .categories-tree-window {
+        display: none;
+    }
+
+    .categories-tree-window div[name="categories-tree"] {
+        height: 240px;
+        overflow: auto;
+    }
+
+    .categories-tree-window .categories-search,
+    .categories-tree-window [name="categories-tree"] {
+        margin-bottom: 12px;
+    }
+   
+    .bootstrap-tagsinput{
+        max-height: 68px;
+        overflow-y: auto;
+        line-height: 27px;
+    }
+    .selectedCount{
+        font-size: 14px;
+        color: #333333;
+    }
+</style>
+
+<div id="group-tree-1" class="categories-tree-window">
+        
+    <!--    添加搜索框-->
+    <div class="input-icon group-search" style="margin-bottom: 20px;padding: 0 20px;">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control input-circle" placeholder="搜索">
+    </div>
+
+    <!--category tree-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div name="categories-tree"></div>
+        </div>
+    </div>
+    <!--category tree-->
+
+    <!--tagsinput-->
+    <div class="row" style="display: none">
+        <div class="col-xs-12">
+            <input type="text" name="tagsinput" >
+        </div>
+    </div>
+    <!--tagsinput-->
+
+    <!--显示选择多少个组-->
+    
+    <!--按钮-->
+    <div class="row">
+        <div class="col-xs-12" style="margin-top: 15px;">
+            <a href="/javascript" class="btn yks-blue-default" id="newgroup" style="float: left">新建分组</a>
+            <div class="pull-right">
+                <button style="background: #fff;" type="button" name="cancel" class="btn yks-blue-default">取消</button>
+                <button type="button" name="confirm" class="btn yks-blue">选择</button>
+            </div>
+        </div>
+    </div>
+    <!--按钮-->
+</div>
+<style type="text/css">
+    .bind-phone-window{
+        display: none;
+    }
+    #bind-phone-box .fa-mobile{
+        color: #89C4F4!important;
+        font-size: 28px;
+        background-color: white;
+    }
+    #bind-phone-box .bind-phone-tip{
+        margin-top: 20px;
+    }
+    #bind-phone-box .fa-shield-check{
+        color: #89C4F4!important;
+        font-size: 28px;
+        background-color: white;
+    }
+    #bind-phone-box .btn-info{
+        background-color: #72b8f2!important;
+    }
+    #bind-phone-box .btn-info:hover{
+        background-color: #68b4f1!important;
+    }
+    #bind-phone-box .bind-phone-tip{
+        margin-top: 30px;
+        color: red;
+    }
+    #bind-phone-box .btn-bind-phone{
+        width: 100%;
+    }
+    #bind-phone-box .input-group{
+        height: 42px;
+    }
+    #bind-phone-box input[name="phone"],#bind-phone-box input[name="code"]{
+        height: 42px!important;
+    }
+</style>
+<div id="bind-phone-box" class="bind-phone-window">
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="#" class="form-horizontal">
+                <div class="form-body">
+                    <div class="form-group bind-phone-tip">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <span class="">应《中华人民共和国网络安全法》要求我们将进一步强化实名认证机制。为全面体验产品服务，烦请您绑定手机号。</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 40px">
+                        <div class="col-md-8  col-md-offset-2">
+                            <div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mobile"></i>
+                                    </span>
+                                    <input type="text" name="phone" class="form-control" placeholder='请填写您真实的手机号码'>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8  col-md-offset-2">
+                            <div>
+                                <div class="input-group">
+                                    <input type="te" name="code" class="form-control" placeholder='请输入验证码'>
+                                    <span type="button" class="input-group-addon btn btn-info get-code-btn">获取验证码</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2" style="padding-left: 6px;padding-right: 5px">
+                                <a href="#" type="button" class="btn btn-info btn-bind-phone">绑定手机</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--过期内容盒子-->
+<div class="" id="alertExpiredContent">
+    </div>
+
+<!--正在进行的学习查询操作-->
+<script type="text/html" id="courseingListOptions">
+    <div class="rechargeOptions">
+        <a data-eid="{{d.coid}}" target="_blank" lay-event="showExamTakens" class="showExamTakens" href="/study-module/study.html?layout=detail&coid={{d.learn_coid}}&title={{d.learn_title}}">
+            查看学习记录        </a>
+    </div>
+</script>
+
+
+<div id="jBoxContent" style="display: none;text-align: center;">
+    <h2></h2>
+    <p></p>
+</div>
+
+<!--点击每日公告盒子-->
+<div id="boxWait" style="display: none;text-align: center;">
+
+</div>
+
+<!--今日考试试卷操作-->
+<script type="text/html" id="examExamToday">
+    <div class="examExamTodayItem">
+        <span class="eti">
+<!--            <img src="/components/com_exams/assets/img/dashboard/examToday.png">-->
+        </span>
+        <a data-eid="{{d.eid}}" target="_blank" lay-event="showExamTakens" class="examToday" href="/dashboards.html?view=takendetail&action=exam&eid={{d.eid}}">
+            查看记录        </a>
+    </div>
+</script>
+<script>
+    window.jiathis_config = {};
+    (function ($) {
+        'use strict';
+        $(function () {
+
+            //原先js start
+            var iscn = "1";
+
+                            $(".newyear-pic").click(function(e){
+                    var link = "/u/newyear/70A98B7ZyJ.html";
+                    window.open(link);
+                })
+            
+            var token = "95909207f9408a035958129254068643";
+            //批卷数量start
+            var gradedInfoStart = 0;
+            var originNum = 0;
+            var start = 0;
+            var limit = 10;
+            var inputDefaultText = "请输入搜索试卷标题"
+            //?
+            $.selectGroupTree(3, token);
+            //判断时间修改太阳月亮图片
+            var date = new Date();
+            var h = date.getHours();
+            var doexamingStuNum = 0;
+            var runNum = null
+            var actionObject = $(".examingNumber .info")
+
+                        $(".studentLogin").find("a.copytoclipbard").clickCopyToClipbard();
+            
+            new jBox('Tooltip', {
+                attach: '.copy-tooltip',
+                getContent: 'data-jbox-content'
+            });
+
+            var qrDivIn = 0; // shade是否处于动画过渡期
+            var qrDivOut = 0; // shade是否接收到回退
+            var qrFinal = 0; // shade是否达到最右边
+            $(".qr-div").on({
+                mouseenter: function() {
+                    if (qrDivIn === 0) {
+                        qrDivIn = 1;
+                        $(this).find('.shade').show('slide', {direction: 'left'}, 500, function() {
+                            qrDivIn = 0;
+                            qrFinal = 1;
+                            if (qrDivOut === 1) {
+                                $('.shade').hide('slide', {direction: 'left'}, 500, function() {
+                                    qrDivOut = 0;
+                                    qrFinal = 0;
+                                });
+                            }
+                        });
+                    }
+                },
+                mouseleave: function() {
+                    if (qrFinal === 1) {
+                        $('.shade').hide('slide', {direction: 'left'}, 500, function() {
+                            qrDivOut = 0;
+                            qrFinal = 0;
+                        });
+                        return;
+                    }
+                    qrDivOut = 1;
+                }
+            });
+
+
+            var time = 0;
+            var isFirstHash = "1"
+            var generateHash = function(){
+                var hashInterval = setInterval(function () {
+                    $.get("/dashboards.raw?view=processquestionsduplication&amp;layout=generateHash",{
+                        time:time
+                    }).done(function (data) {
+                        try{
+                            data = $.parseJSON(data);
+                        }catch(e){
+                            data = {
+                                status:"error",
+                                error:e + "\n"+data
+                            }
+                        }
+                        if(data.status == 'ok'){
+                            time = data.time
+                        }else{
+                            clearInterval(hashInterval)
+                        }
+                    }).fail(function (e, err) {
+                        NW.message(window.OELang.title, err)
+                    })
+                },1000)
+
+            }
+            if(isFirstHash == 1){
+                generateHash()
+            }
+
+            if (h > 18){
+                $('.dashboard-info>img').attr("src","/components/com_exams/assets/img/dashboard/evening.png");
+                var str = "晚上好，"+"敬之"+"管理员";
+                $('.dashboard-info>span.courtesy').text(str);
+            }else if(h > 12){
+                $('.dashboard-info>img').attr("src","/components/com_exams/assets/img/dashboard/moring.png");
+                var str = "下午好，"+"敬之"+"管理员";
+                $('.dashboard-info>span.courtesy').text(str);
+            }else{
+                $('.dashboard-info>img').attr("src","/components/com_exams/assets/img/dashboard/moring.png");
+                var str = "早上好，"+"敬之"+"管理员";
+                $('.dashboard-info>span.courtesy').text(str);
+            }
+
+            <!--------------------------------------------------------- -------------------------------------------------------------------------------->
+            //检测公告的发布时间，如果在当前时间的一周之内，就标红显示加闪烁图标
+
+            var isSameWeek = function (old,now){
+                // var oneDayTime = 1000*60*60*24;
+                // var old_count =parseInt(old.getTime()/oneDayTime);
+                // var now_other =parseInt(now.getTime()/oneDayTime);
+                // return parseInt((old_count+4)/7) == parseInt((now_other+4)/7);
+                var oldstamp = old.getTime()/1000;
+                var nowstamp = now.getTime()/1000;
+                return  nowstamp - oldstamp < 7*24*3600;
+            };
+
+            $('.annoucements a').map(function(){
+
+                var strs = $(this).attr("time").split("-");
+                //js的月份是从0开始算，等于给获取的发布时间加了一个月，所以转格式时要减1
+                var publishTime = new Date(strs[0],strs[1]-1,strs[2]);
+                //判斷是否在同一周
+                var res = isSameWeek(publishTime,new Date());
+
+                if (res){
+                    $(this).css({'color':'#36AAFD'});
+                    $(this).append('<span style="color:#ff5f5f;margin-left:5px" >new!</span>');
+                    $(this).find(".da-circle").css('background-color','#36AAFD')
+                }
+            });
+
+            <!--------------------------------------------------------- -------------------------------------------------------------------------------->
+
+
+
+
+            //添加学生快捷操作
+            $("#newstudent").click(function () {
+                $.newStudent(function(){
+                }, 0, 0,token)
+            })
+
+            //系统公告弹出
+
+            var aboxwait = new jBox('Modal', {
+                width: 50,
+                height: 50,
+                title: '',
+                content: $('#boxWait')
+            });
+
+
+            var loading = $('<i class="fa fa-spin fa-spinner"></i>');
+
+            //点击每日公告
+            $('.annoucements a').on('click',function (e) {
+                e.preventDefault();
+                var ids = $(this).attr("data-value");
+                var title = $(this).text();
+                var data = {
+                    "pid": ids,
+                    "95909207f9408a035958129254068643" : "1"
+                };
+                aboxwait.open();
+                $('#boxWait').html(loading);
+                var announcementbox = new jBox('Modal', {
+                    id:"announce",
+                    minWidth: 50,
+                    maxHeight: $(window).innerHeight(true)*0.9,
+                    maxWidth: $(window).innerWidth(true)*0.9,
+                    minHeight: 50,
+                    closeButton: 'box',
+                    ajax: {
+                        type: "POST",
+                        url: "/dashboards.html?task=dashboard.announcement",
+                        data: data,
+                        complete: function(){
+                            announcementbox.position()
+                        }
+                    }
+                });
+                announcementbox.open();
+                aboxwait.close();
+            })
+
+            //图表
+            var dashboard = $.setupDashboardPage();
+            dashboard.showNotice([]);
+            
+
+            //时间考试次数变化
+            function site_statistics(){
+                $.get("/dashboards.raw?layout=statisticsMonth")
+                .success(function (data) {
+                    var data = $.parseJSON(data);
+                    var timeArrayExam = [];
+                    var valueArrayExam = [];
+                    for (let key in data.data){
+                        timeArrayExam.push(key)
+                        valueArrayExam.push(data.data[key])
+                    }
+
+                    if (parseInt(data.lastM) < 40000 && data.data){
+
+                        $("#site_statistics").highcharts({
+                            credits: {
+                                enabled: false
+                            },
+                            chart: {
+                                type: 'spline',
+
+                                height: 400,
+                                animation: Highcharts.svg, // don't animate in IE < IE 10.
+                                marginTop: 30,
+                            },
+
+                            title: {
+                                text: ''
+                            },
+                            xAxis: {
+                                title: {
+                                    text: "最近一个月考试记录分布",
+                                    y: 16,
+                                    style:{'color':'#999999'}
+                                },
+                                categories: timeArrayExam
+                            },
+                            yAxis: {
+                                allowDecimals: false,
+                                min: 0,
+                                lineWidth: 2,
+                                gridLineWidth: 0,//设置网格线宽度
+                                title: {
+                                    align: 'high',
+                                    text: '次数',
+                                    rotation: 0,
+                                    offset: -15,
+                                    y: -15,
+                                    x: -20
+                                }
+                            }, tooltip: {
+                                formatter: function () {
+                                    var p = "<b>{point.y}</b>个考生在<b>{point.key}</b>号这一天考试了";
+                                    return p.replace("{point.y}", this.y).replace("{point.key}", this.key);
+                                }
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                areaspline: {
+                                    fillColor: {
+                                        linearGradient: {
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 0,
+                                            y2: 1
+                                        },
+                                        stops: [
+                                            [0, Highcharts.getOptions().colors[0]],
+                                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                        ]
+                                    },
+                                    marker: {
+                                        radius: 2
+                                    },
+                                    lineWidth: 1,
+                                    states: {
+                                        hover: {
+                                            lineWidth: 1
+                                        }
+                                    },
+                                    threshold: null
+                                }
+                            },
+                            series: [
+                                {
+                                    type : 'areaspline',
+                                    name:'考试次数',
+                                    data: valueArrayExam
+                                }
+                            ]
+                        });
+                    }else{
+                        var div = '<div class="overTip">数据量太大,无法显示</div>'
+                        $("#site_statistics").html(div)
+                    }
+
+                });
+
+            }
+            var windowBlur = false
+            var runNumInterval = null
+            site_statistics()
+            //动态增加数字num:每次增加的数量，dom操作对象,比例
+            function reciprocal(num, dom ,type, newNum){
+                var oriNum = parseInt(dom.attr('data-num'))
+                var calNum = 0
+                var calEnd = num
+                var time = 40
+                if(newNum < 0)newNum = 0
+                num = parseInt(num)
+                if(num > 100){
+                    if(type > 0){
+                        type = parseInt(num/20)
+                    }else{
+                        type = -(parseInt(num/20))
+                    }
+                }
+                if(num > 20){
+                    calEnd = 20
+                }
+                if(runNumInterval != null){
+                    clearInterval(runNumInterval)
+                    runNumInterval = null
+                }
+                runNumInterval = setInterval(function(){
+                    oriNum += type
+                    if(oriNum < 0)oriNum = 0
+                    dom.text(changeNumbers(oriNum))
+                    calNum += 1
+                    if(calNum == calEnd){
+                        dom.text(changeNumbers(newNum))
+                        dom.attr('data-num',newNum)
+                        clearInterval(runNumInterval)
+                        runNumInterval = null
+                    }
+                },time)
+
+            }
+
+            document.addEventListener('visibilitychange',function(){ //浏览器切换事件
+                if(document.visibilityState=='hidden') { //状态判断
+                    windowBlur = true
+                }else {
+                    windowBlur = false
+                }
+            })
+            //实时获取考试人数数据
+            var getRealStuNumbers = function (series,chart) {
+                var d = {}
+                d["95909207f9408a035958129254068643"] = 1;
+
+                var url = '/dashboards.raw?task=dashboard.getRealStuInfo';
+                $.post(url, d).done(function (data) {
+                    data = $.parseJSON(data);
+                    if (data.status == "success") {
+                        var x = (new Date()).getTime(), // current time
+                            y = parseInt(data.numbers);
+                        doexamingStuNum = y
+                        var originTakeingNums = parseInt(actionObject.attr('data-num'))
+                        if(y != originTakeingNums && !windowBlur && runNumInterval == null){
+                            if(y < originTakeingNums){
+                                reciprocal(originTakeingNums-y, actionObject,-1, y);
+                            }else{
+                                reciprocal(y-originTakeingNums, actionObject,1, y);
+                            }
+
+                        }
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart)
+
+                    }
+                })
+            }
+
+            //为图表增加考生人数数据
+            function activeLastPointToolip(chart) {
+
+                var points = chart.series[0].points;
+
+                chart.tooltip.refresh(points[points.length - 1]);
+            }
+
+            //时间格式设置
+            Highcharts.setOptions({
+                global: {
+                    //是否使用世界标准时间
+                    useUTC: false
+                }
+            });
+
+
+            var stuChar = null
+            //实时考试人数动态图
+
+            $("#stuNumbers_statistics").highcharts({
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'spline',
+
+                    height: 150,
+                    marginTop: 30,
+                    events: {
+                        load: function () {
+                            // set up the updating of the chart each second
+                            var series = this.series[0];
+                            stuChar = this;
+
+                            // getRealStuNumbers(series, stuChar)
+                            var tempTimer = setInterval(function () {
+                                getRealStuNumbers(series, stuChar);
+
+                            }, 6000);
+
+                        }
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    type: 'datetime',
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                yAxis: {
+                    allowDecimals: false,
+                    title: {
+                        align: 'high',
+                        text: '',
+                        rotation: 0,
+                        offset: -15,
+                        y: -15,
+                        x: 14
+
+                    },
+                    min: 0,
+                    gridLineWidth: 0//设置网格线宽度
+                },
+                tooltip: {
+
+                    formatter: function () {
+                        return Highcharts.dateFormat("%Y-%m-%d %H:%M:%S", this.x) + '<br/>' +
+                            "考试人数： " +
+                            ' <b>' + Highcharts.numberFormat(this.y, 0) + '</b> ' +
+                            '人';
+                    }
+
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                series: [{
+                    type:'area',
+
+                    data: (function () {
+                        // generate an array of random data
+                        var data = [], time = (new Date()).getTime(), i;
+                        var y = "0";
+                        for (i = -5; i <= 0; i += 1) {
+                            data.push({
+                                x: time + i * 1000,
+                                y: parseInt(y)
+                            });
+                        }
+                        return data;
+                    }()),
+                    color: '#def1ff',//设置数据列颜色
+                }]
+            },function (c) {
+                activeLastPointToolip(c)
+            });
+
+
+
+            //页面右下角图标切换新版不需要
+            // $('.co-btn a').hover(function(){
+            //     var con = $(this).find("img").data("icon");
+            //     $(this).find('img').attr('src',"/components/com_exams/assets/img/co-icon"+con+"-"+con+".png");
+            //     $(this).find('p').css("color","#2fc0af");
+            // },function () {
+            //     var con = $(this).find("img").data("icon");
+            //     $(this).find('img').attr('src',"/components/com_exams/assets/img/co-icon"+con+".png");
+            //     $(this).find('p').css("color","#726f70");
+            // });
+
+            //公告每日一弹功能
+            var uid = '3326014';
+            var uidKey = 'popup'+uid;
+            var data = new Date();
+            var nowData = data.toLocaleDateString();
+            var everyDayValue = localStorage.getItem(uidKey);
+
+            //var info = "//";
+            var info = "";
+
+            if(everyDayValue != nowData){
+
+                for(var i = 0;i<$('.annoucements a').length; i++){
+                    if($('.annoucements a').eq(i).data('set') == 0){
+
+                        $('.annoucements a').eq(i).click();
+                        localStorage.removeItem(uidKey);
+                        localStorage.setItem(uidKey, nowData);
+                        //如果有弹出公告，就不弹出手机绑定的弹窗和过期的弹窗
+                                                info = null;
+                    }
+                }
+
+            }
+
+
+
+            //绑定手机判断
+                        if ( info ) {
+                //过期提醒框
+                var alertExpiredBox = new jBox("Modal", {
+                    id: "alertExpiredBoxId",
+                    minWidth: 50,
+                    maxHeight: $(window).innerHeight(true) * 0.9,
+                    maxWidth: $(window).innerWidth(true) * 0.9,
+                    minHeight: 50,
+                    content: $('#alertExpiredContent'),
+                    onCreated: function (e) {
+
+                    },
+                    onCloseComplete: function (e) {
+                        alertExpiredBox.destroy();
+                    },
+                    complete: function () {
+                        alertExpiredBox.position()
+                    }
+                });
+                alertExpiredBox.open();
+                $('#closeBtn').click(function () {
+                    alertExpiredBox.close();
+                });
+            }
+            
+            
+            var datatable = function (src, dataUrl, ajaxParams, options, orderDisplay) {
+                var grid = new Datatable();
+                options = options ? options : {};
+
+                orderDisplay = orderDisplay ? orderDisplay : [];
+                var opts = $.extend(true, {
+                    src: src,
+                    onSuccess: function (grid, data) {
+                    },
+                    onError: function (grid) {
+                        // execute some code on network or other general error
+                    },
+                    onDataLoad: function (grid) {
+                        // execute some code on ajax data load
+                    },
+                    ajaxParams: ajaxParams,
+
+                    dataTable: {
+                        "dom": "<'row'<'col-md-6 col-sm-12'pli><'col-md-6 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-6 col-sm-12'pli><'col-md-6 col-sm-12'>>",
+                        "bStateSave": false, // save datatable state(pagination, sort, etc) in cookie.
+                        "ordering": options['ordering'],
+                        "lengthMenu": [
+                            [5, 10, 30, 40],
+                            [5, 10, 30, 40] // change per page values here
+                        ],
+                        "pageLength": 5, // default record count per page
+                        "ajax": {
+                            "url": dataUrl, // ajax source
+                            beforeSend : function(){
+
+                                if(options['type'] == 'exam'){
+
+                                    $("#examListLoading").show()
+                                }else if(options['type'] == 'course'){
+
+                                    $("#courseListLoading").show()
+                                }else if(options['type'] == 'stuE'){
+
+                                    $("#examStuLoading").show()
+                                }else if(options['type'] == 'examE'){
+
+                                    $("#examExamLoading").show()
+                                }
+
+                            },
+                            complete : function(){
+                                if(options['type'] == 'exam'){
+
+                                    $("#examListLoading").hide()
+                                }else if(options['type'] == 'course'){
+
+                                    $("#courseListLoading").hide()
+                                }else if(options['type'] == 'stuE'){
+
+                                    $("#examStuLoading").hide()
+                                }else if(options['type'] == 'examE'){
+
+                                    $("#examExamLoading").hide()
+                                }
+
+                            }
+                        },
+                        "order": [
+                            [1, "desc"]
+                        ],
+                        "columnDefs": [{"orderable":false,"targets":orderDisplay}],
+                        language: {
+                            "metronicGroupActions": "_TOTAL_ records selected:  ",
+                            "metronicAjaxRequestGeneralError": "无法完成数据加载请求， 请重新刷新该界面, 如果刷新后，问题还在， 请检查网络链接是否正常",
+                            // data tables spesific
+                            "lengthMenu": "<span class='seperator'>|</span>显示 _MENU_ 记录",
+                            "info": "<span class='seperator'>|</span>共有<span class=nums> _TOTAL_</span> 条数据记录",
+                            "infoEmpty": "没有数据记录",
+                            "emptyTable": "表中无数据",
+                            "zeroRecords": "没有找到相关数据",
+                            "paginate": {
+                                "previous": "JPRE",
+                                "next": "下页",
+                                "last": "尾页",
+                                "first": "首页",
+                                "page": '',
+                                "pageOf": "/"
+                            }
+                        }
+
+                    }
+                }, options);
+
+                grid.init(opts);
+                return grid;
+            }
+
+
+
+            //新版增加功能
+            var stuE = null;
+            var makeUpAjaxTable = function (id, url, data, type,option) {
+                setTimeout(function () {
+                    this.url = url;
+                    this.data = data;
+
+                    if(!option){
+                        var option=new Array()
+                        option['ordering'] = false
+                        option['type'] = type
+                    }
+
+                    // 有"缺考考生"时组名称不能排序
+                    this.grid = datatable($(id), url, data, option, "orderDisplay");
+                    stuE = this.grid
+                    NW.buildCheck($(id));
+                    var self = this;
+                    this.grid.getDataTable().on('xhr.dt', function ( e, settings, json, xhr ){
+
+                        if(type == 'exam'){
+                            $("#examingN").text(json.recordsTotal)
+                            $("#onExN").text(json.count)
+
+                        }else if(type == 'course'){
+                            $("#courseingN").text(json.recordsTotal)
+                            $("#onCoN").text(json.count)
+                        }else if(type == 'stuE'){
+                            $("#sTTN").text(json.recordsTotal)
+                            $("#eTTN").text(json.sid)
+                        }
+
+                        var recordsTotal = json.recordsTotal;
+                        if(recordsTotal == 0){
+
+                            if(id.selector == "#stuExamList"){
+                                $(id.selector+'_wrapper').find('.dataTables_info').each(function(){
+                                    var self = $(this);
+                                    self.css({'top':'7px'});
+                                })
+                            }
+
+                            $(id.selector+'_wrapper').parent().css('padding-bottom','50px');
+                            // $(id.selector+'_wrapper').find('.row').each(function(){
+                            //     var self = $(this);
+                            //     self.css('display','none');
+                            // })
+                            $(id.seletor+'Container').css("margin-top",'18px')
+
+                            $(id.selector+'_wrapper').css("margin-top",'18px')
+
+                            // if(type == 'stuE'){
+                            //     $("#stuSC").css("margin-bottom",'15px')
+                            // }
+                        }
+                    });
+                },500)
+            }
+
+            makeUpAjaxTable.prototype = {
+
+                search: function (values) {
+                    if(values == this.searchValue) return;
+                    this.searchValue = values;
+                    this.reload();
+                },
+                reload: function () {
+                    var grid = stuE;
+
+                    grid.clearAjaxParams();
+
+                    grid.addAjaxParam("searchValue", this.searchValue);
+                    grid.addAjaxParam("multiSearch", this.multiSearchText);
+
+                    grid.getDataTable().ajax.reload(function (e) {
+                        if(e.data.length <= 0) {
+
+                        }else{
+
+                        }
+                        if(e.hasUngradedPaper){
+
+                        }else{
+
+                        }
+                    });
+                },
+                getGrid: function () {
+                    return this.grid;
+                }
+            }
+
+            var examingTable = new makeUpAjaxTable($("#examingList"), '/dashboards.raw?layout=examingList', {},'exam');
+
+                        //正在进行的课程
+            var courseingList = new makeUpAjaxTable($("#courseingList"), '/dashboards.raw?layout=courseingList', {},'course');
+            
+            var stuExamList = null;
+            var highchartsHeight = null;
+
+            $("div[href='#showExamInfoToday']").click(function () {
+                $(".main").hide()
+                $("#showExamInfoToday").show()
+                $(".studentCountOver").hide()
+
+                getRealStuNumbers = function () {};
+                //今日考试情况学生
+                if(stuExamList == null){
+                    stuExamList = new makeUpAjaxTable($("#stuExamList"), '/dashboards.raw?layout=stuExamingToday', {},'stuE');
+
+
+
+                    $("#activeSearch").click(function () {
+                        stuExamList.search($("#stuTodaySearch").val())
+                    })
+
+                    $("#stuTodaySearch").keydown(function(event){
+
+                        if(event.keyCode==13){
+
+                            stuExamList.search($("#stuTodaySearch").val())
+                        }
+                    });
+
+                    $("#stuTodaySearch").focus(function () {
+                        $(this).attr("placeholder",'');
+                        $("#activeSearch").hide()
+                        $("#stuClose").show()
+                    })
+                    $("#stuTodaySearch").blur(function () {
+
+                        if($(this).val()){
+                            $("#activeSearch").show()
+                            $("#stuClose").hide()
+                        }else{
+                            $(this).attr("placeholder","请输入搜索试卷标题")
+                            $("#activeSearch").show()
+                            $("#stuClose").hide()
+                        }
+
+                    })
+
+                    $("#stuTodaySearch").on('input',function () {
+
+                        if($(this).val()){
+                            $("#activeSearch").hide()
+                            $("#stuClose").show()
+                        }else{
+                            $(this).attr("placeholder","请输入搜索试卷标题")
+                            $("#activeSearch").show()
+                            $("#stuClose").hide()
+                        }
+
+                    })
+                    $("#stuClose").on("mousedown",function(e) {
+                        e.preventDefault();
+
+                    })
+                    $("#stuClose").on('click',function () {
+
+                        $("#stuTodaySearch").val("")
+                        $(this).attr("placeholder","请输入搜索试卷标题")
+                        $("#activeSearch").show()
+                        $("#stuClose").hide()
+                        stuExamList.search($("#stuTodaySearch").val())
+                    })
+
+
+                }
+
+                function examToday_statistics() {
+                    $.get("/dashboards.raw?layout=examTodayStatistics")
+                        .success(function (data) {
+                            var data = $.parseJSON(data);
+                            var timeArray = [];
+                            var valueArray = [];
+                            for (let key in data){
+                                timeArray.push(key)
+                                valueArray.push(data[key])
+                            }
+                            if(data){
+                                $("#examToday_statistics").highcharts({
+                                    credits: {
+                                        enabled: false
+                                    },
+                                    chart: {
+                                        type: 'line',
+                                        events: {
+                                            load: function () {
+                                                highchartsHeight = $(".examNumbersHachartToday").outerHeight(true)
+                                            }
+                                        }
+                                    },
+                                    title: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        title: {
+                                            text: ""
+                                        },
+                                        categories: timeArray
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        lineColor:'#ffffff',
+                                        labels:{
+
+                                            enabled:false
+
+                                        },
+                                        title: {
+                                            text: '',
+                                        }
+                                    }, tooltip: {
+                                        formatter: function () {
+                                            var p = "在<b>{point.key}</b>-<b>{point.key}</b>之内，考了<b>{point.y}</b>次";
+                                            var nextKey = parseInt( this.key.slice(0,2) ) + 1 + ':00'
+                                            return p.replace("{point.key}", this.key).replace("{point.key}", nextKey).replace("{point.y}", this.y);
+                                        }
+                                    },
+                                    legend: {
+                                        enabled:false
+                                    },
+                                    plotOptions: {
+                                        area: {
+                                            fillColor: {
+                                                linearGradient: {
+                                                    x1: 0,
+                                                    y1: 0,
+                                                    x2: 0,
+                                                    y2: 1
+                                                },
+                                                stops: [
+                                                    [0, Highcharts.getOptions().colors[0]],
+                                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                                ]
+                                            },
+                                            marker: {
+                                                radius: 2
+                                            },
+                                            lineWidth: 1,
+                                            states: {
+                                                hover: {
+                                                    lineWidth: 1
+                                                }
+                                            },
+                                            threshold: null
+                                        }
+                                    },
+                                    series: [
+                                        {   type: 'area',
+                                            name:'今日考试次数',
+                                            data: valueArray
+                                        }
+                                    ]
+                                });
+                            }
+
+                        });
+                }
+                //今日考试次数时间变化
+                examToday_statistics()
+            })
+
+            $("a[href='#dashboard']").click(function () {
+                $(".main").show()
+                $("#showExamInfoToday").hide()
+                $(".studentCountOver").show()
+                getRealStuNumbers = function (series,chart) {
+                    var d = {}
+                    d["95909207f9408a035958129254068643"] = 1;
+
+                    var url = '/dashboards.raw?task=dashboard.getRealStuInfo';
+                    $.post(url, d).done(function (data) {
+                        data = $.parseJSON(data);
+                        if (data.status == "success") {
+                            var x = (new Date()).getTime(), // current time
+                                y = parseInt(data.numbers);
+                            doexamingStuNum = y
+                            var originTakeingNums = parseInt(actionObject.attr('data-num'))
+                            if(y != originTakeingNums && !windowBlur && runNumInterval == null){
+                                if(y < originTakeingNums){
+                                    reciprocal(originTakeingNums-y, actionObject,-1, y);
+                                }else{
+                                    reciprocal(y-originTakeingNums, actionObject,1, y);
+                                }
+                            }
+                            series.addPoint([x, y], true, true);
+                            activeLastPointToolip(chart)
+
+                        }
+                    })
+                }
+            })
+
+            //面包屑导航
+            layui.use('element', function(){
+                var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+                //监听导航点击
+                element.on('nav(demo)', function(elem){
+
+                    layer.msg(elem.text());
+                });
+            });
+
+            var examExamList = null;
+
+            //选项卡
+            layui.use('element', function(){
+                var $ = layui.jquery
+                    ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+                element.on('tab(stuExamTab)', function(data){
+                    // console.log('i:'+data.index); //得到当前Tab的所在下标
+
+                    //今日考试情况试卷
+                    if(examExamList == null){
+                        examExamList = new makeUpAjaxTable($("#examExamList"), '/dashboards.raw?layout=examExamingToday', {},'examE');
+                    }
+
+
+                });
+
+            });
+            //  选项卡  end
+
+            function changeNumbers(num) {
+                if (num == undefined) {
+                    return 0;
+                }
+                //万
+                var wan = "万";
+                num = num.toString()
+                var index = num.length;
+                if (index > 4) {
+                    if (iscn) {
+                        num = num.slice(0, index - 4)+wan
+
+                    } else {
+                        num = num.slice(0, index - 3)+wan
+                    }
+                }
+                return num;
+            }
+
+            $(".closeHeader").click(function () {
+                $(".studentCountOver").hide()
+            })
+
+
+            function getGradedInfo(start,originNum){
+                $.get("/dashboards.raw?task=dashboard.getGradedInfo&start="+start+"&originNum="+originNum+"&isDashboard=1")
+                    .success(function (data) {
+                        var data = $.parseJSON(data);
+
+                        var originNum = $("#gradedNum").text()
+                        var newNum = data.allGradedInfo.notGradedNum
+                        if(start == 0) {
+                            var allNum = parseInt(newNum)
+                        }else{
+                            var allNum = parseInt(newNum) + parseInt(originNum)
+                        }
+                        if(allNum > 1000){
+                            allNum = '1000+';
+                        }
+
+                        if(start == 0){
+                            if(newNum > 1000){
+                                newNum = '1000+';
+                            }
+                            $("#gradedNum").text(newNum)
+                        }else{
+                            $("#gradedNum").text(allNum)
+                        }
+                        if(data.status == 'process'){
+                            getGradedInfo(data.start,allNum)
+                        }
+                    });
+            }
+            getGradedInfo(gradedInfoStart,originNum)
+
+                        $.get({
+                url : "/dashboards.raw?layout=courseDatas",
+                success:function(data){
+                    var rdata = null;
+                    try {
+                        rdata = $.parseJSON(data)
+                    } catch (e) {
+                        rdata = {
+                            status: "error",
+                            error: e + "\n" + data
+                        }
+                    }
+                    $("#courseLoading").hide()
+                    if(rdata.openCourse){
+                        $(".courseTotal").show()
+                        setTimeout(function () {
+                            $(".courseTotal").css("opacity","1")
+                        },40)
+
+                        $("#courseNumbers").text(rdata.courseNums)
+                    }else{
+                        $(".courseTotalN").show()
+                        setTimeout(function () {
+                            $(".courseTotalN").css("opacity","1")
+                        },40)
+                    }
+
+                }
+            });
+
+            
+        })
+    })(jQuery)
+</script>
+
+            </div>
+        </div>
+        <!-- END CONTENT -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="page-footer text-center">
+        <div class="page-footer-inner" style="float: none">
+            优考试 &copy; 2021 广州好智信息技术有限公司        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+
+    <!--<script src="/templates/onlineexam_dashboard/js/jquery.min.js" type="text/javascript"></script>-->
+    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script type="text/javascript" src="/dashboards/lng/default.raw?r=201902191803"></script>
+    <script type="text/javascript" src="/dashboards/lng/urls.raw?r=201902191803"></script>
+                        <script type="text/javascript" src="https://cdn.youkaoshi.cn/cdn/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+                <script type="text/javascript" src="/templates/onlineexam_dashboard/js/final.min.js?r=201801281945"></script>
+    <script type="text/javascript" src="/templates/onlineexam_dashboard/js/application.js?r=202102221330"></script>
+    <script type="text/javascript" src="/templates/onlineexam_dashboard/js/common.js?r=202009181839"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        function isIE(ver){
+            if (ver == 10) {
+                if (document.all && document.addEventListener && window.atob) {
+                    return true;
+                }
+            }
+            var b=document.createElement('b');
+            b.innerHTML='<!--[if IE '+ver+']><i></i><![endif]-->';
+            return b.getElementsByTagName('i').length===1;
+        }
+        function unSupportIE(){
+            return isIE(5)||isIE(6)||isIE(7)||isIE(8)||isIE(9)||isIE(10)
+        }
+        if(unSupportIE()){
+            alert("您的浏览器版本太低，请升级至新版浏览器； 使用老的浏览器将无法正常浏览和使用系统功能；您可以使用新版本的Chrome, Firefox, Edge, IE11或者国产浏览器(切换到极速模式)")
+        }
+
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            QuickSidebar.init(); // init quick sidebar
+            Tasks.initDashboardWidget();
+
+            MathJax.Hub.Config({
+                showProcessingMessages: false,
+                messageStyle: "none",
+                showMathMenu: false,
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath:  [ ["$ ", "$"] ],
+                    displayMath: [ ["$$","$$"] ],
+                    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+                    ignoreClass:"comment-content|regular-ques"
+                }
+            });
+
+            //处理一级菜单
+            jQuery(".page-sidebar-menu").find(".parent a:first").prop("href","javascript:;");
+        });
+
+        function ga_async_load(fun){
+            if (window.attachEvent){
+                window.attachEvent('onload', fun);
+            }else{
+                window.addEventListener('load', fun, false);
+            }
+        }
+
+                ga_async_load( function(){
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true; //js下载之后立刻动作
+//       s.defer = true; //浏览器html parse后动作
+            s.innerHTML = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-58187437-1', 'auto');ga('send', 'pageview');";
+            document.body.appendChild(s);
+        });
+        
+    </script>
+                <script>
+            (function(d, w, c) {
+                var s = d.createElement('script');
+                w[c] = w[c] || function() {
+                    (w[c].z = w[c].z || []).push(arguments);
+                };
+                s.async = true;
+                s.src = 'https://static.aihecong.com/hecong.js';
+                if (d.head) d.head.appendChild(s);
+            })(document, window, '_AIHECONG');
+            _AIHECONG('ini',{ channelId : '5eoOT5' });
+        </script>
+        <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

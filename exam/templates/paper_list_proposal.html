@@ -1,0 +1,51 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+    .mystars {
+        display: inline-block;
+        background: url("/static/images/star.png") 0 0 no-repeat;
+        height: 25px;
+        scale: 0.6;
+    }
+    tr>th,tr>td{
+        text-align: center;
+    }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li>试卷列表</li>
+    </ol>
+
+    <table class="table table" style="vertical-align: center">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户</th>
+            <th>试卷</th>
+            <th>申请时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for prosal in proposals %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ prosal.user }} </td>
+                <td>{{ prosal.paper }}</td>
+                <td>{{ prosal.time }}</td>
+                <td>
+                    <a href="{% url 'exam:paper_proposal_agree' prosal.pk %}" class="btn btn-success">同意</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

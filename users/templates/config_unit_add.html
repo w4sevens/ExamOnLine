@@ -1,0 +1,105 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+    form>div>div{
+        margin-top: -1px;
+        border: 1px solid #979797;
+        height: 50px;
+        padding: 5px;
+        vertical-align: middle;
+    }
+    form>div>div>label{
+        margin: 0 30px;
+        width: 10%;
+    }
+     form>div>div>input[name="address"]{
+         width: 50%;
+     }
+
+    </style>
+{% endblock %}
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'user:config' %}">后台设置</a></li>
+        <li><a href="{% url 'user:unitlist' %}">单位信息</a></li>
+        <li>添加单位</li>
+    </ol>
+    <form action="" method="post" id="form1">
+        {% csrf_token %}
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-inline">
+                <label style="margin-right: 10px;">单位全称：</label>
+                <input type="text" class="form-control" name="unit_full_name" value="{{ fname }}">
+
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;" >单位简称：</label>
+                <input type="text" class="form-control" name="unit_name" value="{{ unit_name }}">
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;" >二级单位：</label>
+                <input type="text" class="form-control" name="uname2" value="{{ uname2 }}">
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;" >logo1：</label>
+                <select class="form-control" name="logo1" style="width: 50%">
+                    {% for logo in logos %}
+                        <option value="{{ logo.pk }}">{{ logo.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;" >logo2：</label>
+                <select class="form-control" name="logo2" style="width: 50%">
+                    {% for logo in logos %}
+                        <option value="{{ logo.pk }}">{{ logo.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-inline">
+                <label style="margin-right: 10px;" >logo3：</label>
+                <select class="form-control" name="logo3" style="width: 50%">
+                    {% for logo in logos %}
+                        <option value="{{ logo.pk }}">{{ logo.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <span style="color: red">{{ error }}</span>
+                <a class="btn-default btn pull-right" href="javascript:history.back()">返回</a>
+                <input type="submit" class="btn btn-success pull-right" style="margin: 0 5px;" value="保存">
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    $(document).ready(function (){
+        $('form>div>div>input[name]').css('width','50%')
+
+        $('form select[name="logo1"]').children().each(function (){
+            if ($(this).val() == '{{ units.logo1.pk }}'){
+                $(this).prop('selected', true)
+            }
+        })
+        $('form select[name="logo2"]').children().each(function (){
+            if ($(this).val() == '{{ units.logo2.pk }}'){
+                $(this).prop('selected', true)
+            }
+        })
+        $('form select[name="logo3"]').children().each(function (){
+            if ($(this).val() == '{{ units.logo3.pk }}'){
+                $(this).prop('selected', true)
+            }
+        })
+    })
+    </script>
+{% endblock %}

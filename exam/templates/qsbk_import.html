@@ -1,0 +1,235 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+        table tr > td:first-child {
+            text-align: center;
+            width: 130px;
+        }
+        ul>li>a{
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:qsbk_info' %}">题库中心</a></li>
+        <li>批量导入</li>
+    </ol>
+
+    <ul class="nav nav-tabs" id="nav1">
+        <li role="presentation" class="active" tag="word1"><a>导入Word题库</a></li>
+        <li role="presentation" tag="excel1"><a>导入Excel题库</a></li>
+    </ul>
+
+    <div>
+        <div class="col-md-8 col-md-offset-2" id="word1" style="margin-top: 40px;">
+            <form action="{% url 'exam:qsbk_show' %}?type=word" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td style="height: 50px;">导入<span style="color: red">word</span>类型的题库</td>
+                    </tr>
+                    <tr>
+                        <td>题库名称(<span style="color: red">*必填*</span>)</td>
+                        <td><input id="idname1" name="qsbk_name" type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>适用人员(<span style="color: black">*可选*</span>)</td>
+                        <td>
+                            <select name="applyto" class="form-control" multiple>
+                                {% for u in units %}
+                                    <option value="{{ u.pk }}">{{ u.unit_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <a onclick="SelectAll(this)" style="margin: 10px 10px;">全部选择</a>
+                            <a onclick="UnSelectAll(this)" style="margin: 10px 10px;">全部取消</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>选择文件(<span style="color: red">*必填*</span>)</td>
+                        <td>
+                            <input type="file" name="filename" style="display: inline-block; margin-top: 10px;"
+                                   class="form-group">
+                            <input type="button" value="上传" class="btn btn-default" id="upload" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <span name="info"></span>
+                            <input type="submit" class="btn btn-primary pull-right" tag="show_qb" disabled="" value="预览">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <a href="{% url 'exam:qsbk_download' %}?type=word" class="btn btn-link pull-right">下载word题库模板</a>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2" id="excel1" style="margin-top: 40px;display: none">
+            <form action="{% url 'exam:qsbk_show' %}?type=excel" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td style="height: 50px;">导入<span style="color: red">excel</span>类型的题库</td>
+                    </tr>
+                    <tr>
+                        <td>题库名称(<span style="color: red">*必填*</span>)</td>
+                        <td><input id="idname1" name="qsbk_name" type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>适用人员(<span style="color: black">*可选*</span>)</td>
+                        <td>
+                            <select name="applyto" class="form-control" multiple>
+                                {% for u in units %}
+                                    <option value="{{ u.pk }}">{{ u.unit_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <a onclick="SelectAll(this)" style="margin: 10px 10px;">全部选择</a>
+                            <a onclick="UnSelectAll(this)" style="margin: 10px 10px;">全部取消</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>选择文件(<span style="color: red">*必填*</span>)</td>
+                        <td>
+                            <input type="file" name="filename" style="display: inline-block; margin-top: 10px;"
+                                   class="form-group">
+                            <input type="button" value="上传" class="btn btn-default" id="upload" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <span name="info"></span>
+                            <input type="submit" class="btn btn-primary pull-right" tag="show_qb" disabled="" value="预览">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <a href="{% url 'exam:qsbk_download' %}?type=excel" class="btn btn-link pull-right">下载excel题库模板</a>
+        </div>
+
+
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        <p>说明：</p>
+        <p style="padding-left: 30px;">1、【适用人员】决定哪些人可以使用该题库进行训练。</p>
+        <p style="padding-left: 30px;">2、只有填写（*必填*）项目之后，才可以上传题库并预览。</p>
+        <p style="padding-left: 30px;">3、用户上传题库时请遵守模板格式，右侧链接可以下载excel或word版模板。</p>
+        <p style="padding-left: 30px;">4、如有问题，请及时反馈（669318），我们将尽快优化升级，感谢您的配合与参与，我们一起努力变得更好。</p>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+
+    // 选择所有选项
+    function SelectAll(ele){
+        var sel = $(ele).siblings('select')[0]
+        $(sel).children().each(function (){
+            $(this).prop('selected', true)
+        })
+    }
+    // 取消
+    function UnSelectAll(ele){
+        var sel = $(ele).siblings('select')[0]
+        $(sel).children().each(function (){
+            $(this).prop('selected', false)
+        })
+    }
+
+    // 文件框变动
+    $('input[type="file"]').change(function () {
+        $(this).siblings('input').each(function (){
+            $(this).removeAttr('disabled');
+        })
+    })
+
+        // 点击上传按钮
+    $('input[value="上传"]').click(function () {
+
+        // 题库名为空
+        var tkname = $(this).parents('tbody').find('input[name="qsbk_name"]')
+        if ($(tkname).val() == "") {
+            alert('请输入题库名称！');
+            return false;
+        }
+
+        var info = $(this).parents('tbody').find('span[name="info"]')[0]
+        var showqb = $(this).parents('tbody').find('input[tag="show_qb"]')[0]
+
+        // 不合法文件名检测
+        var id = $($(this).parents('form').parent('div')[0]).attr('id')
+        var file = $(this).parents('tbody').find('input[type="file"]')[0]
+        if (id == 'word1'){
+            if (!$(file).val().endsWith('.docx')) {
+                alert('上传文件必须是DOCX文档，请选择上传文件(*.docx)');
+                $(this).attr('disabled', true)
+                $(showqb).prop('disabled', true)
+                return false;
+            }
+        }else{
+            if (!$(file).val().endsWith('.xls')) {
+                alert('上传文件必须是EXCEL文档，请选择上传文件(*.xls)');
+                $(this).attr('disabled', true)
+                $(showqb).prop('disabled', true)
+                return false;
+            }
+        }
+
+
+        var formdata = new FormData();
+        formdata.append('filename', $(file)[0].files[0]);
+        formdata.append('csrfmiddlewaretoken', $('[name=csrfmiddlewaretoken]').val());
+        $.ajax({
+            url: '{% url "exam:qsbk_import" %}',
+            type: 'post',
+            data: formdata,
+            processData: false,  // 不处理数据     {# ajax上传数据必须加这两个参数 #}
+            contentType: false,  //不设置内容类型
+            success: function (res) {
+                if (res.status == 'success') {
+                    $(info).html('<span style="color: green">' + res.msg + '</span>');
+                    $(showqb).removeAttr('disabled');
+                } else if (res.status == 'wrong') {
+                    $(info).html('<span style="color: red">' + res.msg + '</span>');
+                    $(showqb).attr('disabled', '');
+                }
+            }
+        })
+    });
+
+    // 导航框事件
+    $(function () {
+        $('#nav1').children().each(function () {
+            $(this).click(function () {
+                // 当前元素激活
+                $(this).attr('class', 'active')
+                // 兄弟元素取消激活
+                $(this).siblings().each(function () {
+                    $(this).removeAttr('class')
+                })
+
+                // 对应框显示
+                var id = $(this).attr('tag')
+                $('#' + id).css('display', '')
+                $('#' + id).siblings().each(function () {
+                    $(this).css('display', 'none')
+                })
+
+            })
+        })
+    })
+
+    </script>
+{% endblock %}

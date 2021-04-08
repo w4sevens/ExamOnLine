@@ -1,0 +1,26 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+     <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>题库中心</li>
+    </ol>
+
+    <div>
+
+    </div>
+<div class="jumbotron">
+  <h1>不忘初心，牢记使命!</h1>
+  <p>这里是题库中心，主要展示题库相关信息！</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">了解更多</a></p>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+
+    </script>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'indexbase.html' %}
+{% load static %}
+
+{% block title %}考试信息列表{% endblock %}
+
+{% block custom_css %}
+    {#    这里是通用css#}
+{% endblock %}
+
+{% block left_menu %}
+    <div class="left">
+        <ul>
+            <li class="{% if '/examinfo/' in request.path %}active2{% endif %}"><a href="{% url 'exam:examinfo' %}">试卷列表</a></li>
+            <li class="{% if '/examresult/' in request.path %}active2{% endif %}"><a href="{% url 'exam:examresult' %}">考试记录</a></li>
+            <li class="{% if '/wrongrecord/' in request.path %}active2{% endif %}"><a href="{% url 'exam:wrongrecord' %}">错题记录</a></li>
+
+        </ul>
+    </div>
+{% endblock %}
+
+{% block custom_right_content %}
+    <div class="right">
+        <div id="menu1" class="container tab-pane fade">
+            <table class="table right1">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>试卷名称</th>
+                <th>考试时长</th>
+                <th>单选题</th>
+                <th>多选题</th>
+                <th>判断题</th>
+                <th>共计</th>
+                <th>添加时间</th>
+                <th>创建人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for paper1 in paper.object_list %}
+                <tr class="table-info">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ paper1.name }}</td>
+                    <td>{{ paper1.test_time }}分钟</td>
+                    <td>{{ paper1.get_single_count }}</td>
+                    <td>{{ paper1.get_multiple_count }}</td>
+                    <td>{{ paper1.get_judge_count }}</td>
+                    <td>共计{{ paper1.get_counts }}题，满分{{ paper1.get_scores }}分</td>
+
+
+
+                    <td>{{ paper1.addtime }}</td>
+                    <td>{{ paper1.create_person }}</td>
+                    <td>
+                        <a href="{% url 'exam:startexam' %}?paper={{ paper1.pk }}" target="_blank">
+                            <button class="btn startTest btn-primary" id="toExam+{{ paper1.pk }}" style="height: 30px;background-color:#5dbf45;border-collapse:#6dbf45">开始考试
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+             <!--分页-->
+        <div class="pageturn">
+            <ul class="pagelist">
+                {% if paper.has_previous %}
+                    <li class="long"><a href="?{{ paper.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+
+                {% for page in paper.pages %}
+                    {% if page %}
+                        {% ifequal page paper.number %}
+                            <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if paper.has_next %}
+                    <li class="long"><a href="?{{ paper.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+{% block custom_js %}
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+<link href="/static/css/mycss1.css" rel="stylesheet">
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+     <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li>训练中心</li>
+    </ol>
+
+<div class="main1">
+    <div class="row first-stats col-md-12 col-sm-12">
+        {# 展示板 #}
+        <div class="col-md-3 col-sm-3" style="padding-left: 0!important;">
+            <div class="exams-stat">
+                <div class="stat-title title-exams">
+                    训练统计
+                </div>
+                <div class="first-line line-exams"></div>
+                <div class="total row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="stat-icon exams-stat-icon">
+                            <img src="/static/images/exams.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7" style="padding: 0">
+                        <div class="total-num exams-total-num">
+                            {{ trcds.count }}
+                        </div>
+                        <div class="stat-line exams-stat-line"></div>
+                        <div class="stat-label">训练总次数</div>
+                    </div>
+                </div>
+                <div class="first-summary row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label" style="">
+                            总时长/小时
+                        </div>
+                        <div class="summary-num exams-summary-num" style="">
+                            {{ time_all }}
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <div class="first-summary-line exams-first-summary-line"></div>
+                    </div>
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label" style="">
+                            今年以来/分钟
+                        </div>
+                        <div class="summary-num exams-summary-num" style="">
+                            {{ time_thisyear }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3" style="padding-left: 0!important;">
+            <div class="exams-stat" style="background-image: linear-gradient(315deg, #ffffff 0%, #ecfffd 100%);">
+                <div class="stat-title title-exams">
+                    题库统计
+                </div>
+                <div class="first-line line-exams"></div>
+                <div class="total row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="stat-icon exams-stat-icon">
+                            <img src="/static/images/questions.png" alt="" style="color: #1caf9a;">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7" style="padding: 0">
+                        <div class="total-num exams-total-num" style="color: #1caf9a;">
+                            {{ qbinfos.count }}
+                        </div>
+                        <div class="stat-line exams-stat-line"></div>
+                        <div class="stat-label">题库总数</div>
+                    </div>
+                </div>
+                <div class="first-summary row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label">
+                            题目总数
+                        </div>
+                        <div class="summary-num exams-summary-num" style="color: #1caf9a;">
+                            {{ qbcounts }}
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <div class="first-summary-line exams-first-summary-line"></div>
+                    </div>
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label">
+                            我的题目总数
+                        </div>
+                        <div class="summary-num exams-summary-num" style="color: #1caf9a;">
+                            {{ my_qs_count }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <div class="students-stat">
+                <div class="stat-title title-students">
+                    考生统计                </div>
+                <div class="first-line line-students"></div>
+                <div class="total row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="stat-icon students-stat-icon">
+                            <img src="/static/images/students.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7" style="padding: 0">
+                        <div class="total-num students-total-num">
+                            0                        </div>
+                        <div class="stat-line students-stat-line"></div>
+                        <div class="stat-label">考生总人数</div>
+                    </div>
+                </div>
+                <div class="first-summary row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label" style="">
+                            总分组                        </div>
+                        <div class="summary-num students-summary-num" style="">
+                            0                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <div class="first-summary-line students-first-summary-line"></div>
+                    </div>
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label" style="">
+                            已考人数                        </div>
+                        <div class="summary-num students-summary-num" style="">
+                            0                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <div class="advances-stat">
+                <div class="stat-title title-advances">
+                    闯关统计                </div>
+                <div class="first-line line-advances"></div>
+                <div class="total row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="stat-icon advances-stat-icon">
+                            <img src="/static/images/advances.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7" style="padding: 0">
+                        <div class="total-num advances-total-num">
+                            0                        </div>
+                        <div class="stat-line advances-stat-line"></div>
+                        <div class="stat-label">总闯关数</div>
+                    </div>
+                </div>
+                <div class="first-summary row">
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label" style="">
+                            总分类                        </div>
+                        <div class="summary-num advances-summary-num" style="">
+                            1                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <div class="first-summary-line advances-first-summary-line"></div>
+                    </div>
+                    <div class="col-md-5 col-sm-5" style="padding: 0">
+                        <div class="summary-label" style="">
+                            已闯关次数                        </div>
+                        <div class="summary-num advances-summary-num" style="">
+                            0                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

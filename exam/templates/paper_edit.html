@@ -1,0 +1,35 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'exam:paper_info' %}">考试中心</a></li>
+        <li><a href="{% url 'exam:list_paper' %}">试卷列表</a></li>
+        <li>编辑试卷</li>
+    </ol>
+
+    <div class="col-md-10 col-md-offset-1">
+    <form action="" method="post">
+    {% csrf_token %}
+    {% for obj in form_obj %}
+        <label>{{ obj.label }}</label>{{ obj }}
+    {% endfor %}
+        <a class="btn btn-default pull-right" href="javascript:history.back()" style="margin: 10px 0">返回</a>
+        <input type="submit" class="btn btn-success pull-right" style="margin: 10px" value="保存">
+    </form>
+    </div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    $(function (){
+        if (!{{ paper.is_random }}){
+            $('select[name="include_qinfo"]').remove()
+        }
+    })
+    </script>
+{% endblock %}

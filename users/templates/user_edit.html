@@ -1,0 +1,49 @@
+{% extends 'exam/index.html' %}
+{% load exam_tags %}
+
+{% block extra-css %}
+    <style>
+    table tr>td:first-child{
+        text-align: center;
+        width: 100px;
+    }
+    </style>
+{% endblock %}
+
+{# 右侧内容板块 #}
+{% block right-content-container %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'user:userinfo' %}">用户管理</a></li>
+        <li><a href="{% url 'user:userlist' %}">用户列表</a></li>
+        <li>编辑用户</li>
+    </ol>
+    <div class="col-md-offset-2 col-md-8">
+        <form action="" method="post" enctype="multipart/form-data">
+            <table class="table table-bordered">
+                {% for obj in form_obj %}
+                    <tr>
+                        <td><label>{{ obj.label }}</label></td>
+                        <td>{{ obj }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            {% csrf_token %}
+
+            <a type="button" class="btn btn-default pull-right" style="margin: 10px"
+               onClick="javascript:history.back(-1);">返回</a>
+            <input type="submit" class="btn btn-success pull-right" style="margin: 10px" value="保存">
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // 去掉文件框格式
+        $(function (){
+            $('form').find('input[type="file"]').removeAttr('class')
+        })
+    </script>
+{% endblock %}
